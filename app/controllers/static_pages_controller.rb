@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_filter :index_header, only: [:home]
 
   def home
   end
