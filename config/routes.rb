@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+
+  get 'password_resets/edit'
+
+  get 'password_resets/update'
+
+  resources :users
+  resources :password_resets
   root 'static_pages#home'
 
   get 'comics' => 'static_pages#comics'
