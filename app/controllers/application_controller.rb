@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   def index_header
     @index_header = true
   end
+
+  private
+
+    def not_authenticated
+      flash[:danger] = 'You have to authenticate to access this page'
+      redirect_to root_path
+    end
 end

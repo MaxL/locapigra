@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -48,6 +49,16 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def activate
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      flash[:success] = 'User successfully activated'
+    else
+      flash[:danger] = 'Cannot activate this user'
+      redirect_to root_path
     end
   end
 

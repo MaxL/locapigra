@@ -1,5 +1,17 @@
-<div class="container">
-  <footer>
-    <small class="text-muted">copyright locapigra 2016</small>
-  </footer>
-</div>
+<footer class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <small class="text-muted">copyright locapigra 2016</small>
+    </div>
+    <div class="col-xs-12 col-sm-9 text-right">
+      <ul class="list-inline">
+        <% if current_user %>
+          <li>
+            <%= link_to 'Log Out', logout_path, method: :delete, class: "btn btn-sm btn-danger" %>
+          </li>
+        <% end %>
+        <li><%= link_to "Impressum", imprint_path %></li>
+      </ul>
+    </div>
+  </div>
+</footer>
