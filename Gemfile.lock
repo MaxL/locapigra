@@ -350,6 +350,7 @@ DEPENDENCIES
   delayed_job_active_record
   faker (>= 1.4.2)
   fog (>= 1.36.0)
+  fog-aws
   guard-minitest (>= 2.3.1)
   jbuilder (>= 2.2.3)
   jquery-rails (>= 4.0.3)
