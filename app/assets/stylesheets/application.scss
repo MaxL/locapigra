@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "base";
+@import "mixins";
 @import "bootstrap-variables";
 @import "bootstrap-custom";
 
@@ -90,7 +91,26 @@
   }
 }
 
+/* #COMICS */
+
+.comic-item {
+
+  img {
+    width: 200px;
+  }
+}
+
+/* #FOOTER */
 
 footer {
-  margin-top: 30px;
+  margin-top: 70px;
+}
+
+// #MISC
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  box-sizing: border-box;
 }

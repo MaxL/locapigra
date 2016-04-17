@@ -1,0 +1,49 @@
+<%= form_for(@comic, html: { multipart: true }) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pages %>
+    <%= f.number_field :pages, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cover %>
+    <%= f.text_field :cover, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cover_image %>
+    <%= f.file_field :cover_image, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :color %>
+    <%= f.text_field :color, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dimensions %>
+    <%= f.text_field :dimensions, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create comic", class: "btn btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
