@@ -1,0 +1,71 @@
+<%= form_for(@product, html: { multipart: true }) do |f| %>
+  <%= render "shared/error_messages", object: f.object  %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :meta_title %>
+    <%= f.text_field :meta_title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :meta_description %>
+    <%= f.text_field :meta_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.01, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :taxrate %>
+    <%= f.number_field :taxrate, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :weight %>
+    <%= f.number_field :weight, step: 0.01, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :package %>
+    <%= f.text_field :package, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cover_image %>
+    <%= f.file_field :cover_image, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :release_date %>
+    <%= f.text_field :release_date, class: "form-control", "data-provide" => 'datepicker' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :language %>
+    <%= f.text_field :language, class: "form-control" %>
+  </div>
+
+  <div class="checkbox">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
+  <%= f.submit "Create product", class: "btn btn-primary" %>
+
+<% end %>

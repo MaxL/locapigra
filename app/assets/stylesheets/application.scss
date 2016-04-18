@@ -3,6 +3,7 @@
 @import "mixins";
 @import "bootstrap-variables";
 @import "bootstrap-custom";
+@import "bootstrap-datepicker";
 
 
 .browserupgrade {
@@ -94,6 +95,15 @@
 /* #COMICS */
 
 .comic-item {
+
+  img {
+    width: 200px;
+  }
+}
+
+/* #SHOP */
+
+.product-item {
 
   img {
     width: 200px;

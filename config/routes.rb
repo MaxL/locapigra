@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'products/index'
+
+  get 'products/show'
+
+  get 'products/new'
+
+  get 'products/edit'
+
   get 'password_resets/create'
 
   get 'password_resets/edit'
@@ -21,11 +29,13 @@ Rails.application.routes.draw do
 
   resources :comics
 
+  resources :products
+
   root 'static_pages#home'
 
   #get 'comics' => 'static_pages#comics'
 
-  get 'shop' => 'static_pages#shop'
+  get 'shop' => 'products#index'
 
   get 'blog' => 'static_pages#blog'
 

@@ -1,0 +1,14 @@
+<h1>Locapigra Shop</h1>
+
+<%= will_paginate %>
+<div class="row">
+  <%= render @products %>
+
+  <% if current_user %>
+    <div class="col-xs-12">
+      <hr>
+      <%= link_to "Add product", new_product_path, class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+</div>
+<%= will_paginate %>
