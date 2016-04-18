@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  has_many :order_items
+
   mount_uploader :cover_image, ProductImageUploader
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }
@@ -15,6 +17,8 @@ class Product < ActiveRecord::Base
   #validates :release_date, presence: true
   validates :language, presence: true
   validates_inclusion_of :active, :in => [ true, false ]
+
+  default_scope { where(active: true) }
 
   private
 

@@ -2,7 +2,7 @@
 
 <%= will_paginate %>
 <div class="row">
-  <%= render @products %>
+  <%= render @products, order_item: @order_item %>
 
   <% if current_user %>
     <div class="col-xs-12">

@@ -7,6 +7,17 @@
   <ul class="list-unstyled">
     <li>Language: <%= product.language %></li>
   </ul>
+  <hr>
+  <%= form_for order_item, remote: true do |f| %>
+    <h4 class="text-right">Unit Price: <span class="text-success"><%= number_to_currency product.price %></span></h4>
+    <div class="input-group">
+      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+      <div class="input-group-btn">
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
   <% if current_user %>
     <ul class="list-inline">
       <li><%= link_to "edit", edit_product_path(product) %></li>
