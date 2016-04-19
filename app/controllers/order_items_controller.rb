@@ -1,8 +1,17 @@
 class OrderItemsController < ApplicationController
 
   def create
+
+    @product = Product.find(params[:order_item][:product_id])
+
     @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
+    if !@order.order_items.exists?(product_id: @product.id)
+      @order_item = @order.order_items.new(order_item_params)
+      @order_item.quantity += 1
+    else
+      @order_item = @order.order_items.where(product_id: @product.id).first
+      @order_item.increment! :quantity
+    end
     @order.save
     session[:order_id] = @order.id
   end
