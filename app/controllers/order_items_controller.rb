@@ -1,8 +1,18 @@
 class OrderItemsController < ApplicationController
+  before_action :require_login
 
   def create
+    @product = Product.find(params[:order_item][:product_id])
     @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
+
+    if !@order.order_items.exists?(product_id: @product.id)
+      @order_item = @order.order_items.new(order_item_params)
+    else
+      @order_item = @order.order_items.where(product_id: @product.id).first
+      @new_qty = @order_item.quantity.to_i + params[:order_item][:quantity].to_i
+      @order_item.update(quantity: @new_qty)
+    end
+
     @order.save
     session[:order_id] = @order.id
   end

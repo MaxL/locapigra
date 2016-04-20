@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418203215) do
+ActiveRecord::Schema.define(version: 20160419170955) do
 
   create_table "comics", force: :cascade do |t|
     t.string   "name"
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20160418203215) do
     t.integer  "product_id"
     t.integer  "order_id"
     t.decimal  "unit_price",  precision: 12, scale: 3
-    t.integer  "quantity"
+    t.integer  "quantity",                             default: 0
     t.decimal  "total_price", precision: 12, scale: 3
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
