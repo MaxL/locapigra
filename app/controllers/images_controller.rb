@@ -1,5 +1,4 @@
 class ImagesController < ApplicationController
-  before_action require_login
 
   def create
     @image = Image.new(image_params)
