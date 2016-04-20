@@ -17,6 +17,9 @@ class ComicsController < ApplicationController
   def create
     @comic = Comic.new(comic_params)
     if @comic.save
+      if params[:images]
+        params[:images].each { |image| @comic.images.create(path: image) }
+      end
       flash[:success] = "Comic successfully created"
       redirect_to @comic
     else
@@ -32,6 +35,9 @@ class ComicsController < ApplicationController
     @comic = Comic.find(params[:id])
 
     if @comic.update_attributes(comic_params)
+      if params[:images]
+        params[:images].each { |image| @comic.images.create(path: image) }
+      end
       flash[:success] = "Comic successfully updated"
       redirect_to @comic
     else
@@ -47,6 +53,6 @@ class ComicsController < ApplicationController
 
   private
     def comic_params
-      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions)
+      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images)
     end
 end

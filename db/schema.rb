@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419170955) do
+ActiveRecord::Schema.define(version: 20160420202747) do
 
   create_table "comics", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20160419170955) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "comic_id"
+    t.string   "path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["comic_id"], name: "index_images_on_comic_id"
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"

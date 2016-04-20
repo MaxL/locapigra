@@ -1,4 +1,7 @@
 class Comic < ActiveRecord::Base
+  has_many :images, :inverse_of => :comic, :dependent => :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true
+
   mount_uploader :cover_image, ComicImageUploader
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }

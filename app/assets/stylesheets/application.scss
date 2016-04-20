@@ -4,6 +4,8 @@
 @import "bootstrap-variables";
 @import "bootstrap-custom";
 @import "bootstrap-datepicker";
+@import "font-awesome";
+@import "magnific-popup";
 
 
 .browserupgrade {
@@ -13,7 +15,18 @@
   padding: 0.2em 0;
 }
 
+/* HELPERS */
+.block-link {
+  display: block;
+  width: 100%;
+}
+
 /* HIGHLIGHTS & CO */
+.page-heading {
+  padding-bottom: 9px;
+  border-bottom: 1px solid $blood;
+  margin-bottom: 28px;
+}
 .blood {
   color: $blood;
 }
@@ -36,7 +49,7 @@
 .navbar-main {
   float: right;
   li {
-    width: 20%;
+    width: auto;
     text-align: center;
   }
 }
@@ -67,47 +80,38 @@
   }
 }
 
-/* Intro */
-.intro {
-  background-image: url('header.jpg');
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 320px;
-  padding-top: 30px;
-  color: $light;
-}
-.claws-title {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 36px;
-  color: $blood;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
 /* #COMICS */
 
 .comic-item {
+  margin-bottom: 42px;
 
-  img {
-    width: 200px;
+  .media-left {
+    min-width: 200px;
   }
+
+}
+
+.comic-thumb-box {
+  text-align: center;
+
+  &:nth-child(odd) {
+    padding-right: 4px;
+  }
+  &:nth-child(even) {
+    padding-left: 4px;
+  }
+}
+
+.comic-thumb {
+  padding: 2px;
+  border: 1px solid $night;
+  width: 100%;
 }
 
 /* #SHOP */
 
 .product-item {
 
-  img {
-    width: 200px;
-  }
 }
 
 /* #FOOTER */

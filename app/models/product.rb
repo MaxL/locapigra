@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :order_items
+  has_many :product_images
 
   mount_uploader :cover_image, ProductImageUploader
 

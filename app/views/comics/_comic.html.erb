@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-6 col-md-4 comic-item">
   <div class="media">
     <div class="media-left media-middle">
-      <%= link_to image_tag( comic.cover_image, alt: comic.name), comic %>
+      <%= link_to image_tag( comic.cover_image, alt: comic.name, class: "img-responsive"), comic, class: "block-link" %>
     </div>
     <div class="media-body">
       <%= link_to(comic) do %>
@@ -13,6 +13,15 @@
         <li><small>Color: <%= comic.color %></small></li>
         <li><small>Size: <%= comic.dimensions %></small></li>
       </ul>
+      <div class="thumbnails row">
+        <% comic.images.each do |image| %>
+          <div class="col-xs-12 col-sm-6 comic-thumb-box">
+            <a href="<%= image.path %>" class="magnific-image">
+              <img src="<%= image.path %>" class="comic-thumb">
+            </a>
+          </div>
+        <% end %>
+      </div>
       <% if current_user %>
         <ul class="list-inline">
           <li><%= link_to "edit", edit_comic_path(comic) %></li>
