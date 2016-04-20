@@ -1,0 +1,23 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+development:
+  braintree_env: sandbox
+  braintree_merchant_id: 788c38zdt6pdbb6b
+  braintree_api_public: 96mfhpmm7m3gyvcr
+  braintree_api_secret: 0f11b1b7338d634459985272b53b3218
+
+production:
+  braintree_env: production
+  braintree_merchant_id: jyz85nc84z8j4jk7
+  braintree_api_public: mr4spjj2cvvf7vtf
+  braintree_api_secret: b60c873eaeabb10bcacbeffccc32f172
+
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
