@@ -49,8 +49,6 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
-    braintree (2.60.0)
-      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (8.2.4)
     carrierwave (0.11.0)
@@ -354,7 +352,6 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass (>= 3.2.0.0)
   bootstrap-will_paginate (>= 0.0.10)
-  braintree
   byebug (>= 3.4.0)
   carrierwave (>= 0.10.0)
   coffee-rails (>= 4.1.0)
