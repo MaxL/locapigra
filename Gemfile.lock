@@ -49,6 +49,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    braintree (2.60.0)
+      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (8.2.4)
     carrierwave (0.11.0)
@@ -77,6 +79,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    figaro (1.1.1)
+      thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.38.0)
@@ -347,11 +351,13 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass (>= 3.2.0.0)
   bootstrap-will_paginate (>= 0.0.10)
+  braintree
   byebug (>= 3.4.0)
   carrierwave (>= 0.10.0)
   coffee-rails (>= 4.1.0)
   delayed_job_active_record
   faker (>= 1.4.2)
+  figaro
   fog (>= 1.36.0)
   fog-aws
   guard-minitest (>= 2.3.1)

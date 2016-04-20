@@ -2,7 +2,6 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
 
-  #validates :order_id, uniqueness: { scope: :product_id, message: "Product already in your Cart, you can change the quantity there" }
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present

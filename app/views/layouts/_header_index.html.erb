@@ -19,7 +19,9 @@
             <li><%= link_to "Shop", shop_path %></li>
             <li><%= link_to "Blog", blog_path %></li>
             <li><%= link_to "About", about_path %></li>
-            <li><%= render 'layouts/cart_text' %></li>
+            <% if current_user %>
+              <li><%= render 'layouts/cart_text' %></li>
+            <% end %>
           </ul>
         </div>
       </div>
