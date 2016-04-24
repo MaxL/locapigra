@@ -28,13 +28,13 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
 
+  resources :blogs
+
   root 'static_pages#home'
 
   #get 'comics' => 'static_pages#comics'
 
   get 'shop' => 'products#index'
-
-  get 'blog' => 'static_pages#blog'
 
   get 'about' => 'static_pages#about'
 

@@ -1,15 +1,26 @@
-<h1 class="page-heading">Comics</h1>
-
-<%= will_paginate %>
-<div class="row">
-  <%= render @comics %>
-
-  <% if current_user %>
-    <div class="col-xs-12">
-      <hr>
-      <%= link_to "Add comic", new_comic_path, class: "btn btn-success btn-lg" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="category-heading comic-heading">
+      <div class="container">
+        <h1 class="title">Comics</h1>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
 
-<%= will_paginate %>
+<div class="container">
+  <%= will_paginate %>
+  <div class="row card-row">
+
+    <%= render @comics %>
+
+    <% if current_user %>
+      <div class="col-xs-12">
+        <hr>
+        <%= link_to "Add comic", new_comic_path, class: "btn btn-success btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= will_paginate %>
+</div>

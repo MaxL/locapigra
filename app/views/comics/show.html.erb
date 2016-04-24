@@ -1,27 +1,27 @@
 <% provide(:title, @comic.name) %>
-<h1 class="page-heading"><%= @comic.name %></h1>
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-4">
-    <%= link_to image_tag( @comic.cover_image, alt: @comic.name, class: "img-responsive"), @comic, class: "block-link" %>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-8">
-    <p>
-      <%= @comic.description %>
-    </p>
-    <ul class="list-unstyled">
-      <li><small>Pages: <%= @comic.pages %></small></li>
-      <li><small>Cover: <%= @comic.cover %></small></li>
-      <li><small>Color: <%= @comic.color %></small></li>
-      <li><small>Size: <%= @comic.dimensions %></small></li>
-    </ul>
-    <div class="thumbnails row">
-      <% @comic.images.each do |image| %>
-        <div class="col-xs-12 col-sm-6 comic-thumb-box">
-          <a href="<%= image.path %>" class="magnific-image">
-            <img src="<%= image.path %>" class="comic-thumb">
-          </a>
-        </div>
-      <% end %>
+<div class="container">
+  <h1 class="page-heading"><%= @comic.name.upcase %></h1>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <%= image_tag @comic.cover_image, alt: @comic.name, class: "img-responsive magnific-image", data: { "mfp-src" => "#{@comic.cover_image}" } %>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <p>
+        <%= @comic.description.html_safe %>
+      </p>
+      <ul class="list-unstyled">
+        <li><small>Pages: <%= @comic.pages %></small></li>
+        <li><small>Cover: <%= @comic.cover %></small></li>
+        <li><small>Color: <%= @comic.color %></small></li>
+        <li><small>Size: <%= @comic.dimensions %></small></li>
+      </ul>
+      <div class="thumbnails row">
+        <% @comic.images.each do |image| %>
+          <div class="col-xs-6 col-sm-4 comic-thumb-box">
+            <img src="<%= image.path %>" data-mfp-src="<%= image.path %>" class="comic-thumb magnific-image">
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

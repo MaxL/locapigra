@@ -8,7 +8,7 @@ class Comic < ActiveRecord::Base
   validates :description, presence: true#, length: { minimum: 150 }
   validates :pages, presence: true, numericality: true
   validates :cover, presence: true, length: { maximum: 255 }
-  validates :cover_image, presence: true
+  #validates :cover_image, presence: true
   validates :color, presence: true, length: { maximum: 255 }
   validates :dimensions, presence: true, length: { maximum: 255 }
   validate  :cover_image_size

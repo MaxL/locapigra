@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>BLOG</h1>
+  <p class="lead">
+    These are the last couple of posts from <a href="https://locapigra.tumblr.com" class="highlight-link">our tumblr</a>
+  </p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-4 col-md-4 text-center">
+      <% @posts.posts.each do |post| %>
+        <div class="post">
+          <% post.photos.each do |photo| %>
+            <%= link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url %>
+          <% end %>
+          <%= post.caption.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

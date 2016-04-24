@@ -10,3 +10,7 @@ development:
   braintree_merchant_id: 788c38zdt6pdbb6b
   braintree_api_public: 96mfhpmm7m3gyvcr
   braintree_api_secret: 0f11b1b7338d634459985272b53b3218
+  tumblr_consumer_key: VOf3IKabebfz5hnyCn8dY0JVVX80cqQ1Zc8xzd7TDgOSeCSE51
+  tumblr_consumer_secret: 2o0wUvyI53UbSo6aucaklHt8PAuDagXYujD4NrFbmX8yooJxay
+  tumblr_oauth_token: ZqjWOQl1Z0bLb2L2ZrD7V9MD71MdgIqiscfIfrUVxRXmUuwill
+  tumblr_oauth_token_secret: u3zjEhRQP9CYlfjsEvx0Ogt84fbe1oh6F2hx2JlQL4RAPJ8LZG
