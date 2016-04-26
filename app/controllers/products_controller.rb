@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :edit, :update, :delete]
+  load_and_authorize_resource :except => [:index, :show]
 
   def index
     @products = Product.paginate(page: params[:page])

@@ -1,5 +1,6 @@
 class ComicsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :edit, :update, :delete]
+  load_and_authorize_resource :except => [:index, :show]
+  #skip_authorize_resource :only => :index
 
   def index
     @comics = Comic.paginate(page: params[:page])

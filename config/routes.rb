@@ -1,23 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/create'
-
-  get 'password_resets/edit'
-
-  get 'password_resets/update'
-
-  resources :users
-
-  resources :users, only: [:new, :create] do
-    member do
-      get :activate
-    end
-  end
-  resources :password_resets
-
-  resources :user_sessions, only: [:new, :create, :destroy]
-  get 'login' => 'user_sessions#new', as: :login
-  delete 'logout' => 'user_sessions#destroy', as: :logout
+  devise_for :users
 
   resources :comics
 

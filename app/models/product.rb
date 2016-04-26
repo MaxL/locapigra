@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  resourcify
   has_many :order_items
   has_many :product_images
 

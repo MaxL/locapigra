@@ -1,4 +1,5 @@
 class Comic < ActiveRecord::Base
+  resourcify
   has_many :images, :inverse_of => :comic, :dependent => :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 

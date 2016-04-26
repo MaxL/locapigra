@@ -5,9 +5,13 @@
     </div>
     <div class="col-xs-12 col-sm-9 text-right">
       <ul class="list-inline">
-        <% if current_user %>
+        <% if user_signed_in? %>
           <li>
-            <%= link_to 'Log Out', logout_path, method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to('Login', new_user_session_path)  %>
           </li>
         <% end %>
         <li><i class="fa fa-facebook blood"></i></li>
