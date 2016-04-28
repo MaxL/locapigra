@@ -6,7 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '52.28.21.93', user: 'deploy', roles: %w{web app db}
+server 'ec2-52-28-21-93.eu-central-1.compute.amazonaws.com', user: 'ec2-user', roles: %w{web app db}
 
 
 
@@ -47,6 +47,9 @@ server '52.28.21.93', user: 'deploy', roles: %w{web app db}
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
+set :ssh_options, {
+  keys: %w(/Users/omar/Documents/keys/max_server.pem)
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
