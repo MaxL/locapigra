@@ -41,6 +41,7 @@ group :development, :test do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
+  gem 'capistrano-rails-console'
 end
 
 group :test do
