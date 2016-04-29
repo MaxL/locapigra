@@ -3,3 +3,34 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+
+// Sass Mixin
+// Named Breakpoints are phone, tablet-portrait, tablet-landscape-desktop, large-desktop, non-retina, retina
+@mixin respond-to($media) {
+  /* portrait phones and down */
+  @if $media == xxs {
+      @media (max-width: 767px) { @content; }
+  }
+  /* Landscape phones and down */
+  @if $media == xs {
+      @media (max-width: 767px) { @content; }
+  }
+  /* Landscape phone to portrait tablet */
+  @else if $media == sm {
+      @media (min-width: 768px) and (max-width: 991px) {@content; }
+  }
+  /* Portrait tablet to landscape and desktop */
+  @else if $media == md {
+      @media (min-width: 992px) and (max-width: 1199px) { @content; }
+  }
+  /* desktop and large desktop */
+  @else if $media == lg {
+      @media (min-width: 1200px) and (max-width: 1439px) { @content; }
+  }
+}
+
+@mixin respondto($media...) {
+    @each $mediatype in $media {
+        @include respond-to($mediatype) {@content;}
+    }
+}

@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   if Rails.env.production?
-    config.secret_key = ENV["S3_ACCESS_KEY"]
+    config.secret_key = ENV["SECRET_KEY_BASE"]
   end
 
   # ==> Mailer Configuration

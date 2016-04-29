@@ -41,6 +41,10 @@
 }
 .page-heading {
   margin-bottom: 36px;
+  &.index {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $text-color;
+  }
 }
 .sub-heading {
   padding-bottom: 4px;
@@ -116,6 +120,14 @@
 /* BOOTSTRAP OVERRIDES */
 
 /* #HEADER  */
+.navbar-toggle {
+  @include respondto(xs) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  };
+}
 .loca-logo {
   background-image: url('logo-lg.jpg');
   background-repeat: no-repeat;
@@ -127,13 +139,57 @@
   display: block;
   margin-top: 5px;
   float: left;
+  @include respondto(xs) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 998;
+  };
 }
 .navbar-main {
   float: right;
-  li {
+  div {
     width: auto;
     text-align: center;
+    float: left;
+
+    a {
+      display: block;
+      width: 100%;
+      padding: 12px 18px;
+      &:hover {
+        text-decoration: none;
+        background-color: $damp;
+      }
+    }
+
   }
+  @include respondto(xs) {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+    @include std-transition;
+    &.shown {
+      visibility: visible;
+      opacity: 1;
+      height: 100%;
+      z-index: 997;
+      background-color: $light;
+      background-color: rgba($light, .9);
+      padding-top: 40px;
+      div {
+        width: 100%;
+        float: none;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+    }
+  };
 }
 
 /* #INDEX */
@@ -151,13 +207,23 @@
     display: block;
     float: none;
     margin: 80px 0 200px 0;
+    @include respondto(xs) {
+      min-height: 240px;
+      margin-top: 40px;
+      margin-bottom: 100px;
+      position: relative;
+      z-index: 1;
+    };
   }
   .navbar-main {
     width: 100%;
     float: none;
-    li {
+    div {
       width: 20%;
       text-align: center;
+      @include respondto(xs) {
+        width: 100%;
+      };
     }
   }
 }

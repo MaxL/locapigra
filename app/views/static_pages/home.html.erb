@@ -2,23 +2,32 @@
   <div class="row">
 
     <div class="col-xs-12">
-      <h1 class="page-heading">Locapigra</h1>
+      <h1 class="page-heading index">L'OCA PIGRA</h1>
     </div>
 
     <div class="col-xs-12 col-sm-6">
       <p>
-        Hey we are locapigra and this is what we do
-      </p>
-      <p class="lead">
-        This is what we're all about
-      </p>
-      <p>
-        and this is what we want to do in the future
+        Hey <%= link_to "we are AIK and LEE", about_path %> from l'oca pigra, we draw comic books.
       </p>
     </div>
 
     <div class="col-xs-12 col-sm-6">
-      <%= image_tag "lets-start.png", class: "img-responsive" %>
+      <h2><%= link_to "LAST BLOG POST", blogs_path %></h2>
+      <% @posts.posts.each do |post| %>
+        <div class="post">
+          <% post.photos.each do |photo| %>
+            <%= link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url %>
+          <% end %>
+          <%= post.caption.html_safe %>
+          <ul class="list-inline">
+            <% post.tags.each do |tag| %>
+              <li class="text-muted">
+                <a href="https://locapigra.tumblr.com/tagged/<%= tag %>">#<%= tag %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
 

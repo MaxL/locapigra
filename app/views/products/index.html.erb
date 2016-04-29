@@ -11,7 +11,16 @@
 <div class="container">
   <%= will_paginate %>
   <div class="row card-row">
-    <%= render @products, order_item: @order_item %>
+    <% if @products.any? %>
+      <%= render @products, order_item: @order_item %>
+    <% else %>
+      <div class="col-xs-12">
+        <p>
+          Sorry, no products available for purchase just yet. Site will be ready soon!
+        </p>
+      </div>
+    <% end %>
+
 
     <% if current_user %>
       <div class="col-xs-12">

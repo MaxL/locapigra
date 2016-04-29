@@ -6,23 +6,22 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" data-toggle="collapse" data-target="nvabar-collapse" class="navbar-toggle collapsed">
+          <button type="button" class="navbar-toggle collapsed" id="navbar-toggle">
             <i class="fa fa-bars"></i>
           </button>
         </div>
 
-        <div class="navbar-collapse collapse">
-          <!-- header-logo for other pages -->
-          <ul class="nav navbar-nav navbar-main">
-            <li><%= link_to "HOME", root_path %></li>
-            <li><%= link_to "COMICS", comics_path %></li>
-            <li><%= link_to "SHOP", shop_path %></li>
-            <li><%= link_to "BLOG", blogs_path %></li>
-            <li><%= link_to "ABOUT", about_path %></li>
+        <div class="navbar-collapse">
+          <div class="nav navbar-nav navbar-main" id="navbar-main">
             <% if current_user %>
-              <li><%= render 'layouts/cart_text' %></li>
+              <div><%= render 'layouts/cart_text' %></div>
             <% end %>
-          </ul>
+            <div><%= link_to "HOME", root_path %></div>
+            <div><%= link_to "COMICS", comics_path %></div>
+            <div><%= link_to "SHOP", shop_path %></div>
+            <div><%= link_to "BLOG", blogs_path %></div>
+            <div><%= link_to "ABOUT", about_path %></div>
+          </div>
         </div>
       </div>
     </nav>
