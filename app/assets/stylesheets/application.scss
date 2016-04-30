@@ -129,7 +129,7 @@
   };
 }
 .loca-logo {
-  background-image: url('logo-lg.jpg');
+  background-image: image-url('logo-lg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -197,7 +197,7 @@
 /* Header */
 .header-index {
   .loca-logo {
-    background-image: url('logo-lg.jpg');
+    background-image: image-url('logo-lg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
