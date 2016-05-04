@@ -3,13 +3,27 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_order
+  helper_method :order_items_quantity
 
   def current_order
-    #if !session[:order_id].nil?
-      #Order.find(session[:order_id])
-    #else
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
       Order.new
-    #end
+    end
+  end
+
+  def order_items_quantity
+    if current_order
+      #grouped = current_order.order_items.group_by { |el| el["quantity"] }
+      #sum = 0
+      #ar = grouped.map { |e, f| sum += e }
+      #res = ar[-1]
+      h = current_order.order_items
+      sum = 0
+      j = h.map { |e| (sum += e[:quantity].to_i) }
+      j[-1]
+    end
   end
 
   def index_header

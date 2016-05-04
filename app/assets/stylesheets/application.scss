@@ -159,7 +159,7 @@
       padding: 12px 18px;
       &:hover {
         text-decoration: none;
-        background-color: $damp;
+        //background-color: $damp;
       }
     }
 
@@ -168,10 +168,13 @@
     visibility: hidden;
     opacity: 0;
     position: fixed;
-    width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
+    width: 50%;
+    max-width: 630px;
+    min-width: 300px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     margin: 0;
     @include std-transition;
     &.shown {
@@ -179,8 +182,6 @@
       opacity: 1;
       height: 100%;
       z-index: 997;
-      background-color: $light;
-      background-color: rgba($light, .9);
       padding-top: 40px;
       div {
         width: 100%;
@@ -190,6 +191,29 @@
       }
     }
   };
+}
+.cart-btn {
+  position: relative;
+  .badge {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+  }
+}
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba($light, .9);
+  z-index: 995;
+  &.shown {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 /* #INDEX */
