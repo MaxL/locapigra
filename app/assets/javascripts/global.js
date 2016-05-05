@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   menuToggle.init();
 
-  $('[data-toggle="tooltip"]').tooltip();
+  $('.cart-btn').tooltip();
 });
 
 $(window).load(function() {
