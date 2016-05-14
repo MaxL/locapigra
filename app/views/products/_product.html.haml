@@ -1,0 +1,29 @@
+.col-xs-12.col-sm-6.col-md-4
+  .card
+    %figure.card-image
+      = link_to image_tag( product.cover_image, alt: product.name, class: 'img-responsive'), product
+      %figcaption.card-body
+        %h3.card-title= product.name
+        %p
+          = product.description.html_safe
+      .card-interaction
+        %div.price.text-right= number_to_currency product.price, locale: :de
+        = form_for order_item, remote: true do |f|
+          - if user_signed_in?
+            - if current_user.admin? || current_user.beta?
+              .input-group
+                = f.number_field :quantity, value: 1, class: "form-control", min: 1
+                .input-group-btn
+                  = f.hidden_field :product_id, value: product.id
+                  = f.submit "Add to Cart", class: "btn btn-danger"
+            - else
+              %p
+                Ordering products will be available soon, just waiting on some legal stuff. In the meantime, if you are a friend of l'oca pigra, let us know and we will provide you with more information.
+          - else
+            %p
+              Ordering products will be available soon, just waiting on some legal stuff. In the meantime, if you are a friend of l'oca pigra, let us know and we will provide you with more information.
+        - if user_signed_in?
+          - if current_user.admin?
+            %ul.list-inline
+              %li= link_to "edit", edit_product_path(product)
+              %li= link_to "delete", product, method: :delete, data: {confirm: "Really delete product #{product.name}"}

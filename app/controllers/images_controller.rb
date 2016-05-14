@@ -7,6 +7,6 @@ class ImagesController < ApplicationController
 
   private
     def image_params
-      params.require(:image).premit(:path)
+      params.require(:image).permit(:path)
     end
 end

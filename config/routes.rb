@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   resources :images
 
-  resource :cart, only: [:show]
+  resource :cart, only: [:show, :update]
+  resources :carts
   resources :order_items, only: [:create, :update, :destroy]
+
+  resources :orders
 
   resources :blogs
 

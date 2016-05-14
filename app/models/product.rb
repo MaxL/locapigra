@@ -3,6 +3,9 @@ class Product < ActiveRecord::Base
   has_many :order_items
   has_many :product_images
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   mount_uploader :cover_image, ProductImageUploader
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }
@@ -16,6 +19,7 @@ class Product < ActiveRecord::Base
   validates :weight, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 10 }
   validates :quantity, presence: true, numericality: true
   validates :package, presence: true, length: { maximum: 255 }
+  validates :slug, uniqueness: true
   #validates :release_date, presence: true
   validates :language, presence: true
   validates_inclusion_of :active, :in => [ true, false ]

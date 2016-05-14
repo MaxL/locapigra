@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425210931) do
+ActiveRecord::Schema.define(version: 20160508202033) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.text     "recipient"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "state"
+    t.string   "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comics", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160425210931) do
     t.string   "dimensions"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
 
   add_index "comics", ["name"], name: "index_comics_on_name", unique: true
@@ -43,6 +55,19 @@ ActiveRecord::Schema.define(version: 20160425210931) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
   create_table "images", force: :cascade do |t|
     t.integer  "comic_id"
     t.string   "path"
@@ -60,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160425210931) do
     t.decimal  "total_price", precision: 12, scale: 3
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.decimal  "tax",         precision: 12, scale: 3
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
@@ -79,8 +105,10 @@ ActiveRecord::Schema.define(version: 20160425210931) do
     t.integer  "order_status_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "address_id"
   end
 
+  add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
   create_table "products", force: :cascade do |t|
@@ -99,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160425210931) do
     t.boolean  "active"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.string   "slug"
   end
 
   create_table "roles", force: :cascade do |t|

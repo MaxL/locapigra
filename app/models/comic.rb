@@ -1,5 +1,7 @@
 class Comic < ActiveRecord::Base
   resourcify
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   has_many :images, :inverse_of => :comic, :dependent => :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
@@ -12,6 +14,7 @@ class Comic < ActiveRecord::Base
   #validates :cover_image, presence: true
   validates :color, presence: true, length: { maximum: 255 }
   validates :dimensions, presence: true, length: { maximum: 255 }
+  validates :slug, uniqueness: true
   validate  :cover_image_size
 
   private
