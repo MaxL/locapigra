@@ -1,0 +1,9 @@
+- provide(:title, @product.name)
+.container
+  %h1= @product.name
+  .row
+    .col-xs-12.col-sm-12.col-md-4
+      %img.img-responsive{:alt => "", :src => ""}/
+    .col-xs-12.col-sm-12.col-md-8
+      %p
+        = @product.description

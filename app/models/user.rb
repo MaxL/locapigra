@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   def admin?
     self.has_role? :admin
   end
+
+  def beta?
+    self.has_role? :beta
+  end
 end

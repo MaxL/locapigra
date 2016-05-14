@@ -1,0 +1,19 @@
+%footer.container
+  .row
+    .col-xs-12.col-sm-3
+      %small.text-muted copyright l'oca pigra 2016
+    .col-xs-12.col-sm-9.text-right
+      %ul.list-inline
+        - if user_signed_in?
+          %li
+            = link_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger"
+        - else
+          %li
+            = link_to('Login', new_user_session_path)
+        %li
+          %a.blood{:href => "http://locapigra.tumblr.com/"}
+            %i.fa.fa-tumblr
+        %li= link_to "Impressum", imprint_path
+#overlay.overlay
+  #overlay-close.oberlay-close
+    %i.fa.fa-cancel

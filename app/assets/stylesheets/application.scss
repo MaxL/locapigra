@@ -33,6 +33,11 @@
 .highlight-link {
   color: $swamp;
 }
+hr {
+  &.dark-hr {
+    border-color: $gray;
+  }
+}
 .title {
   font-weight: 100;
 }
@@ -62,38 +67,54 @@
 }
 .card {
   background-color: $light;
-  border-radius: 4px;
   margin-bottom: 30px;
   overflow: hidden;
+  position: relative;
   @include std-transition;
   @include card(2);
   .card-image {
-    //padding: 15% 15% 0;
-    @include std-transition;
+    margin: 0;
+    position: relative;
     overflow: hidden;
-    transform: scale(1);
+    background-color: $text-color;
+    img {
+      position: relative;
+      @include std-transition;
+    }
+
+    .card-body {
+      height: 240px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      padding: 20px;
+      background-color: $text-color;
+      color: $light;
+      top: auto;
+      bottom: 0;
+      transform: translateY(100%);
+      backface-visibility: hidden;
+      transition: transform .4s;
+      h3 {
+        margin-top: 0;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: translateY(-120px);
+      }
+      .card-body {
+        transform: translateY(0);
+      }
+    }
   }
   &.hero-card {
     padding-top: 42px;
   }
   &:hover {
     @include card(3);
-    .card-image {
-      transform: scale(1.02);
-    }
   }
-}
-.card-body {
-  padding: 0 15% 20px;
-  a {
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-.card-title {
-  color: $swamp;
-  font-weight: 400;
 }
 .card-interaction {
   background-color: $swamp;
@@ -102,9 +123,10 @@
   padding: 15px;
 }
 .price {
-  color: $blood;
+  color: $light;
   font-weight: 700;
   font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .blood {
@@ -288,19 +310,32 @@
 
 /* #BLOG */
 .post {
-  text-align: center;
   padding-bottom: 32px;
   border-bottom: 1px solid $swamp;
   margin-bottom: 56px;
 
   img {
-    border-radius: 4px;
     @include card(1);
     margin-bottom: 22px;
   }
 }
 
+.photoset {
+  .img-main {
+    //
+  }
+  .img-sub {
+    float: left;
+    width: 50%;
+    height: 135px;
+    object-fit: cover;
+  }
+}
+
 /* #ABOUT */
+.hero-card {
+  padding: 20px;
+}
 
 .hero-img-box {
   width: 180px;
@@ -318,6 +353,16 @@
   padding-bottom: 10px;
   margin-bottom: 24px
 }
+
+/* #CART */
+.static-card {
+  background-color: $light;
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding: 15px;
+  @include card(1);
+}
+
 
 /* #FOOTER */
 

@@ -1,0 +1,30 @@
+.container-fluid
+  .row
+    .category-heading.comic-heading
+      .container
+        %h1.title BLOG
+        %p
+          These are the last couple of posts from
+          %a.underline{:href => "https://locapigra.tumblr.com"} our tumblr
+.container
+  .row.card-row
+    .col-xs-12.col-sm-offset-2.col-sm-8.col-md-offset-4.col-md-4.text-center
+      - @posts.each do |post|
+        .post.text-left
+          - if post.photoset_layout
+            .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
+              - photos = post.photos
+              - first_photo = photos.shift
+              = link_to (image_tag first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
+              - photos.each do |photo|
+                = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
+          - else
+            - post.photos.each do |photo|
+              = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
+          = post.caption.html_safe
+          %ul.list-inline
+            - post.tags.each do |tag|
+              %li.text-muted
+                %a{:href => "https://locapigra.tumblr.com/tagged/#{tag}"}
+                  \##{tag}
+      = will_paginate @posts, page_links: false, previous_label: "NEWER", next_label: "OLDER"

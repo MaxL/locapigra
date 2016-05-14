@@ -1,0 +1,20 @@
+.container-fluid
+  .row
+    .category-heading.comic-heading
+      .container
+        %h1.title L'OCA PIGRA SHOP
+.container
+  = will_paginate
+  .row.card-row
+    - if @products.any?
+      = render @products, order_item: @order_item
+    - else
+      .col-xs-12
+        %p
+          Sorry, no products available for purchase just yet. Site will be ready soon!
+    - if user_signed_in?
+      - if current_user.admin?
+        .col-xs-12
+          %hr/
+          = link_to "Add product", new_product_path, class: "btn btn-success btn-lg"
+  = will_paginate

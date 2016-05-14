@@ -1,0 +1,6 @@
+%div.container
+  %h1 Order # #{@order.id}
+  %ul
+    %li= @status.name
+    %li= @order.subtotal
+    %li last change: #{@order.updated_at}
