@@ -13,15 +13,19 @@
         .post.text-left
           - if post.photoset_layout
             .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
-              - photos = post.photos
-              - first_photo = photos.shift
-              = link_to (image_tag first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
-              - photos.each do |photo|
-                = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
-          - else
-            - post.photos.each do |photo|
+              - @postphotos = post.photos
+              - @first_photo = @postphotos.shift
+              = link_to (image_tag @first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
+              - @postphotos.each do |postphoto|
+                = link_to (image_tag postphoto.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
+          - elsif post.photos
+            - @postphotos = post.photos
+            - @postphotos.each do |photo|
               = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
-          = post.caption.html_safe
+          - if post.caption
+            = post.caption.html_safe
+          - if post.body
+            = post.body.html_safe
           %ul.list-inline
             - post.tags.each do |tag|
               %li.text-muted
