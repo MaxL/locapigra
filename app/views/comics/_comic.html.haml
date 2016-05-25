@@ -1,10 +1,11 @@
 .col-xs-12.col-sm-6.col-md-4
   .card
     %figure.card-image
-      - if comic.cover_image?
+      - if comic.released?
         = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
       - else
-        = image_tag 'placeholder.jpg', alt: comic.name, class: "img-responsive"
+        .comic-unreleased
+          = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
       %figcaption.card-body
         %h3.card-title= comic.name
         %p

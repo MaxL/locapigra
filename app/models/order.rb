@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :order_status
   has_many :order_items
-  has_one :address, inverse_of: :order
+  has_one :address
   before_create :set_order_status
   before_save :update_subtotal
 

@@ -10,4 +10,27 @@ class OrdersController < ApplicationController
     @status = OrderStatus.find(@order.order_status_id)
   end
 
+  def edit
+    @order = current_order
+    if !@order.address
+      @order.create_address
+    end
+  end
+
+  def update
+    @order = current_order
+    if @order.update_attributes(order_params)
+      flash[:success] = "Order placed successfully"
+      redirect_to root_path
+    else
+      flash[:danger] = "Your order could not be completed"
+      #redirect_to_root
+    end
+  end
+
+  private
+    def order_params
+      params.require(:order).permit(:total, :tax, :shipping, :order_status_id, :address_id, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country ])
+    end
+
 end

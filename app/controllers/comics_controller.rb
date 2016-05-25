@@ -3,11 +3,11 @@ class ComicsController < ApplicationController
   #skip_authorize_resource :only => :index
 
   def index
-    @comics = Comic.paginate(page: params[:page])
+    @comics = Comic.paginate(page: params[:page]).order('id ASC')
   end
 
   def show
-    @comic = Comic.friendly.find(params[:id])
+    @comic = Comic.find(params[:id])
     #debugger
   end
 
@@ -33,8 +33,7 @@ class ComicsController < ApplicationController
   end
 
   def update
-    @comic = Comic.find(params[:id])
-
+    @comic.slug = nil
     if @comic.update_attributes(comic_params)
       if params[:images]
         params[:images].each { |image| @comic.images.create(path: image) }
@@ -54,6 +53,6 @@ class ComicsController < ApplicationController
 
   private
     def comic_params
-      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images)
+      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released)
     end
 end

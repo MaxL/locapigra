@@ -116,6 +116,18 @@ hr {
     @include card(3);
   }
 }
+
+.mini-card {
+  background-color: $light;
+  padding: 12px 16px;
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $gray-darker;
+  p {
+    font-size: 16px;
+  }
+}
+
 .card-interaction {
   background-color: $swamp;
   color: $light;
@@ -192,12 +204,13 @@ hr {
     position: fixed;
     width: 50%;
     max-width: 630px;
-    min-width: 300px;
+    width: 100%;
     height: auto;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     margin: 0;
+    padding: 15px;
     @include std-transition;
     &.shown {
       visibility: visible;
@@ -205,6 +218,7 @@ hr {
       height: 100%;
       z-index: 997;
       padding-top: 40px;
+      background-color: rgba($light, .92);
       div {
         width: 100%;
         float: none;
@@ -255,10 +269,18 @@ hr {
     margin: 80px 0 200px 0;
     @include respondto(xs) {
       min-height: 240px;
-      margin-top: 40px;
+      margin-top: 60px;
       margin-bottom: 100px;
       position: relative;
       z-index: 1;
+    };
+  }
+  .navbar {
+    @include respondto(xs) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
     };
   }
   .navbar-main {
@@ -275,14 +297,45 @@ hr {
 }
 
 /* #COMICS */
+.comic-unreleased {
+  position: relative;
 
+  &::before {
+    content: 'COMING SOON';
+    font-size: 18px;
+    font-weight: 100;
+    color: $light;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $blood;
+    margin: 0 auto;
+    padding: 2px 5px;
+    z-index: 22;
+  }
+
+  img {
+    opacity: .55;
+  }
+}
 .comic-heading {
   background-color: $swamp;
   color: $light;
 }
 
+.comic-main-img {
+  //
+}
+
+.comic-attributes {
+  background-color: $gray-darker;
+  color: $light;
+  padding: 12px 16px;
+  @include card(1);
+}
+
 .thumbnails {
-  margin-top: 36px;
+  margin-top: 24px;
 }
 
 .comic-thumb-box {

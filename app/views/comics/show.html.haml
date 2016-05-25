@@ -1,13 +1,24 @@
 - provide(:title, @comic.name)
-.container
-  %h1.page-heading= @comic.name.upcase
+.container-fluid
   .row
-    .col-xs-12.col-sm-12.col-md-4
-      = image_tag @comic.cover_image, alt: @comic.name, class: "img-responsive magnific-image", data: { "mfp-src" => "#{@comic.cover_image}" }
-    .col-xs-12.col-sm-12.col-md-8
-      %p
-        = @comic.description.html_safe
-      %ul.list-unstyled
+    .category-heading.comic-heading
+      .container
+        %h1.title= @comic.name.upcase
+.container
+  .row.card-row
+    .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
+      = image_tag @comic.cover_image, alt: @comic.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@comic.cover_image}" }
+    .hidden-xs.hidden-sm.col-md-1
+    .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
+      .mini-card
+        %p
+          = @comic.description.html_safe
+      .thumbnails.row
+        - @comic.images.each do |image|
+          .col-xs-6.col-sm-4.comic-thumb-box
+            %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+    .col-xs-12.col-sm-6.col-md-3
+      %ul.list-unstyled.comic-attributes
         %li
           %small
             Pages: #{@comic.pages}
@@ -20,7 +31,10 @@
         %li
           %small
             Size: #{@comic.dimensions}
-      .thumbnails.row
-        - @comic.images.each do |image|
-          .col-xs-6.col-sm-4.comic-thumb-box
-            %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+  - if user_signed_in?
+    - if current_user.admin?
+      .row
+        .col-xs-12
+          %ul.list-inline
+            %li= link_to "edit", edit_comic_path(@comic)
+            %li= link_to "delete", @comic, method: :delete, data: {confirm: "Really delete comic #{@comic.name}"}

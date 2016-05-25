@@ -1,3 +1,3 @@
 class Address < ActiveRecord::Base
-  belongs_to :order, inverse_of: :addresses
+  belongs_to :order
 end

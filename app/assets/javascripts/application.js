@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require cocoon
 //= require jquery.matchHeight.min
 //= require magnific-popup
 //= require bootstrap-sprockets

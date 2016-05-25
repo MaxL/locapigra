@@ -80,6 +80,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cocoon (1.2.9)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -243,6 +244,10 @@ GEM
     font-awesome-rails (4.6.1.0)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
+    formtastic (3.1.4)
+      actionpack (>= 3.2.13)
+    formtastic-bootstrap (3.1.1)
+      formtastic (>= 3.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.3.6)
@@ -426,6 +431,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-puma
   carrierwave (>= 0.10.0)
+  cocoon
   coffee-rails (>= 4.1.0)
   delayed_job_active_record
   devise
@@ -434,6 +440,8 @@ DEPENDENCIES
   fog (>= 1.36.0)
   fog-aws
   font-awesome-rails
+  formtastic
+  formtastic-bootstrap
   friendly_id (~> 5.1.0)
   guard-minitest (>= 2.3.1)
   haml-rails (~> 0.9)
