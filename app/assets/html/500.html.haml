@@ -21,13 +21,23 @@
               %button#navbar-toggle.navbar-toggle.collapsed{:type => "button"}
                 %i.fa.fa-bars
             .navbar-collapse
-              = link_to "", root_path, id: 'logo', class: 'loca-logo'
+              %a#logo.loca-logo{:href => "/"}
               #navbar-main.nav.navbar-nav.navbar-main
-                %div= link_to "HOME", root_path
-                %div= link_to "COMICS", comics_path
-                %div= link_to "SHOP", shop_path
-                %div= link_to "BLOG", blogs_path
-                %div= link_to "ABOUT", about_path
+                %div
+                  %a{:href => "/"}
+                    HOME
+                %div
+                  %a{:href => "/comics"}
+                    COMICS
+                %div
+                  %a{:href => "/shop"}
+                    SHOP
+                %div
+                  %a{:href => "/blog"}
+                    BLOG
+                %div
+                  %a{:href => "/about"}
+                    ABOUT
 
     .container
       .row
@@ -35,4 +45,5 @@
           %h1 Oops!
           %p.lead
             Sorry about that!
-            = link_to "Back to Homepage", root_path
+            %a{:href => "/"}
+              Back to Homepage
