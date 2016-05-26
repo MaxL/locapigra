@@ -1,0 +1,40 @@
+!!!
+%html.no-js{:language => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title Page not Found - l'oca pigra
+    %meta{:content => "locapigra", :name => "description"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = favicon_link_tag 'favicon.ico'
+    %link{:href => "https://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900&subset=latin", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = render 'layouts/shim'
+  %body
+    /[if lt IE 10]
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    %header.header
+      .container-fluid
+        %nav.navbar
+          .container
+            .navbar-header
+              %button#navbar-toggle.navbar-toggle.collapsed{:type => "button"}
+                %i.fa.fa-bars
+            .navbar-collapse
+              = link_to "", root_path, id: 'logo', class: 'loca-logo'
+              #navbar-main.nav.navbar-nav.navbar-main
+                %div= link_to "HOME", root_path
+                %div= link_to "COMICS", comics_path
+                %div= link_to "SHOP", shop_path
+                %div= link_to "BLOG", blogs_path
+                %div= link_to "ABOUT", about_path
+
+    .container
+      .row
+        .col-xs-12
+          %h1 Oops!
+          %p.lead
+            This page doesn't exist.
+            = link_to "Back to Homepage", root_path

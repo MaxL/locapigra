@@ -39,7 +39,7 @@ hr {
   }
 }
 .title {
-  font-weight: 100;
+  font-weight: 200;
 }
 .category-heading {
   padding-bottom: 100px;
@@ -100,12 +100,44 @@ hr {
       }
     }
 
+    .comic-unreleased {
+      position: relative;
+
+      &::after {
+        content: 'COMING SOON';
+        font-size: 36px;
+        font-weight: 900;
+        color: rgba($light, .35);
+        position: absolute;
+        top: 200px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 2px 5px;
+        z-index: 22;
+      }
+
+      img {
+        -webkit-filter: blur(1px) grayscale(40%);
+        filter: blur(1px) grayscale(40%);
+        @include std-transition;
+      }
+    }
+
     &:hover {
       img {
         transform: translateY(-120px);
       }
       .card-body {
         transform: translateY(0);
+      }
+      .comic-unreleased {
+        img {
+          -webkit-filter: blur(0) grayscale(0);
+          filter: blur(0) grayscale(0);
+        }
       }
     }
   }
@@ -297,29 +329,7 @@ hr {
 }
 
 /* #COMICS */
-.comic-unreleased {
-  position: relative;
 
-  &::before {
-    content: 'COMING SOON';
-    font-size: 18px;
-    font-weight: 100;
-    color: $light;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 40%;
-    background-color: $blood;
-    margin: 0 auto;
-    padding: 2px 5px;
-    z-index: 22;
-  }
-
-  img {
-    opacity: .55;
-  }
-}
 .comic-heading {
   background-color: $swamp;
   color: $light;
