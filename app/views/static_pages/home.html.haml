@@ -9,9 +9,12 @@
       %h2= link_to "LATEST BLOG POST", blogs_path
       - @posts.each do |post|
         .post
-          - post.photos.each do |photo|
-            = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
-          = post.caption.html_safe
+          - if post.photos
+            - post.photos.each do |photo|
+              = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
+            = post.caption.html_safe
+          - if post.body
+            = post.body.html_safe
           %ul.list-inline
             - post.tags.each do |tag|
               %li.text-muted
