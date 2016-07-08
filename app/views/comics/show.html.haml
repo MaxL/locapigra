@@ -31,6 +31,10 @@
         %li
           %small
             Size: #{@comic.dimensions}
+
+      = link_to shop_path, {class: "btn btn-danger btn-lg btn-block"} do
+        You can find me in the shop!
+
   - if user_signed_in?
     - if current_user.admin?
       .row

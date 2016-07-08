@@ -7,6 +7,8 @@
 @import "font-awesome";
 @import "magnific-popup";
 
+@import "card";
+
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -62,110 +64,7 @@ hr {
     }
   }
 }
-.card-row {
-  margin-top: -80px;
-}
-.card {
-  background-color: $light;
-  margin-bottom: 30px;
-  overflow: hidden;
-  position: relative;
-  @include std-transition;
-  @include card(2);
-  .card-image {
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-    background-color: $text-color;
-    img {
-      position: relative;
-      @include std-transition;
-    }
 
-    .card-body {
-      height: 240px;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      padding: 20px;
-      background-color: $text-color;
-      color: $light;
-      top: auto;
-      bottom: 0;
-      transform: translateY(100%);
-      backface-visibility: hidden;
-      transition: transform .4s;
-      h3 {
-        margin-top: 0;
-      }
-    }
-
-    .comic-unreleased {
-      position: relative;
-
-      &::after {
-        content: 'COMING SOON';
-        font-size: 36px;
-        font-weight: 900;
-        color: rgba($light, .35);
-        position: absolute;
-        top: 200px;
-        right: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        margin: 0 auto;
-        padding: 2px 5px;
-        z-index: 22;
-      }
-
-      img {
-        -webkit-filter: blur(1px) grayscale(40%);
-        filter: blur(1px) grayscale(40%);
-        @include std-transition;
-      }
-    }
-
-    &:hover {
-      img {
-        transform: translateY(-120px);
-      }
-      .card-body {
-        transform: translateY(0);
-      }
-      .comic-unreleased {
-        img {
-          -webkit-filter: blur(0) grayscale(0);
-          filter: blur(0) grayscale(0);
-        }
-      }
-    }
-  }
-  &.hero-card {
-    padding-top: 42px;
-  }
-  &:hover {
-    @include card(3);
-  }
-}
-
-.mini-card {
-  background-color: $light;
-  padding: 12px 16px;
-  margin-bottom: 36px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid $gray-darker;
-  p {
-    font-size: 16px;
-  }
-}
-
-.card-interaction {
-  background-color: $swamp;
-  color: $light;
-  font-weight: 600;
-  padding: 15px;
-}
 .price {
   color: $light;
   font-weight: 700;
@@ -186,6 +85,9 @@ hr {
 /* BOOTSTRAP OVERRIDES */
 
 /* #HEADER  */
+.navbar {
+  position: inherit;
+}
 .navbar-toggle {
   @include respondto(xs) {
     position: absolute;
@@ -288,6 +190,7 @@ hr {
 
 /* Header */
 .header-index {
+  position: relative;
   .loca-logo {
     background-image: image-url('logo-lg.jpg');
     background-repeat: no-repeat;
@@ -324,6 +227,12 @@ hr {
       @include respondto(xs) {
         width: 100%;
       };
+    }
+    .cart-menu {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10%;
     }
   }
 }
@@ -404,7 +313,6 @@ hr {
 
 .hero-img-box {
   width: 180px;
-  border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 24px auto;
 }

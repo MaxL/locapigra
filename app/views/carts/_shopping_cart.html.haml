@@ -26,4 +26,9 @@
             = render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true
   .col-xs-12.col-sm-5
     .static-card
-      = link_to "To Checkout", edit_order_path(current_order)
+      = form_for @order, url: {action: "checkout"} do |f|
+        = f.fields_for :address do |address|
+          = render 'address_fields', f: address
+        = f.button(type: "submit", class: "btn btn-primary") do
+          %i.fa.fa-check
+          CHECKOUT

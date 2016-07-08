@@ -8,8 +8,12 @@ Rails.application.routes.draw do
 
   resources :images
 
-  resource :cart, only: [:show, :update]
-  resources :carts
+  resource :cart, only: [:show, :update] do
+    member do
+      match :checkout, to: :checkout, via: [:post, :patch]
+    end
+  end
+
   resources :order_items, only: [:create, :update, :destroy]
 
   resources :orders
