@@ -1,3 +1,86 @@
 .container
-  - if @orders.any?
-    = render @orders
+  .row
+
+    .col-xs-12.col-sm-6
+      %h4
+        Orders pending
+      - if @orders_pending.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order ID
+              %td
+                Customer
+              %td
+                $$$
+              %td
+          %tbody
+            = render partial: "order", collection: @orders_pending
+    .col-xs-12.col-sm-6
+      %h4
+        Orders placed (waiting for payment)
+      - if @orders_placed.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order ID
+              %td
+                Customer
+              %td
+                $$$
+              %td
+          %tbody
+            = render partial: "order", collection: @orders_placed, status: "Placed"
+
+    .col-xs-12.col-sm-6
+      %h4
+        Orders Paid
+      - if @orders_paid.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order ID
+              %td
+                Customer
+              %td
+                $$$
+              %td
+          %tbody
+            = render partial: "order", collection: @orders_paid
+
+    .col-xs-12.col-sm-6
+      %h4
+        Orders shipped
+      - if @orders_shipped.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order ID
+              %td
+                Customer
+              %td
+                $$$
+              %td
+          %tbody
+            = render partial: "order", collection: @orders_shipped
+
+    .col-xs-12.col-sm-6
+      %h4
+        Orders cancelled
+      - if @orders_cancelled.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order ID
+              %td
+                Customer
+              %td
+                $$$
+              %td
+          %tbody
+            = render partial: "order", collection: @orders_cancelled

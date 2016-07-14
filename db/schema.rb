@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523221649) do
+ActiveRecord::Schema.define(version: 20160713234842) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160523221649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order_id"
+    t.string   "email"
   end
 
   add_index "addresses", ["order_id"], name: "index_addresses_on_order_id"
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160523221649) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "address_id"
+    t.boolean  "agreement"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"

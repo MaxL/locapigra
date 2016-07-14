@@ -3,6 +3,12 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @status = OrderStatus.all
+    @orders_pending = Order.where(order_status_id: 1)
+    @orders_placed = Order.where(order_status_id: 2)
+    @orders_paid = Order.where(order_status_id: 3)
+    @orders_shipped = Order.where(order_status_id: 4)
+    @orders_cancelled = Order.where(order_status_id: 5)
   end
 
   def show

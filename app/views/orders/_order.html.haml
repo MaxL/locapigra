@@ -1,5 +1,9 @@
-%div
-  %h2= order.id
-  %p= order.address.recipient
-  %p= number_to_currency order.subtotal, locale: :de
-  %p= order.order_status_id
+%tr
+  %td= order.id
+  %td= order.address.recipient
+  %td.text-right= number_to_currency order.total, locale: :de
+  %td
+    = link_to edit_order_path(order.id), class: "btn btn-default btn-xs" do
+      %i.fa.fa-edit.fa-fw
+    = link_to order_path(order.id), class: "btn btn-default btn-xs" do
+      %i.fa.fa-eye.fa-fw

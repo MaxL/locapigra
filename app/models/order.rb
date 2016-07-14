@@ -11,6 +11,17 @@ class Order < ActiveRecord::Base
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0}.sum
   end
 
+  def shipping_cost(country)
+    case country
+    when "DE"
+      self.shipping = 2.6
+    when "AT"
+      self.shipping = 4.99
+    else
+      self.shipping = 2.6
+    end
+  end
+
   private
 
     def set_order_status

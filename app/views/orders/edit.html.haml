@@ -1,6 +1,6 @@
 = form_for @order, url: {action: "update"} do |f|
   = f.fields_for :address do |address|
-    = render 'address_fields', f: address
+    = render 'shared/address_fields', f: address
   = f.button(type: "submit", class: "btn btn-primary") do
     %i.fa.fa-check
     CHECKOUT

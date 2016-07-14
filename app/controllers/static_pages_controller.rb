@@ -26,4 +26,8 @@ class StaticPagesController < ApplicationController
   def imprint
 
   end
+
+  def toc
+
+  end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show, :update] do
     member do
+      match :submit_address, to: :submit_address, via: [:post, :patch]
       match :checkout, to: :checkout, via: [:post, :patch]
     end
   end
@@ -29,6 +30,8 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
 
   get 'imprint' => 'static_pages#imprint'
+
+  get 'toc' => 'static_pages#toc'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
