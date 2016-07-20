@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713234842) do
+ActiveRecord::Schema.define(version: 20160718174321) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20160713234842) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "destinations", force: :cascade do |t|
+    t.string   "country_code"
+    t.string   "country_name"
+    t.decimal  "shipping_price", precision: 12, scale: 3
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

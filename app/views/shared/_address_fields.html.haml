@@ -1,12 +1,9 @@
 .form-group
   = f.text_field :recipient, { placeholder: "Full Name", class: "form-control", required: true }
-- if user_signed_in?
-  = f. hidden_field :email, { value: @user.email, required: true }
-- else
-  .form-group
-    = f. text_field :email, { placeholder: "E-Mail", class: "form-control", required: true }
 .form-group
-  = f. text_field :street, { placeholder: "Street & House Number", class: "form-control", required: true }
+  = f.text_field :email, { placeholder: "E-Mail", class: "form-control", required: true }
+.form-group
+  = f.text_field :street, { placeholder: "Street & House Number", class: "form-control", required: true }
 .form-group
   = f.text_field :city, { placeholder: "City", class: "form-control", required: true }
 .form-group
@@ -14,4 +11,4 @@
 .form-group
   = f.text_field :state, { placeholder: "State / Region", class: "form-control", required: true }
 .form-group
-  = country_select("order[address_attributes]", "country", { selected: "DE", only: ["DE", "AT", "CH", "DK", "NL", "FR", "GB", "US"]}, { class: "form-control" })
+  = f.country_select("country", { selected: "DE", only: available_countries }, { class: "form-control" })

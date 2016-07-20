@@ -22,11 +22,9 @@ class CartsController < ApplicationController
 
   def submit_address
     @order = current_order
-
     respond_to do |format|
-
       if @order.update_attributes(order_params)
-        @order.shipping_cost(order_params[:country])
+        @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
         @order.total = @order.subtotal + @order.shipping
         @order.tax = @order.total * 0.07
@@ -67,7 +65,7 @@ class CartsController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:total, :tax, :shipping, :address_id, :agreement, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country ])
+      params.require(:order).permit(:total, :tax, :shipping, :address_id, :agreement, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country, :email ])
     end
 
 end

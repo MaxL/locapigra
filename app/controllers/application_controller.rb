@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
     @index_header = true
   end
 
+  def no_header
+    @no_header = true
+  end
+
   private
 
     def not_authenticated

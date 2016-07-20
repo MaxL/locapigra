@@ -15,8 +15,12 @@
   %body
     /[if lt IE 10]
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    = render 'layouts/header' unless @index_header
-    = render 'layouts/header_index' if @index_header
+    - if user_signed_in?
+      - if current_user.admin?
+        = render 'layouts/admin_nav'
+    - unless @no_header
+      = render 'layouts/header' unless @index_header
+      = render 'layouts/header_index' if @index_header
     .container
       - flash.each do |message_type, message|
         = content_tag(:div, message, class: "alert alert-#{message_type}")

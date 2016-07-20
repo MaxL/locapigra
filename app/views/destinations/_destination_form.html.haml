@@ -1,0 +1,12 @@
+= form_for(@destination) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .form-group
+    = f.label :country_code
+    = f.text_field :country_code, class: "form-control", placeholder: "DE"
+
+  .form-group
+    = f.label :shipping_price
+    = f.number_field :shipping_price, step: 0.01, class: "form-control"
+
+  = f.submit "Save", class: "btn btn-primary"

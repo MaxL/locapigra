@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-xs-12
+      %h2
+        Destinations
+      - if @destinations.any?
+        %table.table.table-condensed
+          %thead
+            %tr
+              %td
+                Country Code (ISO 3166)
+              %td
+                Country Name
+              %td.text-right
+                Shipping Price per Unit
+              %td.text-right
+                = link_to new_destination_path, class: "btn btn-default btn-xs" do
+                  %i.fa.fa-plus
+          %tbody
+            = render @destinations
+      - else
+        = link_to new_destination_path, class: "btn btn-default btn-xs" do
+          %i.fa.fa-plus
