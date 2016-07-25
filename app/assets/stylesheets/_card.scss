@@ -90,7 +90,33 @@
 }
 
 .product-card {
-  
+  background-color: $light;
+  @include card(1);
+
+  .product-card-item {
+    height: 316px;
+  }
+  .card-image {
+    float: left;
+    width: 40%;
+  }
+  .card-body {
+    width: 60%;
+    float: left;
+    padding: 20px;
+    position: relative;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .product-card-form {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 50%;
+    }
+  }
 }
 
 .mini-card {

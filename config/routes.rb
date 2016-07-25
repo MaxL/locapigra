@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :comics
 
   resources :products
+  get 'product-list', to: 'products#admin_index', as: :productlist
 
   resources :images
 

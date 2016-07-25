@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :product_images
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   mount_uploader :cover_image, ProductImageUploader
 

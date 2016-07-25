@@ -1,6 +1,18 @@
 $(document).ready(function() {
   $('.magnific-image').magnificPopup({type: 'image'});
   $('.card').matchHeight();
+  $('.product-card-item').matchHeight();
+
+  $('.cart-btn').tooltip();
+
+  $('.order-address-form').validate();
+});
+
+$(document).on("page:load", function() {
+  console.log('test');
+  $('.magnific-image').magnificPopup({type: 'image'});
+  $('.card').matchHeight();
+  $('.product-card-item').matchHeight();
 
   $('.cart-btn').tooltip();
 

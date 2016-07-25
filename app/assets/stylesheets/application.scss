@@ -26,6 +26,14 @@
   cursor: pointer;
 }
 
+.status-alerts {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -46%;
+}
+
 /* HIGHLIGHTS & CO */
 .alert-notice {
   background-color: #d9edf7;
@@ -65,11 +73,13 @@ hr {
   }
 }
 
+.price-box {
+  margin-bottom: 12px;
+}
 .price {
-  color: $light;
+  color: $blood;
   font-weight: 700;
   font-size: 24px;
-  margin-bottom: 8px;
 }
 
 .blood {
@@ -170,6 +180,21 @@ hr {
     right: 1px;
   }
 }
+
+.cart-added {
+  animation: bounce 1s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  10% { transform: scale(.9); }
+  15% { transform: scale(1); }
+  20% { transform: scale(1.15); }
+  50% { transform: scale(1.2); color: $night;}
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
 .overlay {
   position: fixed;
   width: 100%;

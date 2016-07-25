@@ -1,2 +1,6 @@
-$(".cart-txt").html("#{escape_javascript(render 'layouts/cart_text')}")
-$("#cart-div").html("#{escape_javascript(render 'carts/cart_summary')}")
+:plain
+  $(".cart-txt").html("#{escape_javascript(render 'layouts/cart_text')}").addClass('cart-added').delay(1000).queue(function() {
+    $(this).removeClass('cart-added');
+    $(this).dequeue();
+  });
+  $("#cart-div").html("#{escape_javascript(render 'carts/cart_summary')}")
