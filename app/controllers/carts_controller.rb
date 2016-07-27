@@ -48,11 +48,12 @@ class CartsController < ApplicationController
     @order.order_status_id = 2
     if @order.update_attributes(order_params)
       if @order.agreement
+        @order.decrease_inventory
         @order.save
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later
         flash[:success] = "Order placed successfully"
-        redirect_to root_path
+        redirect_to confirm_cart_path(@order)
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
@@ -61,6 +62,10 @@ class CartsController < ApplicationController
       flash[:danger] = "Your order could not be completed"
       redirect_to cart_path
     end
+  end
+
+  def confirm
+    @order = Order.find(params[:format])
   end
 
   private

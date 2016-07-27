@@ -17,6 +17,10 @@ class OrdersController < ApplicationController
     @status = OrderStatus.find(@order.order_status_id)
   end
 
+  def confirm
+    #code
+  end
+
   def edit
     @order = Order.find(params[:id])
     if !@order.address

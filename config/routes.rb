@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       match :submit_address, action: :submit_address, via: [:post, :patch]
       match :checkout, action: :checkout, via: [:post, :patch]
+      match :confirm, action: :confirm, via: [:get]
     end
   end
 

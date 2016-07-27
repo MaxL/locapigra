@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :order_status
   has_many :order_items
+  has_many :products, through: :order_items
   has_one :address
   before_create :set_order_status
   before_save :update_subtotal
@@ -14,6 +15,22 @@ class Order < ActiveRecord::Base
   def set_shipping_price(country)
     @destination = Destination.where(country_code: country)
     self.shipping = @destination.first.shipping_price
+  end
+
+  def decrease_inventory
+    order_items.each do |order_item|
+      puts order_item.product.quantity
+      puts order_item.quantity
+      if (order_item.product.quantity - order_item.quantity) > 0
+        order_item.product.quantity = order_item.product.quantity - order_item.quantity
+        order_item.product.save
+      end
+      puts order_item.product.quantity
+    end
+  end
+
+  def increase_inventory
+    product.quantity = product.quantity + quantity
   end
 
   private
