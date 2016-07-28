@@ -5,18 +5,28 @@
       %p Your purchase of:
       .row
         .col-xs-12.col-sm-12.col-md-offset-3.col-md-6
-          %table.table.table-bordered
+          %table.table
             - @order.order_items.each do |item|
               %tr
                 %td.text-left
                   = item.quantity
                   x
                   = item.product.name
-                %td.text-right= item.quantity * item.unit_price
+                %td.text-right= number_to_currency item.quantity * item.unit_price, locale: :de
+
+          %table.table
+            %tr
+              %td.text-left
+                Shipping price
+              %td.text-right= number_to_currency @order.shipping, locale: :de
+
+          %table.table
+            %tr
+              %td.text-left
+                %strong TOTAL
+              %td.text-right
+                %strong.blood= number_to_currency @order.total, locale: :de
       %p Will be shipped as soon as your payment is confirmed.
-      %p If you chose to pay by bankwire, please wire the total amount of:
-      %p
-        %strong.text-danger= number_to_currency @order.total, locale: :de
-      %p to:
+      %p If you chose to pay by bankwire, please wire the total amount to:
 
       %P An e-mail with these instructions and an invoice has also been sent to you.

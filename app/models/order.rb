@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :products, through: :order_items
   has_one :address
-  before_create :set_order_status
+  before_create :set_order_status, :generate_random_order_number
   before_save :update_subtotal
 
   accepts_nested_attributes_for :address
@@ -37,6 +37,10 @@ class Order < ActiveRecord::Base
 
     def set_order_status
       self.order_status_id = 1
+    end
+
+    def generate_random_order_number
+      self.order_number = ('A'..'Z').to_a.shuffle[0,8].join
     end
 
     def update_subtotal

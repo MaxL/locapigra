@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  #rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def show
     #user
@@ -29,12 +30,9 @@ class CartsController < ApplicationController
         @order.total = @order.subtotal + @order.shipping
         @order.tax = @order.total * 0.07
         @order.save
-        #format.html { redirect_to cart_path, notice: 'Address saved' }
+
         format.js {}
         format.json { render json: @order, status: :created, location: @order }
-        #session.delete :order_id
-        #flash[:success] = "Adress saved successfully"
-        #redirect_to root_path
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
