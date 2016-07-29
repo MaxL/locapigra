@@ -3,9 +3,7 @@ class CartsController < ApplicationController
 
   def show
     #user
-    if current_user
-      @user = current_user
-    end
+    @user = current_or_guest_user
     #products
     @order_items = current_order.order_items
     sum = 0
@@ -51,7 +49,7 @@ class CartsController < ApplicationController
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later
         flash[:success] = "Order placed successfully"
-        redirect_to confirm_cart_path(@order)
+        redirect_to confirm_cart_path(order_number: @order.order_number)
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
@@ -63,7 +61,7 @@ class CartsController < ApplicationController
   end
 
   def confirm
-    @order = Order.find(params[:format])
+    @order = Order.where(order_number: params[:order_number]).first
   end
 
   private

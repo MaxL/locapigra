@@ -1,5 +1,5 @@
 %tr
-  %td= order.id
+  %td= order.id.to_s + ' - ' + order.order_number.to_s
   - if order.address
     %td= order.address.recipient
   - else

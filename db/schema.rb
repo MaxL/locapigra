@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728133622) do
+ActiveRecord::Schema.define(version: 20160729123808) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -121,10 +121,12 @@ ActiveRecord::Schema.define(version: 20160728133622) do
     t.integer  "address_id"
     t.boolean  "agreement"
     t.string   "order_number"
+    t.integer  "user_id"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "phrasing_phrase_versions", force: :cascade do |t|
     t.integer  "phrasing_phrase_id"

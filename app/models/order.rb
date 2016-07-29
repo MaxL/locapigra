@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :order_status
+  belongs_to :user
   has_many :order_items
   has_many :products, through: :order_items
   has_one :address
@@ -33,6 +34,10 @@ class Order < ActiveRecord::Base
     product.quantity = product.quantity + quantity
   end
 
+  def associate_with_user user
+    self.user_id = user.id
+  end
+
   private
 
     def set_order_status
@@ -46,4 +51,5 @@ class Order < ActiveRecord::Base
     def update_subtotal
       self[:subtotal] = subtotal
     end
+
 end
