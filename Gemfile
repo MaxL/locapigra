@@ -45,6 +45,7 @@ gem 'mailgun_rails'
 # config + QOL
 gem 'haml-rails',               "~> 0.9"
 gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'figaro'
 gem 'font-awesome-rails'
 gem 'httparty'
@@ -64,6 +65,11 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'letter_opener'
 end
 
 group :test do
