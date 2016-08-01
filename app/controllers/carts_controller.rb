@@ -1,10 +1,9 @@
 class CartsController < ApplicationController
+  #rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def show
     #user
-    if current_user
-      @user = current_user
-    end
+    @user = current_or_guest_user
     #products
     @order_items = current_order.order_items
     sum = 0
@@ -22,19 +21,21 @@ class CartsController < ApplicationController
 
   def submit_address
     @order = current_order
+    @user = @order.user
     respond_to do |format|
       if @order.update_attributes(order_params)
+        if is_guest_user?
+          @user.email = order_params[:address_attributes][:email]
+          @user.save
+        end
         @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
         @order.total = @order.subtotal + @order.shipping
         @order.tax = @order.total * 0.07
         @order.save
-        #format.html { redirect_to cart_path, notice: 'Address saved' }
+
         format.js {}
         format.json { render json: @order, status: :created, location: @order }
-        #session.delete :order_id
-        #flash[:success] = "Adress saved successfully"
-        #redirect_to root_path
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
@@ -53,7 +54,7 @@ class CartsController < ApplicationController
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later
         flash[:success] = "Order placed successfully"
-        redirect_to confirm_cart_path(@order)
+        redirect_to confirm_cart_path(order_number: @order.order_number)
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
@@ -65,7 +66,7 @@ class CartsController < ApplicationController
   end
 
   def confirm
-    @order = Order.find(params[:format])
+    @order = Order.where(order_number: params[:order_number]).first
   end
 
   private

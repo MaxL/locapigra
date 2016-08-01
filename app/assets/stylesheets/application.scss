@@ -31,7 +31,7 @@
   position: fixed;
   bottom: 20px;
   left: 50%;
-  margin-left: -46%;
+  transform: translateX(-50%);
 }
 
 /* HIGHLIGHTS & CO */
@@ -178,6 +178,11 @@ hr {
     position: absolute;
     top: 1px;
     right: 1px;
+  }
+
+  &.empty {
+    background-color: $light;
+    color: $blood;
   }
 }
 

@@ -14,6 +14,8 @@ class OrderItemsController < ApplicationController
       @order_item.update(quantity: @new_qty)
     end
 
+    @user = current_or_guest_user
+    @order.associate_with_user(@user)
     @order.save
     session[:order_id] = @order.id
   end
