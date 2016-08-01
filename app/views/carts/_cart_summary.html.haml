@@ -1,0 +1,17 @@
+%table.table
+  %thead
+    %tr
+      %th.col-md-3 Product
+      %th.col-md-2 Unit Price
+      %th.col-md-3.text-center Quantity
+      %th.col-md-2.text-right Total
+      %th.col-md-1.text-right
+  %tfoot
+    %tr
+      %td.text-right{:colspan => "3"} Total of your order (tax inclusive)
+      %td.total-cell.text-right.text-success{:colspan => "1"}
+        %strong= number_to_currency @subtotal, locale: :de
+      %td
+  %tbody
+    - @order_items.each do |order_item|
+      = render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true

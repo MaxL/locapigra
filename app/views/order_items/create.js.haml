@@ -1,4 +1,9 @@
 - if @order.errors.any? || @order_item.errors.any?
   alert('not valid');
 - else
-  $('.cart-txt').html("#{escape_javascript(render 'layouts/cart_text')}")
+  :plain
+    $('.cart-txt').html("#{escape_javascript(render 'layouts/cart_text')}").addClass('cart-added').delay(1000).queue(function() {
+      $(this).removeClass('cart-added');
+      $(this).dequeue();
+    });
+    $('.cart-btn').removeClass('empty');

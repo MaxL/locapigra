@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523221649) do
+ActiveRecord::Schema.define(version: 20160729123808) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160523221649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order_id"
+    t.string   "email"
   end
 
   add_index "addresses", ["order_id"], name: "index_addresses_on_order_id"
@@ -58,6 +59,14 @@ ActiveRecord::Schema.define(version: 20160523221649) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "destinations", force: :cascade do |t|
+    t.string   "country_code"
+    t.string   "country_name"
+    t.decimal  "shipping_price", precision: 12, scale: 3
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -110,10 +119,31 @@ ActiveRecord::Schema.define(version: 20160523221649) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "address_id"
+    t.boolean  "agreement"
+    t.string   "order_number"
+    t.integer  "user_id"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "phrasing_phrase_versions", force: :cascade do |t|
+    t.integer  "phrasing_phrase_id"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phrasing_phrase_versions", ["phrasing_phrase_id"], name: "index_phrasing_phrase_versions_on_phrasing_phrase_id"
+
+  create_table "phrasing_phrases", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: :cascade do |t|
     t.text     "name"

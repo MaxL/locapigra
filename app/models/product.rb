@@ -2,9 +2,10 @@ class Product < ActiveRecord::Base
   resourcify
   has_many :order_items
   has_many :product_images
+  belongs_to :order
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   mount_uploader :cover_image, ProductImageUploader
 

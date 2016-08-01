@@ -1,18 +1,29 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   resources :comics
 
   resources :products
+  get 'product-list', to: 'products#admin_index', as: :productlist
 
   resources :images
 
-  resource :cart, only: [:show, :update]
-  resources :carts
+  resource :cart, only: [:show, :update] do
+    member do
+      match :submit_address, action: :submit_address, via: [:post, :patch]
+      match :checkout, action: :checkout, via: [:post, :patch]
+      match :confirm, action: :confirm, via: [:get]
+    end
+  end
+
   resources :order_items, only: [:create, :update, :destroy]
 
   resources :orders
+
+  resources :destinations
 
   resources :blogs
 
@@ -25,6 +36,8 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
 
   get 'imprint' => 'static_pages#imprint'
+
+  get 'toc' => 'static_pages#toc'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

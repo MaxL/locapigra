@@ -1,3 +1,3 @@
-= link_to cart_path, class: "btn btn-danger cart-btn" do
+= link_to cart_path, { class: [ ("btn"), ("btn-danger"), ("cart-btn"), ("empty" unless order_items_quantity) ] } do
   %i.fa.fa-shopping-cart
   %span.badge= order_items_quantity

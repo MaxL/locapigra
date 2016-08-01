@@ -1,0 +1,14 @@
+.form-group
+  = f.text_field :recipient, { placeholder: "Full Name", class: "form-control", required: true }
+.form-group
+  = f.text_field :email, { placeholder: "E-Mail", class: "form-control", required: true }
+.form-group
+  = f.text_field :street, { placeholder: "Street & House Number", class: "form-control", required: true }
+.form-group
+  = f.text_field :city, { placeholder: "City", class: "form-control", required: true }
+.form-group
+  = f.text_field :zip, { placeholder: "ZIP", class: "form-control", required: true }
+.form-group
+  = f.text_field :state, { placeholder: "State / Region", class: "form-control", required: true }
+.form-group
+  = f.country_select("country", { selected: "DE", only: available_countries }, { class: "form-control" })

@@ -3,27 +3,22 @@ source 'https://rubygems.org'
 gem 'rails',                   '4.2.6'
 gem 'bcrypt',                  '>= 3.1.7'
 gem 'faker',                   '>= 1.4.2'
+
+# authentication
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+
+# SEO
 gem 'meta-tags'
 gem 'friendly_id',              '~> 5.1.0'
+
+# JS + UI
 gem 'cocoon'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
-gem 'haml-rails',               "~> 0.9"
-#gem 'activemerchant'
-gem 'validates_email_format_of'
-gem 'delayed_job_active_record'
-gem 'carrierwave',             '>= 0.10.0'
-gem 'mini_magick',             '>= 3.8.0'
-gem 'fog',                     '>= 1.36.0'
-gem 'fog-aws'
-gem 'figaro'
-gem 'font-awesome-rails'
-gem 'httparty'
-gem 'tumblr_client'
-gem 'shenanigans'
+gem 'countries'
+gem 'country_select'
 gem 'will_paginate',           '>= 3.0.7'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
 gem 'bootstrap-datepicker-rails'
@@ -33,8 +28,30 @@ gem 'uglifier',                '>= 2.5.3'
 gem 'coffee-rails',            '>= 4.1.0'
 gem 'jquery-rails',            '>= 4.0.3'
 gem 'magnific-popup-rails'
+gem 'jquery-validation-rails'
 gem 'turbolinks',              '>= 2.3.0'
 gem 'jbuilder',                '>= 2.2.3'
+gem 'validates_email_format_of'
+
+# file uploads
+gem 'carrierwave',             '>= 0.10.0'
+gem 'mini_magick',             '>= 3.8.0'
+gem 'fog',                     '>= 1.36.0'
+gem 'fog-aws'
+
+# email
+gem 'mailgun_rails'
+
+# config + QOL
+gem 'haml-rails',               "~> 0.9"
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'figaro'
+gem 'font-awesome-rails'
+gem 'httparty'
+gem 'tumblr_client'
+gem 'shenanigans'
+
 gem 'sdoc',                    '>= 0.4.0', group: :doc
 
 group :development, :test do
@@ -48,6 +65,11 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'letter_opener'
 end
 
 group :test do

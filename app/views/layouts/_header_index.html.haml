@@ -14,5 +14,4 @@
               %div= link_to "SHOP", shop_path
               %div= link_to "BLOG", blogs_path
               %div= link_to "ABOUT", about_path
-              - if current_user
-                %div= render 'layouts/cart_text'
+              .cart-menu= render 'layouts/cart_text'

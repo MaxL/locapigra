@@ -1,0 +1,13 @@
+- if @order.nil? || @order.errors.any?
+  .alert.alert-danger
+    %ul.list-unstyled
+      - if !@order.nil?
+        - @order.errors.full_messages.ech do |msg|
+          %li= msg
+      - else
+        %li Cart seems to be empty. Was the order already placed?
+- else
+  $('.edit_order').hide().empty().remove();
+  $('.order_item_qty').prop('readonly', true).addClass('readonly');
+  $('.order_item_update, .order_item_delete').hide();
+  $('#checkout-div').append("#{escape_javascript(render 'carts/checkout')}");

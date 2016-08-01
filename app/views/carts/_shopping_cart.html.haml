@@ -8,22 +8,12 @@
     There are no items in your cart at the moment. #{link_to "Feel free to add some though :)", shop_path}
 - else
   .col-xs-12.col-sm-7
-    .static-card
-      %table.table
-        %thead
-          %tr
-            %th.col-md-3 Product
-            %th.col-md-2 Unit Price
-            %th.col-md-3.text-center Quantity
-            %th.col-md-2.text-right Total
-            %th.col-md-1.text-right
-        %tfoot
-          %tr
-            %td.text-right{:colspan => "3"} Total of your order (tax inclusive)
-            %td.total-cell.text-right{:colspan => "2"}= @total_price
-        %tbody
-          - @order_items.each do |order_item|
-            = render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true
+    .static-card#cart-div
+      = render 'carts/cart_summary'
+    .alert.alert-warning.alert-card
+      %p
+        At the moment we only offer orders via bankwire. After completing the order here, we will show & send you payment information. After your payment reaches us, we will send you the products ASAP!
   .col-xs-12.col-sm-5
-    .static-card
-      = link_to "To Checkout", edit_order_path(current_order)
+    .static-card#checkout-div
+      %h3 PLACE ORDER
+      = render 'carts/address_form'

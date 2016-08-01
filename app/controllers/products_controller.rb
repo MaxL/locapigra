@@ -6,6 +6,10 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
   end
 
+  def admin_index
+    @products = Product.all
+  end
+
   def show
     @product = Product.friendly.find(params[:id])
   end
@@ -29,6 +33,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.slug = nil
     @product = Product.find(params[:id])
 
     if @product.update_attributes(product_params)
