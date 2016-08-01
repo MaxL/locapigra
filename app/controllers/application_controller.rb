@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
     guest_user if with_retry
   end
 
+  def is_guest_user?
+    session[:guest_user_id] && session[:guest_user_id] == current_or_guest_user.id
+  end
+
   def order_items_quantity
     if current_order
       #grouped = current_order.order_items.group_by { |el| el["quantity"] }
@@ -81,6 +85,12 @@ class ApplicationController < ActionController::Base
         # comment.user_id = current_user.id
         # comment.save!
       # end
+      orders = guest_user.orders.all
+      orders.each do |order|
+        order.user_id = current_user.id
+        order.save!
+        puts order.inspect
+      end
     end
 
     def create_guest_user

@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   def beta?
     self.has_role? :beta
   end
+
 end

@@ -179,6 +179,11 @@ hr {
     top: 1px;
     right: 1px;
   }
+
+  &.empty {
+    background-color: $light;
+    color: $blood;
+  }
 }
 
 .cart-added {

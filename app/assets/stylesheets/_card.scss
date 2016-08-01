@@ -136,3 +136,7 @@
   font-weight: 600;
   padding: 15px;
 }
+
+.alert-card {
+  @include card(1);
+}
