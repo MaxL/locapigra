@@ -1,6 +1,7 @@
 class OrderItemsController < ApplicationController
   #before_action :authenticate_user!
-  #load_and_authorize_resource
+  #skip_authorization_check
+  load_and_authorize_resource
 
   def create
     @product = Product.find(params[:order_item][:product_id])

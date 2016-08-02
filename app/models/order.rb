@@ -1,4 +1,9 @@
 class Order < ActiveRecord::Base
+  resourcify
+
+  extend FriendlyId
+  friendly_id :order_number, use: [:slugged, :finders]
+
   belongs_to :order_status
   belongs_to :user
   has_many :order_items

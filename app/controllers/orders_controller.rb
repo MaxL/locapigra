@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
-  before_filter :no_header, except: [:confirmation]
+  #skip_authorization_check only: :confirm
+  load_and_authorize_resource# except: :confirm
+  before_filter :no_header, except: [:confirm]
 
   def index
     @orders = Order.all
@@ -18,16 +19,14 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    #code
+    @user = current_user
+    @order = @user.orders.last
   end
 
   def edit
     @order = Order.find(params[:id])
     if !@order.address
-      puts "NO ADDRESS"
       @order.create_address
-    else
-      puts @order.address.recipient
     end
   end
 

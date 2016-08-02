@@ -1,4 +1,5 @@
 class ComicsController < ApplicationController
+  skip_authorization_check only: [:index, :show]
   load_and_authorize_resource :except => [:index, :show]
   #skip_authorize_resource :only => :index
 
