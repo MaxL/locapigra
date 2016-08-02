@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-xs-12.col-sm-6
+      %h1
+        My Orders
+      - if @orders.any?
+        %table.table.table-condensend
+          %thead
+            %tr
+              %td
+                Order Number
+              %td
+                Recipient
+              %td.text-right
+                Amount
+              %td
+          %tbody
+            = render partial: "orders/order", collection: @orders

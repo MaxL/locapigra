@@ -15,13 +15,16 @@ Rails.application.routes.draw do
     member do
       match :submit_address, action: :submit_address, via: [:post, :patch]
       match :checkout, action: :checkout, via: [:post, :patch]
-      match :confirm, action: :confirm, via: [:get]
     end
   end
 
   resources :order_items, only: [:create, :update, :destroy]
 
-  resources :orders
+  resources :orders do
+    member do
+      match :confirm, action: :confirm, via: :get
+    end
+  end
 
   resources :destinations
 
@@ -38,6 +41,13 @@ Rails.application.routes.draw do
   get 'imprint' => 'static_pages#imprint'
 
   get 'toc' => 'static_pages#toc'
+
+  get 'thanks' => 'static_pages#thanks'
+
+  # user specific
+  devise_scope :user do
+    get 'my-orders' => 'users/sessions#my_orders'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

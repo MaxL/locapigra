@@ -28,13 +28,16 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
-    elsif user.has_role? :beta
-      can :manage, OrderItem
-      can :read, :all
+    #elsif user.has_role? :beta
+    #  can :manage, OrderItem
+    #  can :read, :all
     else
-      can :read, :all
+      can :read, [Comic, Product]
+      can :manage, OrderItem
+      can [:confirm, :show], Order, user_id: user.id
     end
   end
 end

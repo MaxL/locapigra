@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  check_authorization :unless => :devise_controller?
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:danger] = exception.message
+    redirect_to root_url
+  end
+
   helper_method :current_order
   helper_method :current_or_guest_user
   helper_method :order_items_quantity
