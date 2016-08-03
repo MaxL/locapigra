@@ -2,7 +2,7 @@
   .row
     .col-xs-12.col-sm-6
       %h4
-        Orders pending
+        Orders pending [#{@orders_pending.count}]
       - if @orders_pending.any?
         %table.table.table-condensend
           %thead
@@ -18,7 +18,7 @@
             = render partial: "order", collection: @orders_pending
     .col-xs-12.col-sm-6
       %h4
-        Orders placed (waiting for payment)
+        Orders placed (waiting for payment) [#{@orders_placed.count}]
       - if @orders_placed.any?
         %table.table.table-condensend
           %thead
@@ -35,7 +35,7 @@
 
     .col-xs-12.col-sm-6
       %h4
-        Orders Paid
+        Orders Paid [#{@orders_paid.count}]
       - if @orders_paid.any?
         %table.table.table-condensend
           %thead
@@ -52,7 +52,7 @@
 
     .col-xs-12.col-sm-6
       %h4
-        Orders shipped
+        Orders shipped [#{@orders_shipped.count}]
       - if @orders_shipped.any?
         %table.table.table-condensend
           %thead
@@ -69,7 +69,7 @@
 
     .col-xs-12.col-sm-6
       %h4
-        Orders cancelled
+        Orders cancelled [#{@orders_cancelled.count}]
       - if @orders_cancelled.any?
         %table.table.table-condensend
           %thead

@@ -24,10 +24,10 @@ class CartsController < ApplicationController
     @user = @order.user
     respond_to do |format|
       if @order.update_attributes(order_params)
-        if is_guest_user?
-          @user.email = order_params[:address_attributes][:email]
-          @user.save
-        end
+        #if is_guest_user?
+        #  @user.email = order_params[:address_attributes][:email]
+        #  @user.save
+        #end
         @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
         @order.total = @order.subtotal + @order.shipping

@@ -4,7 +4,11 @@
       = order.id.to_s
     = order.order_number.to_s
   - if order.address
-    %td= order.address.recipient
+    %td
+      = order.address.recipient
+      %br
+      - if current_user.admin?
+        = order.user.email
   - else
     %td
       [none]
