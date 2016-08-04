@@ -26,7 +26,7 @@
       = f.check_box :agreement, {required: true}
       I agree to the #{link_to "terms & conditions", "#tocModal", {  "data-toggle": "modal" }}
   = f.button(type: "submit", class: "btn btn-primary pull-right") do
-    %i.fa.fa-check
+    %i.icon-ok
     COMPLETE ORDER
 
 .modal.fade#tocModal
@@ -34,7 +34,7 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss": "modal"}
-          %i.fa.fa-close
+          %i.icon-cancel
         %h4.modal-title
           Terms and conditions
       .modal-body

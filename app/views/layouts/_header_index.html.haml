@@ -5,13 +5,52 @@
       %nav.navbar
         .container
           .navbar-header
-            %button#navbar-toggle.navbar-toggle.collapsed{:type => "button"}
-              %i.fa.fa-bars
           .navbar-collapse
             #navbar-main.nav.navbar-nav.navbar-main
-              %div= link_to "HOME", root_path
-              %div= link_to "COMICS", comics_path
-              %div= link_to "SHOP", shop_path
-              %div= link_to "BLOG", blogs_path
-              %div= link_to "ABOUT", about_path
-              .cart-menu= render 'layouts/cart_text'
+              %div
+                = link_to root_path do
+                  %span.hidden-xs
+                    HOME
+                  %span.visible-xs
+                    %i.icon-home
+                    %br
+                    %span.small
+                      HOME
+              %div
+                = link_to comics_path do
+                  %span.hidden-xs
+                    COMICS
+                  %span.visible-xs
+                    %i.icon-art-gallery
+                    %br
+                    %span.small
+                      COMICS
+              %div
+                = link_to shop_path do
+                  %span.hidden-xs
+                    SHOP
+                  %span.visible-xs
+                    %i.icon-shopping-basket
+                    %br
+                    %span.small
+                      SHOP
+              %div
+                = link_to blogs_path do
+                  %span.hidden-xs
+                    BLOG
+                  %span.visible-xs
+                    %i.icon-doc-1
+                    %br
+                    %span.small
+                      BLOG
+              %div
+                = link_to about_path do
+                  %span.hidden-xs
+                    ABOUT
+                  %span.visible-xs
+                    %i.icon-user-outline
+                    %br
+                    %span.small
+                      ABOUT
+              .cart-txt
+                = render 'layouts/cart_text'

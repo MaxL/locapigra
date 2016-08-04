@@ -4,8 +4,8 @@
 @import "bootstrap-variables";
 @import "bootstrap-custom";
 @import "bootstrap-datepicker";
-@import "font-awesome";
 @import "magnific-popup";
+@import "fontello";
 
 @import "card";
 @import "forms";
@@ -35,6 +35,10 @@
   transform: translateX(-50%);
 }
 
+.turbolinks-progress-bar {
+  background-color: $swamp;
+}
+
 /* HIGHLIGHTS & CO */
 .alert-notice {
   background-color: #d9edf7;
@@ -50,7 +54,7 @@ hr {
   }
 }
 .title {
-  font-weight: 200;
+  font-weight: 300;
 }
 .category-heading {
   padding-bottom: 100px;
@@ -120,8 +124,9 @@ hr {
   float: left;
   @include respondto(xs) {
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
+    transform: translateX(-50%);
     z-index: 998;
   };
 }
@@ -136,39 +141,40 @@ hr {
       display: block;
       width: 100%;
       padding: 12px 18px;
+
+      @include respondto(xs) {
+        padding: 12px 10px;
+      };
+
       &:hover {
         text-decoration: none;
         //background-color: $damp;
       }
     }
 
+    .small {
+      font-size: 50%;
+    }
+
   }
   @include respondto(xs) {
-    visibility: hidden;
-    opacity: 0;
     position: fixed;
-    width: 50%;
-    max-width: 630px;
+    background-color: $light;
     width: 100%;
     height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    bottom: 0;
+    left: 0;
     margin: 0;
-    padding: 15px;
+    padding: 0 15px;
+    z-index: 999;
+    @include card(2);
     @include std-transition;
-    &.shown {
-      visibility: visible;
-      opacity: 1;
-      height: 100%;
-      z-index: 997;
-      padding-top: 40px;
-      background-color: rgba($light, .92);
-      div {
-        width: 100%;
-        float: none;
-        font-size: 22px;
-        margin-bottom: 10px;
+
+    div {
+      width: 16.66%;
+
+      &.cart-txt {
+        margin-top: 8px;
       }
     }
   };
@@ -255,8 +261,16 @@ hr {
     div {
       width: 20%;
       text-align: center;
+
+      &.cart-txt {
+        margin-left: 40%;
+      }
+
       @include respondto(xs) {
-        width: 100%;
+        width: 16.66%;
+        &.cart-txt {
+          margin-left: 0;
+        }
       };
     }
     .cart-menu {

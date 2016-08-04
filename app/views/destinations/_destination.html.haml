@@ -4,6 +4,6 @@
   %td.text-right= destination.shipping_price
   %td.text-right
     = link_to edit_destination_path(destination.id), class: "btn btn-default btn-xs" do
-      %i.fa.fa-edit.fa-fw
+      %i.icon-edit
     = link_to destination, method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Really delete #{destination.country_name}" } do
-      %i.fa.fa-ban.fa-fw
+      %i.icon-block

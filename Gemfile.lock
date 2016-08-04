@@ -118,6 +118,7 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     excon (0.51.0)
     execjs (2.7.0)
@@ -257,8 +258,11 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    font-awesome-rails (4.6.3.1)
-      railties (>= 3.2, < 5.1)
+    fontello_rails_converter (0.4.4)
+      activesupport
+      launchy
+      rest-client
+      rubyzip (~> 1.0)
     formatador (0.2.5)
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
@@ -268,6 +272,8 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     guard-compat (1.2.1)
     guard-minitest (2.4.5)
       guard-compat (~> 1.2)
@@ -398,6 +404,7 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_parser (3.8.2)
       sexp_processor (~> 4.1)
+    rubyzip (1.2.0)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -483,14 +490,16 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   devise
+  dynamic_sitemaps
   faker (>= 1.4.2)
   figaro
   fog (>= 1.36.0)
   fog-aws
-  font-awesome-rails
+  fontello_rails_converter
   formtastic
   formtastic-bootstrap
   friendly_id (~> 5.1.0)
+  gretel
   guard-minitest (>= 2.3.1)
   haml-rails (~> 0.9)
   httparty
