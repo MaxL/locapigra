@@ -1,4 +1,5 @@
-- provide(:title, @product.name)
+- set_meta_tags title: @product.name.upcase, description: @product.description
+
 .container
   %h1= @product.name
   .row

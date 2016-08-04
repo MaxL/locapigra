@@ -12,6 +12,9 @@ gem 'rolify'
 # SEO
 gem 'meta-tags'
 gem 'friendly_id',              '~> 5.1.0'
+gem 'gretel'
+gem 'dynamic_sitemaps'
+
 
 # JS + UI
 gem 'cocoon'
@@ -47,7 +50,6 @@ gem 'haml-rails',               "~> 0.9"
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'figaro'
-gem 'font-awesome-rails'
 gem 'httparty'
 gem 'tumblr_client'
 gem 'shenanigans'
@@ -70,6 +72,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'letter_opener'
+  gem 'fontello_rails_converter'
 end
 
 group :test do

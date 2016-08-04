@@ -8,7 +8,7 @@
     = favicon_link_tag 'favicon.ico'
     %link{:href => "https://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900&subset=latin", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
     = csrf_meta_tags
     = render 'layouts/shim'
   %body
@@ -21,6 +21,9 @@
       = render 'layouts/header' unless @index_header
       = render 'layouts/header_index' if @index_header
 
+    .container
+      = breadcrumbs pretext: "", separator: "&emsp;<i class='icon-angle-right'></i>&emsp;", style: :bootstrap
+
     = yield
     = render 'layouts/footer'
     = debug(params) if Rails.env.development?
@@ -29,5 +32,7 @@
       - flash.each do |message_type, message|
         %div#flash{class: "alert alert-dismissible alert-#{message_type}"}
           %button.close{type: "button", data: { dismiss: "alert" }}
-            %i.fa.fa-close
+            %i.icon-cancel
           = message
+
+    = javascript_include_tag 'application', 'data-turbolinks-eval' => false

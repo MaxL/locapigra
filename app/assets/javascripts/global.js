@@ -14,7 +14,7 @@ $(document).ready(function() {
   formLabel();
 });
 
-$(document).on("page:load", function() {
+$(document).on("turbolinks:load", function() {
   console.log('test');
   $('.magnific-image').magnificPopup({type: 'image'});
   $('.card').matchHeight();
@@ -62,6 +62,8 @@ $(document).on('click', '#navbar-toggle', function() {
 var formLabel = function formLabelF() {
   var $formInput = $('.loca-form input.form-control[type="text"], .loca-form input.form-control[type="tel"], .loca-form input.form-control[type="email"], .loca-form input.form-control[type="password"], .loca-form textarea.form-control, .loca-form select.form-control'),
       $formLabel = $('.loca-form label');
+
+  console.log("FORM LABEL!");
   $formInput.each(function() {
     if ($(this).val() !== '') {
       $(this).prev('.loca-label').addClass('focussed');
