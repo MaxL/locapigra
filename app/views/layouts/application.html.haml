@@ -3,8 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
-    %title= full_title(yield(:title))
-    %meta{:content => "locapigra", :name => "description"}/
+    = display_meta_tags site: "l'oca pigra"
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = favicon_link_tag 'favicon.ico'
     %link{:href => "https://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900&subset=latin", :rel => "stylesheet", :type => "text/css"}/
@@ -28,7 +27,7 @@
 
     .status-alerts.container
       - flash.each do |message_type, message|
-        %div{class: "alert alert-dismissible alert-#{message_type}"}
+        %div#flash{class: "alert alert-dismissible alert-#{message_type}"}
           %button.close{type: "button", data: { dismiss: "alert" }}
             %i.fa.fa-close
           = message

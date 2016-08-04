@@ -6,6 +6,12 @@ $(document).ready(function() {
   $('.cart-btn').tooltip();
 
   $('.order-address-form').validate();
+
+  $("#flash").fadeTo(3000, 500).slideUp(500, function(){
+    $("#flash").alert('close');
+  });
+
+  formLabel();
 });
 
 $(document).on("page:load", function() {
@@ -17,6 +23,12 @@ $(document).on("page:load", function() {
   $('.cart-btn').tooltip();
 
   $('.order-address-form').validate();
+
+  $("#flash").fadeTo(3000, 500).slideUp(500, function(){
+    $("#flash").alert('close');
+  });
+
+  formLabel();
 });
 
 // override jquery validate plugin defaults
@@ -45,4 +57,18 @@ $(window).load(function() {
 
 $(document).on('click', '#navbar-toggle', function() {
   $('#navbar-main').toggleClass('shown');
-})
+});
+
+var formLabel = function formLabelF() {
+  var $formInput = $('.loca-form input.form-control[type="text"], .loca-form input.form-control[type="tel"], .loca-form input.form-control[type="email"], .loca-form input.form-control[type="password"], .loca-form textarea.form-control, .loca-form select.form-control'),
+      $formLabel = $('.loca-form label');
+  $formInput.each(function() {
+    if ($(this).val() !== '') {
+      $(this).prev('.loca-label').addClass('focussed');
+    }
+    $(this).focus(function() {
+      $(this).prev('.loca-label').addClass('focussed');
+      $(this).prop('placeholder', '');
+    });
+  });
+};
