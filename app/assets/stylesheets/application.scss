@@ -9,6 +9,7 @@
 
 @import "card";
 @import "forms";
+@import "tables";
 
 
 .browserupgrade {
@@ -23,6 +24,7 @@
   display: block;
   width: 100%;
 }
+
 .magnific-image {
   cursor: pointer;
 }
@@ -33,6 +35,12 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+
+  @include respondto(xs) {
+    bottom: 60px;
+    width: 100%;
+    z-index: 9999;
+  };
 }
 
 .turbolinks-progress-bar {
@@ -224,7 +232,12 @@ hr {
 }
 
 /* #INDEX */
-
+.fireworks {
+  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
 /* Header */
 .header-index {
   position: relative;
@@ -386,6 +399,12 @@ hr {
 
 footer {
   margin-top: 70px;
+
+  @include respondto(xs) {
+    .col-xs-12 {
+      text-align: center;
+    }
+  };
 }
 
 // #MISC

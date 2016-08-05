@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require cocoon
-//= require jquery.matchHeight.min
+//= require jquery.matchHeight
 //= require magnific-popup
 //= require bootstrap-sprockets
 //= require jquery_ujs
@@ -20,4 +20,6 @@
 //= require bootstrap-datepicker
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require_tree .
+//= require anime
+//= require index
+//= require global

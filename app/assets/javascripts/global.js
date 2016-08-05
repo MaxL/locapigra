@@ -12,10 +12,12 @@ $(document).ready(function() {
   });
 
   formLabel();
+  if ( $('.homepage').length ) {
+    fireworks();
+  }
 });
 
 $(document).on("turbolinks:load", function() {
-  console.log('test');
   $('.magnific-image').magnificPopup({type: 'image'});
   $('.card').matchHeight();
   $('.product-card-item').matchHeight();
@@ -29,6 +31,9 @@ $(document).on("turbolinks:load", function() {
   });
 
   formLabel();
+  if ( $('.homepage').length ) {
+    fireworks();
+  }
 });
 
 // override jquery validate plugin defaults
@@ -63,7 +68,6 @@ var formLabel = function formLabelF() {
   var $formInput = $('.loca-form input.form-control[type="text"], .loca-form input.form-control[type="tel"], .loca-form input.form-control[type="email"], .loca-form input.form-control[type="password"], .loca-form textarea.form-control, .loca-form select.form-control'),
       $formLabel = $('.loca-form label');
 
-  console.log("FORM LABEL!");
   $formInput.each(function() {
     if ($(this).val() !== '') {
       $(this).prev('.loca-label').addClass('focussed');

@@ -1,0 +1,51 @@
+@import "base";
+@import "mixins";
+
+#no-more-tables {
+  @include respondto(xs) {
+    table,
+    thead,
+    tbody,
+    tfoot,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead {
+      tr {
+        position: absolute;
+    		top: -9999px;
+    		left: -9999px;
+      }
+    }
+
+    tr {
+      border: 1px solid $damp;
+    }
+
+    td {
+      border: none;
+      border-bottom: 1px solid lighten($damp, 10);
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align:left;
+
+      &::before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+        content: attr(data-title);
+      }
+    }
+  };
+}
