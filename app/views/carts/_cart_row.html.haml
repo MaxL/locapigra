@@ -1,19 +1,19 @@
 %tr
-  %td
+  %td{"data-title": 'Product'}
     %h4= product.name
-  %td
+  %td{"data-title": 'Unit Price'}
     %span.text-success= number_to_currency order_item.unit_price, locale: :de
-  %td.text-center
+  %td.text-center{"data-title": 'Quantity'}
     = form_for order_item, remote: true do |f|
       = f.hidden_field :product_id, value: product.id
       .input-group.input-group-sm{:role => "group"}
         = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control order_item_qty", min: 1
         %span.input-group-btn.order_item_update
           = f.button(type: "submit", class: "btn btn-default") do
-            %i.icon-refresh
-  %td.text-right
+            %i.icon-arrows-ccw
+  %td.text-right{"data-title": 'Total Price'}
     %strong
       %span.text-success= number_to_currency order_item.total_price, locale: :de
   %td.text-right
     = link_to order_item, { data: { confirm: "Really delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-default btn-xs order_item_delete" } do
-      %i.icon-cancel
+      %i.icon-cancel-1

@@ -9,6 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+    puts 'LOGIN puts'
     super
     current_or_guest_user
   end
