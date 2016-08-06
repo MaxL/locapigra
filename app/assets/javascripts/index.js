@@ -33,7 +33,7 @@ var fireworks = function() {
     y = e.clientY || e.touches[0].clientY;
   }
 
-  var colors = ['#111111', '#555555', '#aaaaaa'];
+  var colors = ['#008148', '#2f925f', '#00351d'];//['#111111', '#555555', '#aaaaaa'];
 
   var createCircle = function(x,y) {
     var p = {};
@@ -112,7 +112,7 @@ var fireworks = function() {
       complete: removeAnimation
     });
     animations.push(particulesAnimation);
-    animations.push(circleAnimation);
+    //animations.push(circleAnimation);
   }
 
   var mainLoop = anime({
