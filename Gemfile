@@ -63,7 +63,7 @@ group :development, :test do
   gem 'spring',      '>= 1.1.3'
   gem 'capistrano'
   gem 'capistrano3-puma'
-  gem 'capistrano-rails', github: 'capistrano/rails'
+  gem 'capistrano-rails', "1.1.3"
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
