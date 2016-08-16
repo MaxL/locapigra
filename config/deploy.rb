@@ -60,21 +60,21 @@ set :puma_preload_app, false
 
 namespace :deploy do
 
-  desc 'Copy compiled error pages to public'
-  task :copy_error_pages do
-    on roles(:all) do
-      %w(404 500).each do |page|
-        page_glob = "#{current_path}/public/#{fetch(:assets_prefix)}/#{page}*.html"
-        # copy newest asset
-        asset_file = capture :ruby, %Q{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
-        if asset_file
-          execute :cp, "#{asset_file} #{current_path}/public/#{page}.html"
-        else
-          error "Error #{page} asset does not exist"
-        end
-      end
-    end
-  end
+#  desc 'Copy compiled error pages to public'
+#  task :copy_error_pages do
+#    on roles(:all) do
+#      %w(404 500).each do |page|
+#        page_glob = "#{current_path}/public/#{fetch(:assets_prefix)}/#{page}*.html"
+#        # copy newest asset
+#        asset_file = capture :ruby, %Q{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
+#        if asset_file
+#          execute :cp, "#{asset_file} #{current_path}/public/#{page}.html"
+#        else
+#          error "Error #{page} asset does not exist"
+#        end
+#      end
+#    end
+#  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
