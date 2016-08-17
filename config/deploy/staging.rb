@@ -30,7 +30,7 @@ server 'ec2-52-59-71-49.eu-central-1.compute.amazonaws.com', user: 'ec2-user', r
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-set :deploy_to, '/home/ec2-user/locapigra'
+# set :deploy_to, '/home/ec2-user/locapigra'
 set :branch, 'staging'
 
 # Custom SSH Options
