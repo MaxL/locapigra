@@ -33,7 +33,7 @@ server 'ec2-52-59-71-49.eu-central-1.compute.amazonaws.com', user: 'ec2-user', r
 # set :deploy_to, '/home/ec2-user/locapigra'
 set :branch, 'staging'
 
-#set :puma_env, fetch(:rack_env, fetch(:rails_env, 'staging'))
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'staging'))
 
 # Custom SSH Options
 # ==================

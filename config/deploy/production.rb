@@ -32,7 +32,7 @@ server 'ec2-52-28-21-93.eu-central-1.compute.amazonaws.com', user: 'ec2-user', r
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 
 # Custom SSH Options
 # ==================
