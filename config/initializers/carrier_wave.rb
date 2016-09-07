@@ -13,9 +13,7 @@ if Rails.env.production?
 
     config.fog_directory          = ENV["S3_BUCKET"]
   end
-end
-
-if Rails.env.staging?
+elsif Rails.env.staging?
   CarrierWave.configure do |config|
     config.root = Rails.root.join('tmp') # adding these...
     config.cache_dir = 'carrierwave' # ...two lines

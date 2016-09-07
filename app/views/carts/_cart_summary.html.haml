@@ -12,7 +12,10 @@
         = render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true
     %tfoot
       %tr
-        %td.text-right{:colspan => "3"} Total of your order (w/o shipping)
+        %td.text-right{:colspan => "3"}
+          Total of your order (w/o shipping)
+          %br
+          %small.text-muted shipping cost depends on destination and will be shown in the next step
         %td.total-cell.text-right.text-success{:colspan => "1"}
           %strong= number_to_currency @subtotal, locale: :de
         %td.hidden-xs
