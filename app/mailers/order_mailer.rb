@@ -1,7 +1,7 @@
 class OrderMailer < ApplicationMailer
   before_action :set_delivery_options
 
-  default from: 'info@locapigra.biz'
+  default from: 'shop@locapigra.biz'
 
   def confirmation_mail(order)
     @order = order

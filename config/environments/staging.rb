@@ -71,7 +71,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   #smtp setting gmail for now
   config.action_mailer.smtp_settings = {
-    :address            => "smtp.gmail.com",
+    :address            => "smtp.strato.de",
     :port               => 465,
     :user_name          => ENV["GMAIL_USER_NAME"],
     :password           => ENV["GMAIL_PW"],
