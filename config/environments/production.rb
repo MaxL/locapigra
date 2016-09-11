@@ -65,6 +65,8 @@ Rails.application.configure do
     env.register_engine '.haml', Tilt::HamlTemplate
   end
 
+  config.action_mailer.asset_host = 'https://www.locapigra.biz'
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

@@ -221,6 +221,32 @@ hr {
   100% { transform: scale(1); }
 }
 
+.add-to-cart-btn {
+  overflow: hidden;
+  @include std-transition;
+
+  .icon-basket-alt {
+    position: relative;
+  }
+
+  &.disabled {
+    .icon-basket-alt {
+      right: 150%;
+      left: auto;
+    }
+  }
+
+  .success-icon {
+    position: absolute;
+    left: 100%;
+
+    &.toggled {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
 .overlay {
   position: fixed;
   width: 100%;

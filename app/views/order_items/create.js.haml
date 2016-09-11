@@ -7,3 +7,12 @@
       $(this).dequeue();
     });
     $('.cart-btn').removeClass('empty');
+
+    $('.cart-btn-#{escape_javascript(@order_item.product_id.to_s)}').addClass('disabled').prop('disabled', 'disabled').delay(1000).queue(function() {
+      $(this).removeClass('disabled').prop('disabled', false);
+      $(this).dequeue();
+    });
+    $('.cart-btn-#{escape_javascript(@order_item.product_id.to_s)} .success-icon').addClass('toggled').delay(1000).queue(function() {
+      $(this).removeClass('toggled');
+      $(this).dequeue();
+    });

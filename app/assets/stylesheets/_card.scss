@@ -91,6 +91,8 @@
 
 .product-card {
   background-color: $light;
+  margin-bottom: 30px;
+
   @include card(1);
 
   .product-card-item {
