@@ -10,7 +10,8 @@
       %div.product-card-form
         %div.price-box.clearfix
           Price:
-          %span.price.pull-right= number_to_currency product.price, { locale: :de, strip_insignificant_zeros: true }
+          .pull-right.price= currency_symbol
+          %span.price.pull-right= humanized_money product.price
         = form_for order_item, remote: true do |f|
           .input-group
             = f.number_field :quantity, value: 1, class: "form-control input-lg", min: 1
