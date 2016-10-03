@@ -28,5 +28,8 @@
                 %strong.blood= number_to_currency @order.total, locale: :de
       %p Will be shipped as soon as your payment is confirmed.
       %p If you chose to pay by bankwire, please wire the total amount to:
+      %p= @bank_owner
+      %p= @bank_iban
+      %p= @bank_bic
 
       %P An e-mail with these instructions and an invoice has also been sent to you.

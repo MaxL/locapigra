@@ -1,4 +1,5 @@
-- provide(:title, @comic.name)
+- set_meta_tags title: @comic.name.upcase, description: @comic.description
+- breadcrumb :comic, @comic
 .container-fluid
   .row
     .category-heading.comic-heading

@@ -1,24 +1,26 @@
 %footer.container
   .row
-    .col-xs-12.col-sm-3
+    .col-xs-12.col-sm-6.col-md-3
       %small.text-muted copyright l'oca pigra 2016
-    .col-xs-12.col-sm-9.text-right
+    .col-xs-12.col-sm-6.col-md-5.text-right
       %ul.list-inline
         - if user_signed_in?
           %li
-            = link_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger"
+            = link_to 'My Orders', my_orders_path, class: "text-danger"
+          %li
+            = link_to 'Profile', edit_user_registration_path
+          %li
+            = link_to 'Log Out', destroy_user_session_path, method: :delete, class: "text-muted"
         - else
           %li
             = link_to('Login', new_user_session_path)
+    .col-xs-12.col-sm-12.col-md-4.text-right
+      %ul.list-inline
         %li
           %a.blood{:href => "https://locapigra.tumblr.com/"}
-            %i.fa.fa-tumblr
+            %i.icon-tumblr
         %li
           %a.blood{:href => "https://www.facebook.com/locapigra/"}
-            %i.fa.fa-facebook
+            %i.icon-facebook
         %li= link_to "terms & conditions", toc_path
         %li= link_to "Impressum", imprint_path
-
-#overlay.overlay
-  #overlay-close.oberlay-close
-    %i.fa.fa-cancel

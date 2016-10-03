@@ -1,4 +1,6 @@
 class OrderItem < ActiveRecord::Base
+  resourcify
+
   belongs_to :product
   belongs_to :order
 

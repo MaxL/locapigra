@@ -1,3 +1,4 @@
-= link_to cart_path, { class: [ ("btn"), ("btn-danger"), ("cart-btn"), ("empty" unless order_items_quantity) ] } do
-  %i.fa.fa-shopping-cart
+
+= link_to cart_path, { "data-turbolinks-permanent": "", class: [ ("btn"), ("btn-danger"), ("cart-btn"), ("empty" unless order_items_quantity), ("hidden" unless order_items_quantity) ] } do
+  %i.icon-basket-alt
   %span.badge= order_items_quantity

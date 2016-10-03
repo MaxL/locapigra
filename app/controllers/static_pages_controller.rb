@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  skip_authorization_check
   before_filter :index_header, only: [:home]
 
   def home
@@ -27,6 +28,10 @@ class StaticPagesController < ApplicationController
   end
 
   def toc
+
+  end
+
+  def thanks
 
   end
 end

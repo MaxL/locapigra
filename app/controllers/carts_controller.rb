@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  #rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  skip_authorization_check
 
   def show
     #user
@@ -24,10 +24,10 @@ class CartsController < ApplicationController
     @user = @order.user
     respond_to do |format|
       if @order.update_attributes(order_params)
-        if is_guest_user?
-          @user.email = order_params[:address_attributes][:email]
-          @user.save
-        end
+        #if is_guest_user?
+        #  @user.email = order_params[:address_attributes][:email]
+        #  @user.save
+        #end
         @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
         @order.total = @order.subtotal + @order.shipping
@@ -54,7 +54,11 @@ class CartsController < ApplicationController
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later
         flash[:success] = "Order placed successfully"
-        redirect_to confirm_cart_path(order_number: @order.order_number)
+        if current_user
+          redirect_to confirm_order_path @order
+        else
+          redirect_to thanks_path
+        end
       else
         flash[:danger] = "Your order could not be completed"
         redirect_to cart_path
@@ -63,10 +67,6 @@ class CartsController < ApplicationController
       flash[:danger] = "Your order could not be completed"
       redirect_to cart_path
     end
-  end
-
-  def confirm
-    @order = Order.where(order_number: params[:order_number]).first
   end
 
   private

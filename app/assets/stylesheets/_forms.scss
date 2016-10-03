@@ -1,0 +1,76 @@
+@import "base";
+@import "mixins";
+@import "bootstrap-variables";
+
+.loca-form {
+
+  .form-group {
+    position: relative;
+  }
+
+  .auth-btn-group {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(-30%) translateX(-50%);
+  }
+
+  .loca-label {
+    font-weight: normal;
+    font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+    color: $swamp;
+    font-size: 12px;
+    position: absolute;
+    top: 30%;
+    left: 12px;
+    visibility: hidden;
+    opacity: 0;
+    @include std-transition;
+    &.focussed {
+      visibility: visible;
+      opacity: 1;
+      top: 5%;
+      z-index: 2;
+
+      + .form-control, + .hideShowPassword-wrapper .form-control {
+        padding: 16px 12px 0;
+      }
+    }
+  }
+
+  .has-success {
+    .loca-label {
+      color: lighten($swamp, 10);
+    }
+  }
+
+  .has-error {
+    .loca-label {
+      color: lighten($blood, 10);
+    }
+  }
+
+  .has-warning {
+    .loca-label {
+      color: lighten($sand, 10);
+    }
+  }
+
+  .form-control,
+  .form-control-static {
+    height: 42px;
+    @include std-transition;
+  }
+
+  textarea.form-control {
+    height: 104px;
+  }
+
+  .radio {
+    margin-top: 0;
+  }
+  .radio-inline {
+    padding-left: 0;
+  }
+
+}

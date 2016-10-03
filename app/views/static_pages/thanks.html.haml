@@ -1,0 +1,12 @@
+- set_meta_tags title: "Thank You!", noindex: true, nofollow: true
+
+.container
+  .row
+    .col-xs-12.col-sm-offset-1.col-sm-10.col-md-offset-2.col-md-8.text-center
+      %h1 Thank you for your order!
+      %p.lead
+        We have sent an order confirmation with payment details to the email address you provided during your purchase. You will also be notified once payment is received and we ship your order.
+      .alert.alert-info
+        You can also
+        = link_to "sign up", new_user_registration_path
+        to be able to view all your orders online

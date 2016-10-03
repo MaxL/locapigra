@@ -1,14 +1,21 @@
 .form-group
+  = f.label :recipient, "Full Name", {class: "loca-label"}
   = f.text_field :recipient, { placeholder: "Full Name", class: "form-control", required: true }
 .form-group
+  = f.label :email, "E-Mail", {class: "loca-label"}
   = f.text_field :email, { placeholder: "E-Mail", class: "form-control", required: true }
 .form-group
+  = f.label :street, "Street & House Number", {class: "loca-label"}
   = f.text_field :street, { placeholder: "Street & House Number", class: "form-control", required: true }
 .form-group
+  = f.label :city, "City", {class: "loca-label"}
   = f.text_field :city, { placeholder: "City", class: "form-control", required: true }
 .form-group
+  = f.label :zip, "ZIP", {class: "loca-label"}
   = f.text_field :zip, { placeholder: "ZIP", class: "form-control", required: true }
 .form-group
+  = f.label :state, "State / Region", {class: "loca-label"}
   = f.text_field :state, { placeholder: "State / Region", class: "form-control", required: true }
 .form-group
+  = f.label :country, "Country", {class: "loca-label"}
   = f.country_select("country", { selected: "DE", only: available_countries }, { class: "form-control" })

@@ -1,9 +1,12 @@
+- set_meta_tags title: "Your Shopping Cart", noindex: true, nofollow: true
+
+
 .container-fluid
   .row
     .category-heading.comic-heading
       .container
         %h1.title CART
 .container
-  .card-row
+  .card-row.row
     .shopping-cart
       = render 'carts/shopping_cart'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729123808) do
+ActiveRecord::Schema.define(version: 20160802145732) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -122,28 +122,12 @@ ActiveRecord::Schema.define(version: 20160729123808) do
     t.boolean  "agreement"
     t.string   "order_number"
     t.integer  "user_id"
+    t.string   "slug"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
-
-  create_table "phrasing_phrase_versions", force: :cascade do |t|
-    t.integer  "phrasing_phrase_id"
-    t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "phrasing_phrase_versions", ["phrasing_phrase_id"], name: "index_phrasing_phrase_versions_on_phrasing_phrase_id"
-
-  create_table "phrasing_phrases", force: :cascade do |t|
-    t.string   "locale"
-    t.string   "key"
-    t.text     "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "products", force: :cascade do |t|
     t.text     "name"

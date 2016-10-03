@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_authorization_check only: [:index, :show]
   load_and_authorize_resource :except => [:index, :show]
 
   def index

@@ -42,7 +42,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.5.0)
     arel (6.0.3)
-    autoprefixer-rails (6.3.7)
+    autoprefixer-rails (6.4.0.2)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -103,7 +103,7 @@ GEM
       countries (~> 1.2.0)
       sort_alphabetical (~> 1.0)
     currencies (0.4.2)
-    daemons (1.2.3)
+    daemons (1.2.4)
     debug_inspector (0.0.2)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
@@ -118,6 +118,7 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     excon (0.51.0)
     execjs (2.7.0)
@@ -168,7 +169,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.10.0)
+    fog-aws (0.11.0)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -202,7 +203,7 @@ GEM
       multi_json (~> 1.10)
     fog-local (0.3.0)
       fog-core (~> 1.27)
-    fog-openstack (0.1.9)
+    fog-openstack (0.1.11)
       fog-core (>= 1.40)
       fog-json (>= 1.0)
       ipaddress (>= 0.8)
@@ -248,7 +249,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.8.0)
+    fog-vsphere (1.0.0)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -257,8 +258,11 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    font-awesome-rails (4.6.3.1)
-      railties (>= 3.2, < 5.1)
+    fontello_rails_converter (0.4.4)
+      activesupport
+      launchy
+      rest-client
+      rubyzip (~> 1.0)
     formatador (0.2.5)
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
@@ -268,8 +272,10 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     guard-compat (1.2.1)
-    guard-minitest (2.4.5)
+    guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
     haml (4.0.7)
@@ -322,14 +328,14 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mimemagic (0.3.1)
+    mimemagic (0.3.2)
     mini_backtrace (0.1.3)
       minitest (> 1.2.0)
       rails (>= 2.3.3)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    minitest-reporters (1.1.10)
+    minitest-reporters (1.1.11)
       ansi
       builder
       minitest (>= 5.0)
@@ -388,7 +394,7 @@ GEM
       trollop
     rdoc (4.2.2)
       json (~> 1.4)
-    responders (2.2.0)
+    responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (2.0.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -398,6 +404,7 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_parser (3.8.2)
       sexp_processor (~> 4.1)
+    rubyzip (1.2.0)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -422,7 +429,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
-    sshkit (1.11.1)
+    sshkit (1.11.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thor (0.19.1)
@@ -436,12 +443,12 @@ GEM
       mime-types
       oauth
       simple_oauth
-    turbolinks (5.0.0)
+    turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.0)
+    uglifier (3.0.1)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -469,9 +476,9 @@ DEPENDENCIES
   bootstrap-will_paginate (>= 0.0.10)
   byebug (>= 3.4.0)
   cancancan
-  capistrano
+  capistrano (= 3.6.0)
   capistrano-bundler
-  capistrano-rails
+  capistrano-rails (= 1.1.7)
   capistrano-rails-console
   capistrano-rbenv
   capistrano3-puma
@@ -483,14 +490,16 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   devise
+  dynamic_sitemaps
   faker (>= 1.4.2)
   figaro
   fog (>= 1.36.0)
   fog-aws
-  font-awesome-rails
+  fontello_rails_converter
   formtastic
   formtastic-bootstrap
   friendly_id (~> 5.1.0)
+  gretel
   guard-minitest (>= 2.3.1)
   haml-rails (~> 0.9)
   httparty

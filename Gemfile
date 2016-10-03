@@ -12,6 +12,9 @@ gem 'rolify'
 # SEO
 gem 'meta-tags'
 gem 'friendly_id',              '~> 5.1.0'
+gem 'gretel'
+gem 'dynamic_sitemaps'
+
 
 # JS + UI
 gem 'cocoon'
@@ -47,7 +50,6 @@ gem 'haml-rails',               "~> 0.9"
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'figaro'
-gem 'font-awesome-rails'
 gem 'httparty'
 gem 'tumblr_client'
 gem 'shenanigans'
@@ -59,9 +61,9 @@ group :development, :test do
   gem 'byebug',      '>= 3.4.0'
   gem 'web-console', '>= 2.0.0.beta3'
   gem 'spring',      '>= 1.1.3'
-  gem 'capistrano'
+  gem 'capistrano', '3.6.0'
   gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
+  gem 'capistrano-rails', '1.1.7'
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
@@ -70,6 +72,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'letter_opener'
+  gem 'fontello_rails_converter'
 end
 
 group :test do

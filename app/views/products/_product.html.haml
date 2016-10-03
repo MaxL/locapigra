@@ -3,9 +3,10 @@
     .card-image.product-card-item
       = image_tag( product.cover_image, alt: product.name, class: 'img-responsive')
     .card-body.product-card-item
-      %h3.card-title= product.name
-      %p
-        = product.description.html_safe
+      .card-copy
+        %h3.card-title= product.name
+        %p.hidden-xs
+          = product.description.html_safe
       %div.product-card-form
         %div.price-box.clearfix
           Price:
@@ -15,8 +16,9 @@
             = f.number_field :quantity, value: 1, class: "form-control input-lg", min: 1
             .input-group-btn
               = f.hidden_field :product_id, value: product.id
-              = f.button(class: "btn btn-danger btn-lg") do
-                %i.fa.fa-cart-plus
+              = f.button(class: "btn btn-danger btn-lg add-to-cart-btn cart-btn-#{product.id}" ) do
+                %i.icon-basket-alt
+                %i.icon-check-1.success-icon
 
       - if user_signed_in?
         - if current_user.admin?

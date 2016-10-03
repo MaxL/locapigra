@@ -3,16 +3,15 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
-    %title= full_title(yield(:title))
-    %meta{:content => "locapigra", :name => "description"}/
+    = display_meta_tags site: "l'oca pigra"
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = favicon_link_tag 'favicon.ico'
     %link{:href => "https://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900&subset=latin", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
     = csrf_meta_tags
     = render 'layouts/shim'
-  %body
+  %body{class: ("homepage" if @index_header)}
     /[if lt IE 10]
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     - if user_signed_in?
@@ -22,13 +21,18 @@
       = render 'layouts/header' unless @index_header
       = render 'layouts/header_index' if @index_header
 
+    .container
+      .row
+        = breadcrumbs pretext: "", separator: " <i class='icon-angle-right'></i> ", style: :bootstrap
+
     = yield
     = render 'layouts/footer'
-    = debug(params) if Rails.env.development?
 
     .status-alerts.container
       - flash.each do |message_type, message|
-        %div{class: "alert alert-dismissible alert-#{message_type}"}
+        %div#flash{class: "alert alert-dismissible alert-#{message_type}"}
           %button.close{type: "button", data: { dismiss: "alert" }}
-            %i.fa.fa-close
+            %i.icon-cancel-1
           = message
+
+    = javascript_include_tag 'application', 'data-turbolinks-eval' => false
