@@ -21,6 +21,9 @@ class OrdersController < ApplicationController
   def confirm
     @user = current_user
     @order = @user.orders.last
+    @bank_owner = ENV["BANK_OWNER"]
+    @bank_iban = ENV["BANK_IBAN"]
+    @bank_bic = ENV["BANK_BIC"]
   end
 
   def edit
