@@ -1,7 +1,6 @@
 $(document).ready(function() {
   $('.magnific-image').magnificPopup({type: 'image'});
-  $('.card').matchHeight();
-  $('.product-card-item').matchHeight();
+  $('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
 
@@ -19,8 +18,7 @@ $(document).ready(function() {
 
 $(document).on("turbolinks:load", function() {
   $('.magnific-image').magnificPopup({type: 'image'});
-  $('.card').matchHeight();
-  $('.product-card-item').matchHeight();
+  $('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
 
@@ -55,9 +53,6 @@ $.validator.setDefaults({
   }
 });
 
-$(window).load(function() {
-  //$('.card').matchHeight();
-});
 
 
 $(document).on('click', '#navbar-toggle', function() {
