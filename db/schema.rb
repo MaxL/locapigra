@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802145732) do
+ActiveRecord::Schema.define(version: 20161006184419) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -93,12 +93,13 @@ ActiveRecord::Schema.define(version: 20160802145732) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",  precision: 12, scale: 3
-    t.integer  "quantity",                             default: 0
-    t.decimal  "total_price", precision: 12, scale: 3
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.decimal  "tax",         precision: 12, scale: 3
+    t.decimal  "unit_price",     precision: 12, scale: 3
+    t.integer  "quantity",                                default: 0
+    t.decimal  "total_price",    precision: 12, scale: 3
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.decimal  "tax",            precision: 12, scale: 3
+    t.integer  "edition_number"
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
@@ -143,9 +144,12 @@ ActiveRecord::Schema.define(version: 20160802145732) do
     t.datetime "release_date"
     t.string   "language"
     t.boolean  "active"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.string   "slug"
+    t.integer  "price_cents",                               default: 0,     null: false
+    t.string   "price_currency",                            default: "EUR", null: false
+    t.boolean  "limited"
   end
 
   create_table "roles", force: :cascade do |t|

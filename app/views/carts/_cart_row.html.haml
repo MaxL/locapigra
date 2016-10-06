@@ -1,16 +1,23 @@
 %tr
   %td{"data-title": 'Product'}
     %h4= product.name
+    - if order_item.edition_number
+      %p
+        Your limited edition number:
+        = order_item.edition_number
   %td{"data-title": 'Unit Price'}
     %span.text-success= number_to_currency order_item.unit_price, locale: :de
   %td.text-center{"data-title": 'Quantity'}
-    = form_for order_item, remote: true do |f|
-      = f.hidden_field :product_id, value: product.id
-      .input-group.input-group-sm{:role => "group"}
-        = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control order_item_qty", min: 1
-        %span.input-group-btn.order_item_update
-          = f.button(type: "submit", class: "btn btn-default") do
-            %i.icon-arrows-ccw
+    - if order_item.edition_number
+      = order_item.quantity
+    - else
+      = form_for order_item, remote: true do |f|
+        = f.hidden_field :product_id, value: product.id
+        .input-group.input-group-sm{:role => "group"}
+          = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control order_item_qty", min: 1
+          %span.input-group-btn.order_item_update
+            = f.button(type: "submit", class: "btn btn-default") do
+              %i.icon-arrows-ccw
   %td.text-right{"data-title": 'Total Price'}
     %strong
       %span.text-success= number_to_currency order_item.total_price, locale: :de

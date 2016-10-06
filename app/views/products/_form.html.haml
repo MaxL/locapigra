@@ -37,6 +37,11 @@
     = f.label :language
     = f.text_field :language, class: "form-control"
   .checkbox
-    = f.label :active
-    = f.check_box :active
+    = f.label :limited do
+      = f.check_box :limited
+      Limited Edition?
+  .checkbox
+    = f.label :active do
+      = f.check_box :active
+      Active?
   = f.submit "Create product", class: "btn btn-primary"

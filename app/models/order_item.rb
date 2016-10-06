@@ -4,7 +4,9 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  #validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :edition_number, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than: 1001 }, allow_nil: true
+  validates_uniqueness_of :edition_number, scope: :product
   validate :product_present
   validate :order_present
 
