@@ -4,6 +4,8 @@ $(document).ready(function() {
 
   $('.cart-btn').tooltip();
 
+  $('.tooltip-item').tooltip();
+
   $('.order-address-form').validate();
 
   $("#flash").fadeTo(3000, 500).slideUp(500, function(){
@@ -21,6 +23,8 @@ $(document).on("turbolinks:load", function() {
   $('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
+
+  $('.tooltip-item').tooltip();
 
   $('.order-address-form').validate();
 

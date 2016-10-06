@@ -12,13 +12,29 @@
           Price:
           %span.price.pull-right= number_to_currency product.price, { locale: :de, strip_insignificant_zeros: true }
         = form_for order_item, remote: true do |f|
-          .input-group
-            = f.number_field :quantity, value: 1, class: "form-control input-lg", min: 1
-            .input-group-btn
+          - if product.limited?
+            .form-group
+              = f.label :edition_number do
+                .tooltip-item{title: "This is a limited edition item. If you want a specific number, pick one in the field below. Some numbers might not be available anymore. Also you will have to add comics one at a time, don't worry though it's just one click!"}
+                  Limited edition #
+                  %i.icon-info.highlight-link
+              = f.number_field :edition_number, class: "form-control", placeholder: "optional 1-1000"
+            .form-group
               = f.hidden_field :product_id, value: product.id
-              = f.button(class: "btn btn-danger btn-lg add-to-cart-btn cart-btn-#{product.id}" ) do
+              = f.hidden_field :quantity, value: 1
+              = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
                 %i.icon-basket-alt
                 %i.icon-check-1.success-icon
+          - else
+            .form-group
+              = f.label :quantity
+              .input-group
+                = f.number_field :quantity, value: 1, class: "form-control input-lg", min: 1
+                .input-group-btn
+                  = f.hidden_field :product_id, value: product.id
+                  = f.button(class: "btn btn-danger btn-lg add-to-cart-btn cart-btn-#{product.id}" ) do
+                    %i.icon-basket-alt
+                    %i.icon-check-1.success-icon
 
       - if user_signed_in?
         - if current_user.admin?

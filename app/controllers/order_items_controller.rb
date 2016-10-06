@@ -7,13 +7,13 @@ class OrderItemsController < ApplicationController
     @product = Product.find(params[:order_item][:product_id])
     @order = current_order
 
-    if !@order.order_items.exists?(product_id: @product.id)
+    #if !@order.order_items.exists?(product_id: @product.id)
       @order_item = @order.order_items.new(order_item_params)
-    else
-      @order_item = @order.order_items.where(product_id: @product.id).first
-      @new_qty = @order_item.quantity.to_i + params[:order_item][:quantity].to_i
-      @order_item.update(quantity: @new_qty)
-    end
+    #else
+    #  @order_item = @order.order_items.where(product_id: @product.id).first
+    #  @new_qty = @order_item.quantity.to_i + params[:order_item][:quantity].to_i
+    #  @order_item.update(quantity: @new_qty)
+    #end
 
     @user = current_or_guest_user
     @order.associate_with_user(@user)
@@ -44,7 +44,7 @@ class OrderItemsController < ApplicationController
   private
 
     def order_item_params
-      params.require(:order_item).permit(:quantity, :product_id)
+      params.require(:order_item).permit(:quantity, :product_id, :edition_number)
     end
 
 end

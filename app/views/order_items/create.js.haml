@@ -1,5 +1,5 @@
 - if @order.errors.any? || @order_item.errors.any?
-  alert('not valid');
+  alert('Sorry, either this number has already been taken or it is invalid!');
 - else
   :plain
     $('.cart-txt').html("#{escape_javascript(render 'layouts/cart_text')}").addClass('cart-added').delay(1000).queue(function() {
