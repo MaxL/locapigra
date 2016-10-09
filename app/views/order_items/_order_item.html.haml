@@ -3,5 +3,9 @@
     = order_item.quantity
     x
     = order_item.product.name
+    - if order_item.edition_number
+      %br
+      Ltd. Ed. #:
+      = order_item.edition_number
   %td.text-right= number_to_currency order_item.unit_price, locale: :de
   %td.text-right= number_to_currency order_item.total_price, locale: :de

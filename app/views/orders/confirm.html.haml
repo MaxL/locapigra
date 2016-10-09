@@ -12,6 +12,10 @@
                   = item.quantity
                   x
                   = item.product.name
+                  - if item.edition_number
+                    %br
+                    Ltd. Ed. #:
+                    = item.edition_number
                 %td.text-right= number_to_currency item.quantity * item.unit_price, locale: :de
 
           %table.table
