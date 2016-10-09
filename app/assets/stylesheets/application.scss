@@ -116,6 +116,11 @@ hr {
   .tooltip-inner {
     padding: 15px;
     font-size: 15px;
+    width: 480px;
+    max-width: 480px;
+    @include respond-to(xs) {
+      max-width: 280px;
+    };
   }
 }
 
@@ -432,7 +437,16 @@ hr {
   @include card(1);
 }
 
+.block-span {
+  display: inline-block;
+  margin-top: 10px;
+}
 
+.shopping-cart {
+  .input-group {
+    margin-top: 5px;
+  }
+}
 /* #FOOTER */
 
 footer {

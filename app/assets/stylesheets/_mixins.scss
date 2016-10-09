@@ -9,7 +9,7 @@
 @mixin respond-to($media) {
   /* portrait phones and down */
   @if $media == xxs {
-      @media (max-width: 767px) { @content; }
+      @media (max-width: 520px) { @content; }
   }
   /* Landscape phones and down */
   @if $media == xs {

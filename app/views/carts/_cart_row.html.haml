@@ -6,10 +6,10 @@
         Your limited edition number:
         = order_item.edition_number
   %td{"data-title": 'Unit Price'}
-    %span.text-success= number_to_currency order_item.unit_price, locale: :de
+    %span.block-span.text-success= number_to_currency order_item.unit_price, locale: :de
   %td.text-center{"data-title": 'Quantity'}
     - if order_item.edition_number
-      = order_item.quantity
+      %span.block-span= order_item.quantity
     - else
       = form_for order_item, remote: true do |f|
         = f.hidden_field :product_id, value: product.id
@@ -20,7 +20,7 @@
               %i.icon-arrows-ccw
   %td.text-right{"data-title": 'Total Price'}
     %strong
-      %span.text-success= number_to_currency order_item.total_price, locale: :de
+      %span.block-span.text-success= number_to_currency order_item.total_price, locale: :de
   %td.text-right
-    = link_to order_item, { data: { confirm: "Really delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-default btn-xs order_item_delete" } do
+    = link_to order_item, { data: { confirm: "Really delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-default btn-xs order_item_delete block-span" } do
       %i.icon-cancel-1
