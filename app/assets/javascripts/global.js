@@ -19,6 +19,13 @@ $(document).ready(function() {
 });
 
 $(document).on("turbolinks:load", function() {
+  var gaUrl = window.location.href;
+
+  dataLayer.push({
+    'event':'pageView',
+    'virtualUrl': gaUrl
+  });
+
   $('.magnific-image').magnificPopup({type: 'image'});
   $('.card-image').matchHeight();
 
