@@ -43,6 +43,19 @@ class Order < ActiveRecord::Base
     self.user_id = user.id
   end
 
+  def order_items_for_data_layer
+    order_items_for_data_layer = {}
+    order_items.each do |order_item|
+      full_item_price = order_item.quantity * order_item.unit_price
+      order_items_for_data_layer[:sku] = order_item.id
+      order_items_for_data_layer[:name] = order_item.product.name
+      order_items_for_data_layer[:category] = 'Comics'
+      order_items_for_data_layer[:price] = full_item_price.to_f
+      order_items_for_data_layer[:quantity] = order_item.quantity
+    end
+    order_items_for_data_layer
+  end
+
   private
 
     def set_order_status

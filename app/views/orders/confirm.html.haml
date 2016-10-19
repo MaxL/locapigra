@@ -37,3 +37,18 @@
       %p= @bank_bic
 
       %P An e-mail with these instructions and an invoice has also been sent to you.
+
+:javascript
+  document.addEventListener("turbolinks:load", function() {
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'transactionId': "#{@order.order_number}",
+      'transactionAffiliation': 'locapigra',
+      'transactionTotal': #{@order.total},
+      'transactionTax': #{@order.tax},
+      'transactionShipping': #{@order.shipping},
+      'transactionProducts': [
+        #{@order_items_json}
+      ]
+    });
+  });

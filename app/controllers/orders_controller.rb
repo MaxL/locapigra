@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
   def confirm
     @user = current_user
     @order = @user.orders.last
+    @order_items_json = @order.order_items_for_data_layer.to_json
     @bank_owner = ENV["BANK_OWNER"]
     @bank_iban = ENV["BANK_IBAN"]
     @bank_bic = ENV["BANK_BIC"]
