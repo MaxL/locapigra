@@ -32,7 +32,7 @@
           %td
             %strong
               TOTAL
-          %td.text-right.strong.blood= number_to_currency @order.subtotal, locale: :de
+          %td.text-right.strong.blood= number_to_currency @order.total, locale: :de
 
     .col-xs-12.col-sm-10.col-md-6
       %strong Deliver To:
