@@ -36,6 +36,8 @@
                     %i.icon-basket-alt
                     %i.icon-check-1.success-icon
 
+        = link_to "details", product, class: "btn btn-block btn-warning btn-xs"
+
       - if user_signed_in?
         - if current_user.admin?
           %ul.list-inline

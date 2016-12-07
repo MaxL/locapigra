@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
   def home
     client = Tumblr::Client.new :consumer_key => 'VOf3IKabebfz5hnyCn8dY0JVVX80cqQ1Zc8xzd7TDgOSeCSE51'
-    response = client.posts 'locapigra.tumblr.com', limit: 1, reblog_info: true, notes_info: true
+    response = client.posts 'locapigra.tumblr.com', limit: 3, reblog_info: true, notes_info: true
     @posts = response.to_ostruct.posts
   end
 

@@ -24,6 +24,9 @@
   .form-group
     = f.label :dimensions
     = f.text_field :dimensions, class: "form-control"
+  .form-group
+    = f.label :product
+    = f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class: "form-control"
   .checkbox
     = f.label :released
     = f.check_box :released

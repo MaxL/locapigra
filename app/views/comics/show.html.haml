@@ -33,8 +33,9 @@
           %small
             Size: #{@comic.dimensions}
 
-      = link_to shop_path, {class: "btn btn-danger btn-lg btn-block"} do
-        You can find me in the shop!
+      - if @comic.product_id
+        = link_to @comic.product, {class: "btn btn-danger btn-lg btn-block"} do
+          Buy me!
 
   - if user_signed_in?
     - if current_user.admin?

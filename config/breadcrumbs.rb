@@ -15,6 +15,11 @@ crumb :products do
   link "Shop", shop_path
 end
 
+crumb :product do |product|
+  link product.name, product_path(product)
+  parent :products
+end
+
 crumb :blogs do
   link "Blog", blogs_path
 end
