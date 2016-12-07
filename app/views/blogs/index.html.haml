@@ -12,26 +12,30 @@
 .container
   .row.card-row
     .col-xs-12.col-sm-offset-2.col-sm-8.col-md-offset-3.col-md-6.text-center
-      - @posts.each do |post|
-        .post.text-left
-          - if post.photoset_layout
-            .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
+      - if @posts != nil
+        - @posts.each do |post|
+          .post.text-left
+            - if post.photoset_layout
+              .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
+                - @postphotos = post.photos
+                - @first_photo = @postphotos.shift
+                = link_to (image_tag @first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
+                - @postphotos.each do |postphoto|
+                  = link_to (image_tag postphoto.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
+            - elsif post.photos
               - @postphotos = post.photos
-              - @first_photo = @postphotos.shift
-              = link_to (image_tag @first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
-              - @postphotos.each do |postphoto|
-                = link_to (image_tag postphoto.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
-          - elsif post.photos
-            - @postphotos = post.photos
-            - @postphotos.each do |photo|
-              = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
-          - if post.caption
-            = post.caption.html_safe
-          - if post.body
-            = post.body.html_safe
-          %ul.list-inline
-            - post.tags.each do |tag|
-              %li.text-muted
-                %a{:href => "https://locapigra.tumblr.com/tagged/#{tag}"}
-                  \##{tag}
-      = will_paginate @posts, page_links: false, previous_label: "NEWER", next_label: "OLDER"
+              - @postphotos.each do |photo|
+                = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
+            - if post.caption
+              = post.caption.html_safe
+            - if post.body
+              = post.body.html_safe
+            %ul.list-inline
+              - post.tags.each do |tag|
+                %li.text-muted
+                  %a{:href => "https://locapigra.tumblr.com/tagged/#{tag}"}
+                    \##{tag}
+        = will_paginate @posts, page_links: false, previous_label: "NEWER", next_label: "OLDER"
+
+      - else
+        %p Sorry, something ssems to be wrong with our connection to tumblr - blog posts couldn't be loaded

@@ -53,5 +53,19 @@
                     %br
                     %span.small
                       ABOUT
+              .btn-group
+                .user-btn{class: "text-muted dropdwon-toggle", "data-toggle": "dropdown"}
+                  %i.icon-user
+                %ul.dropdown-menu
+                  - if user_signed_in?
+                    %li
+                      = link_to 'My Orders', my_orders_path, class: "text-danger"
+                    %li
+                      = link_to 'Profile', edit_user_registration_path
+                    %li
+                      = link_to 'Log Out', destroy_user_session_path, method: :delete, class: "text-muted"
+                  - else
+                    %li
+                      = link_to('Login', new_user_session_path)
               .cart-txt
                 = render 'layouts/cart_text'

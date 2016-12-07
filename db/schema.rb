@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006184419) do
+ActiveRecord::Schema.define(version: 20161207211702) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20161006184419) do
     t.datetime "updated_at",  null: false
     t.string   "slug"
     t.boolean  "released"
+    t.integer  "product_id"
   end
 
   add_index "comics", ["name"], name: "index_comics_on_name", unique: true
+  add_index "comics", ["product_id"], name: "index_comics_on_product_id"
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

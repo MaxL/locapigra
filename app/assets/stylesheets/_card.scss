@@ -11,7 +11,6 @@
   overflow: hidden;
   position: relative;
   @include std-transition;
-  @include card(1);
   .card-image {
     margin: 0;
     position: relative;
@@ -24,7 +23,7 @@
     }
 
     .card-body {
-      height: 240px;
+      height: 180px;
       width: 100%;
       position: absolute;
       left: 0;
@@ -32,12 +31,13 @@
       background-color: $text-color;
       color: $light;
       top: auto;
-      bottom: 0;
+      bottom: 12%;
       transform: translateY(100%);
       backface-visibility: hidden;
       transition: transform .4s;
       h3 {
         margin-top: 0;
+        margin-bottom: 15px;
       }
     }
 
@@ -85,16 +85,16 @@
   &.hero-card {
     padding-top: 42px;
   }
+
   &:hover {
-    @include card(2);
+    @include card(1);
   }
 }
 
 .product-card {
   background-color: $light;
   margin-bottom: 30px;
-
-  @include card(1);
+  border: 1px solid $swamp;
 
   .product-card-item {
     height: 316px;
@@ -158,6 +158,10 @@
       }
     }
   };
+
+  &:hover {
+    @include card(1);
+  }
 }
 
 .mini-card {
@@ -176,8 +180,4 @@
   color: $light;
   font-weight: 600;
   padding: 15px;
-}
-
-.alert-card {
-  @include card(1);
 }
