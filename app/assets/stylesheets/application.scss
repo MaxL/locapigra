@@ -212,10 +212,19 @@ hr {
       width: 16.66%;
 
       &.cart-txt {
-        margin-top: 8px;
+        position: fixed;
+        top: 5px;
+        right: 5px;
       }
     }
   };
+}
+.user-btn {
+  &.visible-xs {
+    a {
+      padding: 0;
+    }
+  }
 }
 .cart-btn {
   position: relative;
@@ -331,14 +340,35 @@ hr {
         right: 10%;
         width: 100px;
         z-index: 9999;
+        @include respond-to(xs) {
+          position: fixed;
+          right: 5px;
+          width: 16.66%;
+        };
       }
 
       &.btn-group {
-        position: absolute;
-        top: 5px;
-        right: 17%;
-        width: 40px;
-        z-index: 9999;
+        @include respond-to(sm) {
+          position: absolute;
+          top: 5px;
+          right: 17%;
+          width: 40px;
+          z-index: 9999;
+        };
+        @include respond-to(md) {
+          position: absolute;
+          top: 5px;
+          right: 17%;
+          width: 40px;
+          z-index: 9999;
+        };
+        @include respond-to(lg) {
+          position: absolute;
+          top: 5px;
+          right: 17%;
+          width: 40px;
+          z-index: 9999;
+        };
       }
 
       &.user-btn {
