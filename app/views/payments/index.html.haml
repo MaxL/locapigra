@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-xs-12
+      %h2
+        Payment Options
+      - if @payments.any?
+        %table.table.table-condensed
+          %thead
+            %tr
+              %td
+                Name
+              %td
+                Fee
+              %td
+                Fee type
+              %td
+                Active?
+              %td.text-right
+                = link_to new_payment_path, class: "btn btn-default btn-xs" do
+                  %i.icon-plus
+          %tbody
+            = render @payments
+      - else
+        = link_to new_payment_path, class: "btn btn-default btn-xs" do
+          %i.icon-plus

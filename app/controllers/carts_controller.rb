@@ -46,18 +46,21 @@ class CartsController < ApplicationController
 
   def checkout
     @order = current_order
-    @order.order_status_id = 2
     if @order.update_attributes(order_params)
       if @order.agreement
-        @order.decrease_inventory
-        @order.save
-        session.delete :order_id
-        OrderMailer.confirmation_mail(@order).deliver_later
-        flash[:success] = "Order placed successfully"
-        if current_user
-          redirect_to confirm_order_path @order
+        @payment = Payment.find(order_params[:payment_id])
+        # payment method switch
+        if @payment.name == "Paypal"
+          @order.payment_fee = @order.total * ( 1 + (@payment.price / 100))
+          @order.total = @order.total + ( @order.payment_fee / 100 )
+          puts @order.total
+          @order.order_status_id = 6
+          @order.save
+          redirect_to @order.paypal_url(order_path(@order))
         else
-          redirect_to thanks_path
+          @order.order_status_id = 2
+          @order.save
+          validate_order
         end
       else
         flash[:danger] = "Your order could not be completed"
@@ -69,9 +72,33 @@ class CartsController < ApplicationController
     end
   end
 
+  def validate_order
+    @order = current_order
+    @order.decrease_inventory
+    @order.save
+    session.delete :order_id
+    OrderMailer.confirmation_mail(@order).deliver_later
+    flash[:success] = "Order placed successfully"
+    if current_user
+      redirect_to confirm_order_path @order
+    else
+      redirect_to thanks_path
+    end
+  end
+
   private
     def order_params
-      params.require(:order).permit(:total, :tax, :shipping, :address_id, :agreement, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country, :email ])
+      params.require(:order).permit(:total, :tax, :shipping, :address_id, :agreement, :payment_id, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country, :email ])
+    end
+
+    def hook
+      params.permit! # Permit all Paypal input params
+      status = params[:payment_status]
+      if status == "Completed"
+        @order = Order.find params[:invoice]
+        @order.update_attributes notification_params: params, order_status_id: 3, transaction_id: params[:txn_id]
+        validate_order
+      end
     end
 
 end

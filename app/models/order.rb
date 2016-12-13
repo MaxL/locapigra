@@ -9,10 +9,13 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :products, through: :order_items
   has_one :address
+  has_one :payment
   before_create :set_order_status, :generate_random_order_number
   before_save :update_subtotal
 
   accepts_nested_attributes_for :address
+
+  serialize :notification_params, Hash
 
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0}.sum
@@ -54,6 +57,27 @@ class Order < ActiveRecord::Base
       order_items_for_data_layer[:quantity] = order_item.quantity
     end
     order_items_for_data_layer
+  end
+
+  def paypal_url(return_path)
+    values = {
+      intent: "sale",
+      redirect_urls: {
+        return_url: "#{Rails.application.secrets.app_host}/hook",
+        cancel_url: "#{Rails.application.secrets.app_host}/cart"
+      },
+      payer: {
+        payment_method: "paypal"
+      },
+      transactions: [
+        amount: {
+          toal: total,
+          currency: "EUR"
+        },
+        description: "Purschase at locapigra"
+      ]
+    }
+    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
   private

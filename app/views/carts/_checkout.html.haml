@@ -21,6 +21,9 @@
     #{number_to_currency @order.tax, locale: :de} VAT is included in the price above
 
 = form_for @order, url: {action: "checkout"} do |f|
+  .form-group
+    = f.label :payment, "Pay with", {class: "loca-label"}
+    = f.select :payment_id, Payment.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Choose a payment option'}, class: "form-control"
   .checkbox
     %label
       = f.check_box :agreement, {required: true}

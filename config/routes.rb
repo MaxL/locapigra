@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   resources :destinations
 
+  resources :payments
+
   resources :blogs
 
   root 'static_pages#home'
@@ -44,6 +46,9 @@ Rails.application.routes.draw do
   get 'toc' => 'static_pages#toc'
 
   get 'thanks' => 'static_pages#thanks'
+
+  # paypal return
+    post "/hook" => "shop#hook"
 
   # user specific
   devise_scope :user do
