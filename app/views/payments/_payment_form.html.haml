@@ -1,0 +1,20 @@
+= form_for(@payment) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control", placeholder: "Paypal"
+
+  .form-group
+    = f.label :price
+    = f.number_field :price, step: 0.01, class: "form-control"
+
+  .form-group
+    = f.label :fee_type
+    = f.text_field :fee_type, class: "form-control"
+
+  .checkbox
+    = f.label :active
+    = f.check_box :active
+
+  = f.submit "Save", class: "btn btn-primary"
