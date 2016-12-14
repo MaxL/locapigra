@@ -160,9 +160,11 @@ ActiveRecord::Schema.define(version: 20161213144816) do
     t.datetime "release_date"
     t.string   "language"
     t.boolean  "active"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.string   "slug"
+    t.integer  "price_cents",                               default: 0,     null: false
+    t.string   "price_currency",                            default: "EUR", null: false
     t.boolean  "limited"
   end
 

@@ -9,6 +9,10 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 
+# APIs
+gem 'tumblr_client'
+gem 'paypal-sdk-rest'
+
 # SEO
 gem 'meta-tags'
 gem 'friendly_id',              '~> 5.1.0'
@@ -51,7 +55,6 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'figaro'
 gem 'httparty'
-gem 'tumblr_client'
 gem 'shenanigans'
 
 gem 'sdoc',                    '>= 0.4.0', group: :doc

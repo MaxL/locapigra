@@ -56,7 +56,7 @@ class CartsController < ApplicationController
           puts @order.total
           @order.order_status_id = 6
           @order.save
-          redirect_to @order.paypal_url(order_path(@order))
+          @order.paypal_checkout
         else
           @order.order_status_id = 2
           @order.save

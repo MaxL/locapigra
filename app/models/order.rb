@@ -59,25 +59,56 @@ class Order < ActiveRecord::Base
     order_items_for_data_layer
   end
 
-  def paypal_url(return_path)
-    values = {
-      intent: "sale",
-      redirect_urls: {
-        return_url: "#{Rails.application.secrets.app_host}/hook",
-        cancel_url: "#{Rails.application.secrets.app_host}/cart"
-      },
-      payer: {
-        payment_method: "paypal"
-      },
-      transactions: [
-        amount: {
-          toal: total,
-          currency: "EUR"
-        },
-        description: "Purschase at locapigra"
-      ]
-    }
-    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
+  def paypal_checkout
+
+    order_item_list = order_items.all.map { |u| [u.id, u] }.to_h
+
+    puts order_item_list
+
+    require 'paypal-sdk-rest'
+
+    @payment = PayPal::SDK::REST::Payment.new({
+      :intent =>  "sale",
+
+      # ###Payer
+      # A resource representing a Payer that funds a payment
+      # Payment Method as 'paypal'
+      :payer =>  {
+        :payment_method =>  "paypal" },
+
+      # ###Redirect URLs
+      :redirect_urls => {
+        :return_url => "http://localhost:3000/hook",
+        :cancel_url => "http://localhost:3000/" },
+
+      # ###Transaction
+      # A transaction defines the contract of a
+      # payment - what is the payment for and who
+      # is fulfilling it.
+      :transactions =>  [{
+
+        # Item List
+        :item_list => {
+          :items => [
+
+          ]},
+
+        # ###Amount
+        # Let's you specify a payment amount.
+        :amount =>  {
+          :total =>  total,
+          :currency =>  "EUR" },
+        :description =>  "Your purchase at locapigra." }]})
+
+    # Create Payment and return status
+    if @payment.create
+      # Redirect the user to given approval url
+      @redirect_url = @payment.links.find{|v| v.method == "REDIRECT" }.href
+      logger.info "Payment[#{@payment.id}]"
+      logger.info "Redirect: #{@redirect_url}"
+    else
+      logger.error @payment.error.inspect
+    end
   end
 
   private
