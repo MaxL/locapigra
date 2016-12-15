@@ -114,24 +114,29 @@ ActiveRecord::Schema.define(version: 20161214212733) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",          precision: 12, scale: 3
-    t.decimal  "tax",               precision: 12, scale: 3
-    t.decimal  "shipping",          precision: 12, scale: 3
-    t.decimal  "total",             precision: 12, scale: 3
+    t.decimal  "subtotal",            precision: 12, scale: 3
+    t.decimal  "tax",                 precision: 12, scale: 3
+    t.decimal  "shipping",            precision: 12, scale: 3
+    t.decimal  "total",               precision: 12, scale: 3
     t.integer  "order_status_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.integer  "address_id"
     t.boolean  "agreement"
     t.string   "order_number"
     t.integer  "user_id"
     t.string   "slug"
+    t.integer  "payment_id"
+    t.text     "notification_params"
+    t.string   "transaction_id"
+    t.integer  "payment_fee",                                  default: 0
     t.integer  "payment_choice_id"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
   add_index "orders", ["payment_choice_id"], name: "index_orders_on_payment_choice_id"
+  add_index "orders", ["payment_id"], name: "index_orders_on_payment_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "payment_choices", force: :cascade do |t|
@@ -142,6 +147,15 @@ ActiveRecord::Schema.define(version: 20161214212733) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "active"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "price",      precision: 12, scale: 3
+    t.boolean  "active"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "fee_type"
   end
 
   create_table "products", force: :cascade do |t|
@@ -158,11 +172,9 @@ ActiveRecord::Schema.define(version: 20161214212733) do
     t.datetime "release_date"
     t.string   "language"
     t.boolean  "active"
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "slug"
-    t.integer  "price_cents",                               default: 0,     null: false
-    t.string   "price_currency",                            default: "EUR", null: false
     t.boolean  "limited"
   end
 
