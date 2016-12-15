@@ -1,0 +1,25 @@
+= form_for(@payment_choice) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .form-group
+    = f.label "Name (hidden to customers)"
+    = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label "Description (visible to customers)"
+    = f.text_field :description, class: "form-control"
+
+  .form-group
+    = f.label "Fee (fixed: 1,20€ -> 12 - percent: 3% -> 3)"
+    = f.number_field :fee, step: 1, class: "form-control"
+
+  .form-group
+    = f.label "Fee type (% or fixed fee)"
+    = f.text_field :fee_kind, class: "form-control"
+
+  .checkbox
+    = f.label :active do
+      = f.check_box :active
+      Active?
+
+  = f.submit "Save", class: "btn btn-primary"

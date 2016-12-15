@@ -1,26 +1,31 @@
-%table.table.table-condensed
-  %tr
-    %td
-      Subtotal
-    %td.text-right
-      = number_to_currency @order.subtotal, locale: :de
-  %tr
-    %td
-      Shipping costs
-    %td.text-right
-      = number_to_currency @order.shipping, locale: :de
-  %tr.danger
-    %td
-      %span.strong Total
-    %td.text-right
-      %span.strong
-        = number_to_currency @order.total, locale: :de
-
-%div
-  %span.text-muted.small
-    #{number_to_currency @order.tax, locale: :de} VAT is included in the price above
-
 = form_for @order, url: {action: "checkout"} do |f|
+
+  .form-group
+    = f.label "Pay with:"
+    = f.select :payment_choice_id, PaymentChoice.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Choose a payment method'}, class: "form-control"
+
+  %table.table.table-condensed
+    %tr
+      %td
+        Subtotal
+      %td.text-right
+        = number_to_currency @order.subtotal, locale: :de
+    %tr
+      %td
+        Shipping costs
+      %td.text-right
+        = number_to_currency @order.shipping, locale: :de
+    %tr.danger
+      %td
+        %span.strong Total
+      %td.text-right
+        %span.strong
+          = number_to_currency @order.total, locale: :de
+
+  %div
+    %span.text-muted.small
+      #{number_to_currency @order.tax, locale: :de} VAT is included in the price above
+
   .checkbox
     %label
       = f.check_box :agreement, {required: true}
@@ -28,6 +33,14 @@
   = f.button(type: "submit", class: "btn btn-primary pull-right") do
     %i.icon-ok
     COMPLETE ORDER
+
+= form_tag("/carts", method: "post", id: "payment-form") do
+  %section
+    .bt-drop-in-wrapper
+      #bt-dropin
+
+  %button.button{type: "submit"}
+    %span Test Transaction
 
 .modal.fade#tocModal
   .modal-dialog
@@ -40,3 +53,12 @@
       .modal-body
         .row
           = render "shared/toc"
+
+= javascript_include_tag "https://js.braintreegateway.com/js/braintree-2.27.0.min.js"
+
+:javascript
+  console.log(braintree)
+  var client_token = "#{@client_token}";
+  braintree.setup(client_token, "dropin", {
+    container: "bt-dropin"
+  });

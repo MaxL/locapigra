@@ -16,6 +16,7 @@ $(document).ready(function() {
   if ( $('.homepage').length ) {
     fireworks();
   }
+
 });
 
 $(document).on("turbolinks:load", function() {

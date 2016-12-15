@@ -1,0 +1,11 @@
+%tr
+  %td= payment_choice.name
+  %td= payment_choice.description
+  %td= payment_choice.fee
+  %td= payment_choice.fee_kind
+  %td= payment_choice.active
+  %td.text-right
+    = link_to edit_payment_choice_path(payment_choice.id), class: "btn btn-default btn-xs" do
+      %i.icon-edit
+    = link_to payment_choice, method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Really delete #{payment_choice.name}" } do
+      %i.icon-block-1

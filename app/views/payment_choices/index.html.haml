@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-xs-12
+      %h2
+        Payment Choices
+      - if @payment_choices.any?
+        %table.table.table-condensed
+          %thead
+            %tr
+              %td
+                Name
+              %td
+                Description (will be displayed to customer)
+              %td
+                Fee
+              %td
+                Fee Type
+              %td
+                Active?
+              %td.text-right
+                = link_to new_payment_choice_path, class: "btn btn-default btn-xs" do
+                  %i.icon-plus-1
+          %tbody
+            = render @payment_choices
+      - else
+        = link_to new_payment_choice_path, class: "btn btn-default btn-xs" do
+          %i.icon-plus-1

@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :products, through: :order_items
   has_one :address
+  has_one :payment_choice
   before_create :set_order_status, :generate_random_order_number
   before_save :update_subtotal
 

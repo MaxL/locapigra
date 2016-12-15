@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   resources :destinations
 
+  resources :payment_choices
+
   resources :blogs
 
   root 'static_pages#home'
