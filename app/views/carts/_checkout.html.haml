@@ -34,12 +34,19 @@
     %i.icon-ok
     COMPLETE ORDER
 
-= form_tag("/carts", method: "post", id: "payment-form") do
+= form_for @order, url: {action: "checkout"}, id: "payment-form" do |g|
+  .form-group
+    = g.label "Pay with:"
+    = g.select :payment_choice_id, PaymentChoice.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Choose a payment method'}, class: "form-control"
   %section
     .bt-drop-in-wrapper
       #bt-dropin
 
-  %button.button{type: "submit"}
+  .checkbox
+    %label
+      = g.check_box :agreement, {required: true}
+      I agree to the #{link_to "terms & conditions", "#tocModal", {  "data-toggle": "modal" }}
+  = g.button(type: "submit") do
     %span Test Transaction
 
 .modal.fade#tocModal
@@ -53,8 +60,6 @@
       .modal-body
         .row
           = render "shared/toc"
-
-= javascript_include_tag "https://js.braintreegateway.com/js/braintree-2.27.0.min.js"
 
 :javascript
   console.log(braintree)
