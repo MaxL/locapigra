@@ -24,19 +24,28 @@
                 Shipping price
               %td.text-right= number_to_currency @order.shipping, locale: :de
 
+          - if @order.payment_fee > 0
+            %table.table
+              %tr
+                %td.text-left
+                  Shipping price
+                %td.text-right= number_to_currency @order.payment_fee / 100.0, locale: :de
+
           %table.table
             %tr
               %td.text-left
                 %strong TOTAL
               %td.text-right
                 %strong.blood= number_to_currency @order.total, locale: :de
-      %p Will be shipped as soon as your payment is confirmed.
-      %p If you chose to pay by bankwire, please wire the total amount to:
-      %p= @bank_owner
-      %p= @bank_iban
-      %p= @bank_bic
 
-      %P An e-mail with these instructions and an invoice has also been sent to you.
+      - if @order.payment_fee == 0
+        %p Will be shipped as soon as your payment is confirmed.
+        %p If you chose to pay by bankwire, please wire the total amount to:
+        %p= @bank_owner
+        %p= @bank_iban
+        %p= @bank_bic
+
+      %P A confirmation e-mail has also been sent to you.
 
 :javascript
   document.addEventListener("turbolinks:load", function() {

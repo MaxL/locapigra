@@ -33,6 +33,7 @@ class CartsController < ApplicationController
     @order = current_order
     @user = @order.user
     @client_token = Braintree::ClientToken.generate
+    @payment = PaymentChoice.find(order_params[:payment_choice_id])
     respond_to do |format|
       if @order.update_attributes(order_params)
         #if is_guest_user?
@@ -41,7 +42,19 @@ class CartsController < ApplicationController
         #end
         @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
-        @order.total = @order.subtotal + @order.shipping
+
+        total = @order.subtotal + @order.shipping
+
+        if @payment.name == "Paypal"
+          fee = ((total*100.0) * 0.019) + 35.0
+          @order.payment_fee = fee.round
+        else
+          @order.payment_fee = 0
+        end
+
+        fee_float = @order.payment_fee / 100.0
+
+        @order.total = total + fee_float
         @order.tax = @order.total * 0.07
         @order.save
 
@@ -138,7 +151,7 @@ class CartsController < ApplicationController
           :icon => "fail",
           :message => "Your test transaction has a status of #{status}. See the Braintree API response and try again."
         }
-        flash[:error] = "Transaction failed: your transaction has a status of #{status}"
+        flash[:danger] = "Transaction failed: your transaction has a status of #{status}"
         redirect_to cart_path
       end
     end

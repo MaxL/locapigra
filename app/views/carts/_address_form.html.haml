@@ -1,6 +1,11 @@
 = form_for @order, remote: true, url: {action: "submit_address", controller: "carts"}, html: {class: "order-address-form loca-form"} do |f|
   = f.fields_for :address do |address|
     = render 'shared/address_fields', f: address
+
+  .form-group
+    = f.label "Pay with:"
+    = f.select :payment_choice_id, PaymentChoice.all.collect {|p| [ p.description, p.id ] }, {include_blank: 'Choose a payment method'}, class: "form-control", required: true
+
   = f.button(type: "submit", class: "btn btn-primary pull-right") do
     %i.icon-angle-right
     NEXT

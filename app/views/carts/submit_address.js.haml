@@ -10,4 +10,7 @@
   $('.order-address-form').hide().empty().remove();
   $('.order_item_qty').prop('readonly', true).addClass('readonly');
   $('.order_item_update, .order_item_delete').hide();
-  $('#checkout-div').append("#{escape_javascript(render 'carts/checkout')}");
+  - if @payment.name == "Paypal"
+    $('#checkout-div').append("#{escape_javascript(render 'carts/paypal_checkout')}");
+  - else
+    $('#checkout-div').append("#{escape_javascript(render 'carts/checkout')}");
