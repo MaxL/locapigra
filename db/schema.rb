@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207211702) do
+ActiveRecord::Schema.define(version: 20161215184250) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -114,23 +114,36 @@ ActiveRecord::Schema.define(version: 20161207211702) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "tax",             precision: 12, scale: 3
-    t.decimal  "shipping",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
+    t.decimal  "subtotal",          precision: 12, scale: 3
+    t.decimal  "tax",               precision: 12, scale: 3
+    t.decimal  "shipping",          precision: 12, scale: 3
+    t.decimal  "total",             precision: 12, scale: 3
     t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "address_id"
     t.boolean  "agreement"
     t.string   "order_number"
     t.integer  "user_id"
     t.string   "slug"
+    t.integer  "payment_choice_id"
+    t.integer  "payment_fee"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+  add_index "orders", ["payment_choice_id"], name: "index_orders_on_payment_choice_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "payment_choices", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "fee"
+    t.string   "fee_kind"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "active"
+  end
 
   create_table "products", force: :cascade do |t|
     t.text     "name"

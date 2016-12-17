@@ -8,14 +8,11 @@ $(document).ready(function() {
 
   $('.order-address-form').validate();
 
-  $("#flash").fadeTo(3000, 500).slideUp(500, function(){
-    $("#flash").alert('close');
-  });
-
   formLabel();
   if ( $('.homepage').length ) {
     fireworks();
   }
+
 });
 
 $(document).on("turbolinks:load", function() {
@@ -34,10 +31,6 @@ $(document).on("turbolinks:load", function() {
   $('.tooltip-item').tooltip();
 
   $('.order-address-form').validate();
-
-  $("#flash").fadeTo(3000, 500).slideUp(500, function(){
-    $("#flash").alert('close');
-  });
 
   formLabel();
   if ( $('.homepage').length ) {

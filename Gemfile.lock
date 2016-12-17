@@ -56,6 +56,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    braintree (2.69.1)
+      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (9.0.5)
     cancancan (1.15.0)
@@ -474,6 +476,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-sass (>= 3.2.0.0)
   bootstrap-will_paginate (>= 0.0.10)
+  braintree
   byebug (>= 3.4.0)
   cancancan
   capistrano (= 3.6.0)
@@ -531,4 +534,4 @@ DEPENDENCIES
   will_paginate (>= 3.0.7)
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

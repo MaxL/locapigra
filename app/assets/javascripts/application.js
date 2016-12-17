@@ -20,6 +20,7 @@
 //= require bootstrap-datepicker
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require braintree.min
 //= require anime
 //= require index
 //= require global
