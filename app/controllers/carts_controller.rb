@@ -45,7 +45,7 @@ class CartsController < ApplicationController
 
         total = @order.subtotal + @order.shipping
 
-        if @payment.name == "Paypal"
+        if @payment.name == "Braintree"
           fee = ((total*100.0) * 0.019) + 35.0
           @order.payment_fee = fee.round
         else
@@ -74,7 +74,7 @@ class CartsController < ApplicationController
     if @order.update_attributes(order_params)
       if @order.agreement
         @payment = PaymentChoice.find(@order.payment_choice_id)
-        if @payment.name == "Paypal"
+        if @payment.name == "Braintree"
           @order.order_status_id = 6
           @order.save
           create_braintree_payment @order.total, @order, params["payment_method_nonce"]
