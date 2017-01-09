@@ -5,7 +5,7 @@ class OrderMailer < ApplicationMailer
 
   def confirmation_mail(order)
     @order = order
-    if @order.payment_id == 1
+    if @order.payment_choice_id == 1
       @post_order_msg = ""
     else
       @bank_owner = ENV["BANK_OWNER"]
