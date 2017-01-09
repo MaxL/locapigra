@@ -14,7 +14,8 @@ class OrderMailer < ApplicationMailer
       @post_order_msg = " Please verify the order information above and wire the total sum to \n #{@bank_owner} \n IBAN: #{@bank_iban} \n BIC: #{@bank_bic}"
     end
 
-    mail(to: @order.address.email, bcc: [ "info@locapigra.biz", ENV["PRIVATE_EMAIL"] ], subject: 'Thank you for your order from l’oca pigra')
+    mail(to: @order.address.email, cc: [ "info@locapigra.biz" ], bcc: [ ENV["PRIVATE_EMAIL"] ], subject: 'Thank you for your order from l’oca pigra')
+
   end
 
   private
