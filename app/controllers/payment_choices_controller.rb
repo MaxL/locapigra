@@ -2,7 +2,7 @@ class PaymentChoicesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @payment_choices = PaymentChoice.all
+    @payment_choices = PaymentChoice.unscoped.all
   end
 
   def new
