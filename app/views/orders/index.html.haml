@@ -1,85 +1,29 @@
 .container
   .row
-    .col-xs-12.col-sm-6
+    .col-xs-12
       %h4
-        Orders pending [#{@orders_pending.count}]
-      - if @orders_pending.any?
-        %table.table.table-condensend
-          %thead
-            %tr
-              %td
-                Order ID - Ref
-              %td
-                Customer
-              %td.text-right
-                $$$
-              %td
-          %tbody
-            = render partial: "order", collection: @orders_pending
-    .col-xs-12.col-sm-6
-      %h4
-        Orders placed (waiting for payment) [#{@orders_placed.count}]
-      - if @orders_placed.any?
-        %table.table.table-condensend
-          %thead
-            %tr
-              %td
-                Order ID - Ref
-              %td
-                Customer
-              %td.text-right
-                $$$
-              %td
-          %tbody
-            = render partial: "order", collection: @orders_placed, status: "Placed"
+        Orders [#{@orders.count}]
 
-    .col-xs-12.col-sm-6
-      %h4
-        Orders Paid [#{@orders_paid.count}]
-      - if @orders_paid.any?
-        %table.table.table-condensend
-          %thead
-            %tr
-              %td
-                Order ID - Ref
-              %td
-                Customer
-              %td.text-right
-                $$$
-              %td
-          %tbody
-            = render partial: "order", collection: @orders_paid
-
-    .col-xs-12.col-sm-6
-      %h4
-        Orders shipped [#{@orders_shipped.count}]
-      - if @orders_shipped.any?
-        %table.table.table-condensend
-          %thead
-            %tr
-              %td
-                Order ID - Ref
-              %td
-                Customer
-              %td.text-right
-                $$$
-              %td
-          %tbody
-            = render partial: "order", collection: @orders_shipped
-
-    .col-xs-12.col-sm-6
-      %h4
-        Orders cancelled [#{@orders_cancelled.count}]
-      - if @orders_cancelled.any?
-        %table.table.table-condensend
-          %thead
-            %tr
-              %td
-                Order ID - Ref
-              %td
-                Customer
-              %td.text-right
-                $$$
-              %td
-          %tbody
-            = render partial: "order", collection: @orders_cancelled
+      %table.table.table-condensend
+        %thead
+          %tr
+            %td
+              Order ID
+            %td
+              Order Reference
+            %td
+              Placed on
+            %td
+              Customer
+            %td
+              User
+            %td
+              Status
+            %td
+              Payment
+            %td
+              Total $
+            %td
+              action
+        %tbody
+          = render partial: "order", collection: @orders

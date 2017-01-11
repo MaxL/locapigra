@@ -80,6 +80,7 @@ class CartsController < ApplicationController
           create_braintree_payment @order.total, @order, params["payment_method_nonce"]
         else
           @order.decrease_inventory
+          @order.placed_on = DateTime.now
           @order.save
           session.delete :order_id
           OrderMailer.confirmation_mail(@order).deliver_later
@@ -136,6 +137,7 @@ class CartsController < ApplicationController
       if TRANSACTION_SUCCESS_STATUSES.include? status
         @order.decrease_inventory
         @order.order_status_id = 3
+        @order.placed_on = DateTime.now
         @order.save
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later

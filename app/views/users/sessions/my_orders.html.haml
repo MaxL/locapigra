@@ -10,9 +10,11 @@
               %td
                 Order Number
               %td
+                Placed on
+              %td
                 Recipient
               %td.text-right
                 Amount
               %td
           %tbody
-            = render partial: "orders/order", collection: @orders
+            = render partial: "orders/myorder", collection: @orders

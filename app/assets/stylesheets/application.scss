@@ -544,3 +544,24 @@ footer {
   margin-top: 45px;
   box-sizing: border-box;
 }
+
+// #ADMIN
+
+//statuses
+.status-placed {
+  background-color: lighten($sand, 25);
+}
+
+.status-paid {
+  background-color: $swamp;
+  color: $light;
+}
+
+.status-shipped {
+  background-color: $lagoon;
+  color: $light;
+}
+
+.large-icon {
+  font-size: 40px;
+}

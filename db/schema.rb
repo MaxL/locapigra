@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215184250) do
+ActiveRecord::Schema.define(version: 20170111175118) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -128,6 +128,9 @@ ActiveRecord::Schema.define(version: 20161215184250) do
     t.string   "slug"
     t.integer  "payment_choice_id"
     t.integer  "payment_fee"
+    t.datetime "placed_on"
+    t.datetime "shipped_on"
+    t.datetime "cancelled_on"
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id"

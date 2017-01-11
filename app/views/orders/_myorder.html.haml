@@ -1,0 +1,17 @@
+%tr
+  %td
+    = myorder.order_number.to_s
+  %td
+    - if myorder.placed_on
+      = myorder.placed_on.strftime("%y.%m.%d %T")
+    - else
+      = myorder.updated_at.strftime("%y.%m.%d %T")
+  %td
+    - if myorder.address
+      = myorder.address.recipient
+    - else
+      [none]
+  %td.text-right= number_to_currency myorder.total, locale: :de
+  %td.text-right
+    = link_to order_path(myorder.id), class: "btn btn-default btn-xs" do
+      %i.icon-eye.fa-fw
