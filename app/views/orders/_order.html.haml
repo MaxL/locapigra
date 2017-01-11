@@ -34,5 +34,5 @@
     - if current_user.admin?
       = link_to edit_order_path(order.id), class: "btn btn-default btn-xs" do
         %i.icon-edit.fa-fw
-      = link_to order, method: :destroy, class: "btn btn-default btn-xs", data: { confirm: "Really delete order #{order.id}" } do
+      = link_to order, method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Really delete order #{order.id}" } do
         %i.icon-block-1

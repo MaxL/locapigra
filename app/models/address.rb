@@ -2,7 +2,7 @@ class Address < ActiveRecord::Base
   belongs_to :order
 
   AVAILABLE_COUNTRIES = [
-    "DE", "AT", "CH", "DK", "NL", "FR", "GB", "US"
+    "DE", "AT", "CH", "DK", "NL", "FR", "GB", "US", "CN", "CA", "IT", "BE"
   ]
 
   validates :recipient, presence: true
