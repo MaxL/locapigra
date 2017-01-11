@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :order_status
   belongs_to :user
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
   has_one :address
   has_one :payment_choice
