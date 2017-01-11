@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def my_orders
     @user = current_user
-    @orders = @user.orders.all
+    @orders = @user.orders.where("order_status_id > ?", 1).sort_by(&:updated_at).reverse
   end
 
   protected

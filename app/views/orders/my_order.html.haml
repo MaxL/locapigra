@@ -1,0 +1,49 @@
+%div.container
+  %h1 Order # #{@order.order_number}
+  %p= @order.address.recipient
+  %p= @order.address.email
+  %p
+    Status:
+    %strong= @status.name
+  .row
+    .col-xs-12.col-sm-10.col-md-6
+      %table.table.table-condensed
+        %thead
+          %tr
+            %td Product
+            %td.text-right Unit Price
+            %td.text-right Total Price
+        %tbody
+          = render @order.order_items
+      %table.table.table-condensed
+        %tr
+          %td
+            Products:
+          %td.text-right= number_to_currency @order.subtotal, locale: :de
+        %tr
+          %td
+            Shipping:
+          %td.text-right= number_to_currency @order.shipping, locale: :de
+        %tr
+          %td
+            Tax:
+          %td.text-right= number_to_currency @order.tax, locale: :de
+        %tr
+          %td
+            %strong
+              TOTAL
+          %td.text-right.strong.blood= number_to_currency @order.total, locale: :de
+
+    .col-xs-12.col-sm-10.col-md-6
+      %strong Deliver To:
+      .well.text-left
+        %address
+          %strong= @order.address.recipient
+          %br
+          = @order.address.street
+          %br
+          = @order.address.zip + ', ' + @order.address.city
+          %br
+          = @order.address.state
+          %br
+          = @order.address.country

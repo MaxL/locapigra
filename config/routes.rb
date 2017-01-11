@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :order_items, only: [:create, :update, :destroy]
+  resources :order_items, only: [:create, :update, :destroy, :index]
 
   resources :orders do
     member do
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   # user specific
   devise_scope :user do
     get 'my-orders' => 'users/sessions#my_orders'
+    get 'my_order', to: 'orders#my_order'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

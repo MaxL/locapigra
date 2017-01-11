@@ -1,16 +1,12 @@
 class OrdersController < ApplicationController
   #skip_authorization_check only: :confirm
-  load_and_authorize_resource# except: :confirm
-  before_filter :no_header, except: [:confirm]
+  load_and_authorize_resource except: [:my_orders, :my_order]
+  before_filter :no_header, except: [:confirm, :show]
 
   def index
-    @orders = Order.all
+    @orders = Order.all.sort_by(&:updated_at).reverse
     @status = OrderStatus.all
-    @orders_pending = Order.where(order_status_id: 1)
-    @orders_placed = Order.where(order_status_id: 2)
-    @orders_paid = Order.where(order_status_id: 3)
-    @orders_shipped = Order.where(order_status_id: 4)
-    @orders_cancelled = Order.where(order_status_id: 5)
+    @payments = PaymentChoice.all
   end
 
   def show
@@ -37,6 +33,12 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update_attributes(order_params)
+      if params[:order_status_id] = 4
+        @order.shipped_on = DateTime.now
+        @order.save
+      elsif params[:order_status_id] = 5
+        @order.cancelled_on = DateTime.now
+      end
       flash[:success] = "Order updated successfully"
       redirect_to orders_path
     else
