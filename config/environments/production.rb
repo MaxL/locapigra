@@ -65,6 +65,9 @@ Rails.application.configure do
     env.register_engine '.haml', Tilt::HamlTemplate
   end
 
+  # NGINX File downloads
+  config.action_dispatch.x_sendfile_header = "X-Accel-Redirect"
+
   config.action_mailer.asset_host = 'https://www.locapigra.biz'
 
   # Ignore bad email addresses and do not raise email delivery errors.
