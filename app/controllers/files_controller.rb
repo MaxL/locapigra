@@ -22,10 +22,14 @@ class FilesController < ApplicationController
   end
 
   def clawsepub
-    send_file 'downloads/clawsoffury.epub', type: "application/txt"#, disposition: 'inline'
+    send_file 'downloads/clawsoffury.epub'
   end
 
   def clawscbr
-    send_file 'downloads/clawsoffury.cbr', type: "application/txt"#, disposition: 'inline'
+    send_file 'downloads/clawsoffury.cbr'
+  end
+
+  def clawsbundle
+    send_file 'downloads/clawsoffury.zip'
   end
 end
