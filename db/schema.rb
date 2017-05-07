@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111175118) do
+ActiveRecord::Schema.define(version: 20170417101110) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170111175118) do
     t.string   "slug"
     t.boolean  "released"
     t.integer  "product_id"
+    t.boolean  "is_virtual"
+    t.text     "pp_button"
   end
 
   add_index "comics", ["name"], name: "index_comics_on_name", unique: true
@@ -68,6 +70,13 @@ ActiveRecord::Schema.define(version: 20170111175118) do
     t.decimal  "shipping_price", precision: 12, scale: 3
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+  end
+
+  create_table "download_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -151,9 +160,8 @@ ActiveRecord::Schema.define(version: 20170111175118) do
   create_table "products", force: :cascade do |t|
     t.text     "name"
     t.text     "description"
-    t.decimal  "price",            precision: 12, scale: 3
     t.integer  "taxrate"
-    t.decimal  "weight",           precision: 12, scale: 3
+    t.decimal  "weight",              precision: 12, scale: 3
     t.string   "meta_title"
     t.text     "meta_description"
     t.integer  "quantity"
@@ -162,12 +170,16 @@ ActiveRecord::Schema.define(version: 20170111175118) do
     t.datetime "release_date"
     t.string   "language"
     t.boolean  "active"
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.string   "slug"
-    t.integer  "price_cents",                               default: 0,     null: false
-    t.string   "price_currency",                            default: "EUR", null: false
     t.boolean  "limited"
+    t.integer  "real_price_cents",                             default: 0,     null: false
+    t.string   "real_price_currency",                          default: "EUR", null: false
+    t.integer  "price_cents",                                  default: 0,     null: false
+    t.string   "price_currency",                               default: "EUR", null: false
+    t.boolean  "is_virtual"
+    t.text     "pp_button"
   end
 
   create_table "roles", force: :cascade do |t|

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'files/download'
+
+  match 'files/clawsoffury', to: 'files#clawsoffury', via: :post
+
+  get 'files/clawspdf' => 'files#clawspdf'
+  get 'files/clawsepub' => 'files#clawsepub'
+  get 'files/clawscbr' => 'files#clawscbr'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -32,6 +40,8 @@ Rails.application.routes.draw do
   resources :payment_choices
 
   resources :blogs
+
+  resources :paypal_notifications
 
   root 'static_pages#home'
 

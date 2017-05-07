@@ -3,8 +3,9 @@ class ProductsController < ApplicationController
   load_and_authorize_resource :except => [:index, :show]
 
   def index
-    @products = Product.paginate(page: params[:page])
+    @products = Product.paginate(page: params[:page]).order('id DESC')
     @order_item = current_order.order_items.new
+    @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
   end
 
   def admin_index
@@ -14,6 +15,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.friendly.find(params[:id])
     @order_item = current_order.order_items.new
+    @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
   end
 
   def new
@@ -55,7 +57,7 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :taxrate, :weight, :meta_title, :meta_description, :quantity, :package, :cover_image, :release_date, :language, :active, :limited)
+      params.require(:product).permit(:name, :description, :price, :price_cents, :taxrate, :weight, :meta_title, :meta_description, :quantity, :package, :cover_image, :release_date, :language, :pp_button, :active, :limited, :is_virtual)
     end
 
 end

@@ -2,7 +2,7 @@ class PaymentChoicesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @payment_choices = PaymentChoice.unscoped.all
+    @payment_choices = PaymentChoice.all
   end
 
   def new
@@ -32,6 +32,12 @@ class PaymentChoicesController < ApplicationController
       flash[:danger] = "Something went wrong"
       render 'edit'
     end
+  end
+
+  def destroy
+    PaymentChoice.find(params[:id]).destroy
+    flash[:success] = "Payment method deleted"
+    redirect_to payment_choices_path
   end
 
   private

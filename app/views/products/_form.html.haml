@@ -13,8 +13,8 @@
     = f.label :meta_description
     = f.text_field :meta_description, class: "form-control"
   .form-group
-    = f.label :price
-    = f.number_field :price, step: 0.01, class: "form-control"
+    = f.label "Price (in cents and €)"
+    = f.number_field :price_cents, step: 1, class: "form-control"
   .form-group
     = f.label :taxrate
     = f.number_field :taxrate, class: "form-control"
@@ -36,6 +36,9 @@
   .form-group
     = f.label :language
     = f.text_field :language, class: "form-control"
+  .form-group
+    = f.label :pp_button
+    = f.text_field :pp_button, class: "form-control"
   .checkbox
     = f.label :limited do
       = f.check_box :limited
@@ -44,4 +47,8 @@
     = f.label :active do
       = f.check_box :active
       Active?
+  .checkbox
+    = f.label :is_virtual do
+      = f.check_box :is_virtual
+      Virtual (Download / service etc.)?
   = f.submit "Create product", class: "btn btn-primary"

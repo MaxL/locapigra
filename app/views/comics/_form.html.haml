@@ -30,6 +30,12 @@
   .checkbox
     = f.label :released
     = f.check_box :released
+  .checkbox
+    = f.label :is_virtual
+    = f.check_box :is_virtual
+  .form-group
+    = f.label :pp_button
+    = f.text_field :pp_button, class: "form-control"
   = f.submit "Create comic", class: "btn btn-primary"
 :javascript
   $('#micropost_picture').bind('change', function() {

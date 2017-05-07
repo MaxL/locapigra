@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_or_guest_user
   helper_method :order_items_quantity
 
+  helper_method :set_currency
+
   def current_order
     if !session[:order_id].nil?
       if Order.find_by_id(session[:order_id])
@@ -46,6 +48,16 @@ class ApplicationController < ActionController::Base
 
   def no_header
     @no_header = true
+  end
+
+  def set_currency
+    c = {"CN": "CNY", "JP": "JPY", "GB": "GBP", "US": "USD"}
+    code = request.location.country_code
+    if c.key?(code)
+      currency = c[code].parameterize.to_sym
+    else
+      currency = :eur
+    end
   end
 
   private
