@@ -18,18 +18,18 @@ class FilesController < ApplicationController
   end
 
   def clawspdf
-    send_file 'downloads/clawsoffury.pdf', type: "application/pdf"#, disposition: 'inline'
+    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.pdf', type: "application/pdf"#, disposition: 'inline'
   end
 
   def clawsepub
-    send_file 'downloads/clawsoffury.epub'
+    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.epub'
   end
 
   def clawscbr
-    send_file 'downloads/clawsoffury.cbr'
+    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.cbr'
   end
 
   def clawsbundle
-    send_file 'downloads/clawsoffury.zip'
+    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.zip'
   end
 end
