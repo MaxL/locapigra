@@ -1,0 +1,23 @@
+- if @token
+  .container-fluid
+    .row
+      .category-heading.comic-heading
+        .container
+          %h1.title Download Claws of Fury
+  .container
+    .card-row
+      .col-xs-12
+        %p.lead
+          Thank you for your purchase. You can find the download links below. Keep in mind that this link will only be active for 24 hours after your purchase!
+    .row
+      .col-xs-4
+        =link_to "Download PDF", "/files/clawspdf?token=#{@token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
+      .col-xs-4
+        -# =link_to "Download ePub", "/files/clawsepub?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
+      .col-xs-4
+        -# =link_to "Download CBR", "/files/clawscbr?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
+- else
+  .container
+    %h1 Error
+    %p.lead
+      Sorry this page can only be accessed with a valid link! If you feel this is a mistake please contact us ASAP at info@locapigra.biz

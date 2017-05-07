@@ -33,6 +33,21 @@
           %small
             Size: #{@comic.dimensions}
 
+      - if @comic.is_virtual
+        %p.lead
+          This comic is available as a downloadable E-Book! Press the Paypal button below to purchase a copy!
+        %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
+          %input{type: "hidden", name: "rm", value: "2"}
+          %input{type: "hidden", name: "custom", value: "#{@token.token}"}
+          %input{type: "hidden", name: "hosted_button_id", value: "#{@comic.pp_button}"}
+          %input{type: "hidden", name: "cmd", value: "_s-xclick"}
+          %button{type: "submit", class: "btn btn-warning btn-block", name: "submit"}
+            %i.icon-paypal
+            Buy Now with Paypal
+          %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
+
+        %p.lead
+          or get the printed version in our store by clicking the big red button!
       - if @comic.product_id
         = link_to @comic.product, {class: "btn btn-danger btn-lg btn-block"} do
           Buy me!

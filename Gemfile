@@ -5,6 +5,12 @@ gem 'bcrypt',                  '>= 3.1.7'
 gem 'faker',                   '>= 1.4.2'
 
 gem 'braintree'
+#gem 'paypal-sdk-rest'
+
+gem 'money-rails'
+gem 'eu_central_bank'
+
+gem 'geocoder'
 
 # authentication
 gem 'devise'

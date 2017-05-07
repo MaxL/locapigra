@@ -9,6 +9,7 @@ class ComicsController < ApplicationController
 
   def show
     @comic = Comic.find(params[:id])
+    @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
     #debugger
   end
 
@@ -54,6 +55,10 @@ class ComicsController < ApplicationController
 
   private
     def comic_params
-      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id)
+      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id, :is_virtual, :pp_button)
+    end
+
+    def token_params
+      params.require(:download_token).permit(:token, :expires_at)
     end
 end

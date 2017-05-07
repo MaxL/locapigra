@@ -18,4 +18,4 @@
   = f.text_field :state, { placeholder: "State / Region", class: "form-control", required: true }
 .form-group
   = f.label :country, "Country", {class: "loca-label"}
-  = f.country_select("country", { selected: "DE", only: available_countries }, { class: "form-control" })
+  = f.country_select("country", { selected: "DE", only: Destination.all.collect { |e| e.country_code } }, { class: "form-control" })

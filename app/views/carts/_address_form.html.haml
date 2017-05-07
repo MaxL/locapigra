@@ -4,7 +4,7 @@
 
   .form-group
     = f.label "Pay with:"
-    = f.select :payment_choice_id, PaymentChoice.all.collect {|p| [ p.description, p.id ] }, {include_blank: 'Choose a payment method'}, class: "form-control", required: true
+    = f.select :payment_choice_id, PaymentChoice.all.reject {|p| p.active == false}.collect {|p| [ p.description, p.id ] }, {include_blank: 'Choose a payment method'}, class: "form-control", required: true
 
   = f.button(type: "submit", class: "btn btn-primary pull-right") do
     %i.icon-angle-right

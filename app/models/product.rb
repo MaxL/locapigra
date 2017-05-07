@@ -5,6 +5,9 @@ class Product < ActiveRecord::Base
   has_many :product_images
   belongs_to :order
 
+  monetize :price_cents
+  register_currency = :eur
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
@@ -16,7 +19,7 @@ class Product < ActiveRecord::Base
   validates :meta_description, presence: true#, length: { minimum: 120, maximum: 160 }
   validates :cover_image, presence: true
   validate  :cover_image_size
-  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 9999 }
+  #validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 9999 }
   validates :taxrate, presence: true, numericality: true
   validates :weight, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 10 }
   validates :quantity, presence: true, numericality: true
