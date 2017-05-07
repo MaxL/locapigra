@@ -1,11 +1,7 @@
 class FilesController < ApplicationController
   skip_authorization_check #only: [:index, :show]
   protect_from_forgery :except => [:clawsoffury]
-  before_filter :check_token
-
-  def check_token
-    redirect_to :back, :flash => {:error => "Bad link"} if DownloadToken.where("token = ? and expires_at > ?", params[:token], Time.now).nil?
-  end
+  before_action :check_token, except: [:clawsoffury]
 
   def clawsoffury
     @token = params[:custom]
@@ -18,7 +14,7 @@ class FilesController < ApplicationController
   end
 
   def clawspdf
-    send_file Rails.root.join("downloads", "clawsoffury.pdf"), type: "application/pdf", x_sendfile: true#, disposition: 'inline'
+    send_file Rails.root.join("downloads", "clawsoffury.pdf"), type: "application/pdf", stream: true, x_sendfile: true#, disposition: 'inline'
   end
 
   def clawsepub
@@ -31,5 +27,10 @@ class FilesController < ApplicationController
 
   def clawsbundle
     send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.zip'
+  end
+
+  private
+  def check_token
+    redirect_to root_path, :flash => {:danger => "Bad link"} unless DownloadToken.where("token = ? and expires_at > ?", params[:token], Time.now).present?
   end
 end

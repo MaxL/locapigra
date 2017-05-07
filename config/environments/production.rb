@@ -65,8 +65,8 @@ Rails.application.configure do
     env.register_engine '.haml', Tilt::HamlTemplate
   end
 
-  # NGINX File downloads
-  config.action_dispatch.x_sendfile_header = "X-Accel-Redirect"
+  # File downloads
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   config.action_mailer.asset_host = 'https://www.locapigra.biz'
 
