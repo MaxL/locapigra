@@ -18,7 +18,7 @@ class FilesController < ApplicationController
   end
 
   def clawspdf
-    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.pdf', type: "application/pdf"#, disposition: 'inline'
+    send_file Rails.root.join("downloads", "clawsoffury.pdf"), type: "application/pdf"#, disposition: 'inline'
   end
 
   def clawsepub
