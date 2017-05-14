@@ -78,6 +78,10 @@ class CartsController < ApplicationController
           @order.order_status_id = 6
           @order.save
           create_braintree_payment @order.total, @order, params["payment_method_nonce"]
+        elsif @payment.name == "Stripe"
+          @order.order_status_id = 6
+          @order.save
+          create_stripe_payment params[:stripeEmail], params[:stripeToken], @order.total, @order
         else
           @order.decrease_inventory
           @order.placed_on = DateTime.now
@@ -121,6 +125,27 @@ class CartsController < ApplicationController
     end
   end
 
+  def create_stripe_payment email, token, total, order
+    @amount = total*100
+
+    customer = Stripe::Customer.create(
+      email: email,
+      source: token
+    )
+
+    charge = Stripe::Charge.create(
+      customer: customer.id,
+      amount: @amount.to_i,
+      description: 'Locapigra Stripe Customer',
+      currency: 'eur'
+    )
+
+    validate_stripe_payment
+  rescue Stripe::CardError => e
+    flash[:danger] = e.message
+    redirect_to cart_path
+  end
+
   private
     def order_params
       params.require(:order).permit(:total, :tax, :shipping, :address_id, :agreement, :payment_choice_id, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country, :email ])
@@ -155,6 +180,21 @@ class CartsController < ApplicationController
         }
         flash[:danger] = "Transaction failed: your transaction has a status of #{status}"
         redirect_to cart_path
+      end
+    end
+
+    def validate_stripe_payment
+      @order.decrease_inventory
+      @order.order_status_id = 3
+      @order.placed_on = DateTime.now
+      @order.save
+      session.delete :order_id
+      OrderMailer.confirmation_mail(@order).deliver_later
+      flash[:success] = "Order placed successfully"
+      if current_user
+        redirect_to confirm_order_path @order
+      else
+        redirect_to thanks_path
       end
     end
 

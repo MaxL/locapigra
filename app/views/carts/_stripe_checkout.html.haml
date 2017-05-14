@@ -1,0 +1,59 @@
+= form_for @order, url: {action: "checkout"}, id: "payment-form" do |f|
+
+  %table.table.table-condensed
+    %tr
+      %td
+        Subtotal
+      %td.text-right
+        = number_to_currency @order.subtotal, locale: :de
+    %tr
+      %td
+        Shipping costs
+      %td.text-right
+        = number_to_currency @order.shipping, locale: :de
+    %tr
+      %td
+        Payment Fee
+      %td.text-right
+        = number_to_currency @order.payment_fee / 100.0, locale: :de
+    %tr.danger
+      %td
+        %span.strong Total
+      %td.text-right
+        %span.strong
+          = number_to_currency @order.total, locale: :de
+
+  %div
+    %span.text-muted.small
+      #{number_to_currency @order.tax, locale: :de} VAT is included in the price above
+
+  .checkbox
+    %label
+      = f.check_box :agreement, {required: true}
+      I agree to the #{link_to "terms & conditions", "#tocModal", {  "data-toggle": "modal" }}
+
+  %script{src: "https://checkout.stripe.com/checkout.js", class: "stripe-button", "data-key": "#{Rails.configuration.stripe[:publishable_key]}", "data-description": "Shopping cart from LOCAPIGRA", "data-amount": "#{@order.total*100}", "data-locale": "auto", "data-currency": "eur", "data-email": "#{@order.address.email}"}
+
+.modal.fade#tocModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss": "modal"}
+          %i.icon-cancel-1
+        %h4.modal-title
+          Terms and conditions
+      .modal-body
+        .row
+          = render "shared/toc"
+
+:javascript
+  console.log('helooooo??');
+  $('.stripe-button-el').on('click', function(e) {
+    console.log('submitting');
+    e.preventDefault();
+    if ( $('input[name="order[agreement]"]').is(':checked') ) {
+      $(this).unbind('click').click();
+    } else {
+      $('input[name="order[agreement]"]').parent().addClass("has-danger");
+    }
+  });
