@@ -5,6 +5,7 @@ gem 'bcrypt',                  '>= 3.1.7'
 gem 'faker',                   '>= 1.4.2'
 
 gem 'braintree'
+gem 'stripe'
 #gem 'paypal-sdk-rest'
 
 gem 'money-rails'
