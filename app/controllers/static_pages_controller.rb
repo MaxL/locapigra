@@ -3,11 +3,9 @@ class StaticPagesController < ApplicationController
   before_filter :index_header, only: [:home]
 
   def home
-    client = Tumblr::Client.new :consumer_key => 'VOf3IKabebfz5hnyCn8dY0JVVX80cqQ1Zc8xzd7TDgOSeCSE51'
+    client = Tumblr::Client.new
     response = client.posts 'locapigra.tumblr.com', limit: 3, reblog_info: true, notes_info: true
     @posts = response.to_ostruct.posts
-    puts request.location.country_code
-    puts set_currency
   end
 
   def comics
