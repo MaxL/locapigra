@@ -3,16 +3,19 @@
 .container
   .row
     .col-xs-12
-      .page-heading.index
-    .col-xs-12.col-sm-12.col-md-5.index-copy
-      %p
-        Hey #{link_to "we are AIK and LEE", about_path} from l'oca pigra, we draw #{link_to "comic books", comics_path}. We are trying to indepently print and publish them, if you like what you see you can buy copies on our #{link_to "shop", shop_path}.
-      %p
-        We will also be designing, producing and selling fashion items on our shop very soon. Make sure to follow us on social media for updates! Here are the links to our #{link_to "tumblr", "http://locapigra.tumblr.com/", target: "_blank"} and #{link_to "facebook", "https://www.facebook.com/locapigra/", target: "_blank"} pages.
-    .hidden-xs.hidden-sm.col-md-1
+      .divide
+    .col-xs-12.col-sm-12.col-md-4.index-copy
+      .text-card
+        %p
+          Hey #{link_to "we are AIK and LEE", about_path} from l'oca pigra, we draw #{link_to "comic books", comics_path}. We print and publish them ourselves, if you like what you see you can buy copies on our #{link_to "shop", shop_path}.
+        %p
+          We will also be designing, producing and selling fashion items on our shop very soon. Make sure to follow us on social media for updates! Here are the links to our #{link_to "tumblr", "http://locapigra.tumblr.com/", target: "_blank"} and #{link_to "facebook", "https://www.facebook.com/locapigra/", target: "_blank"} pages.
+    .col-xs-12.col-sm-12.col-md-2.index-social
+      %a.blood{:href => "https://www.facebook.com/locapigra/", target: "_blank"}
+        %i.icon-facebook
+      %a.blood{:href => "https://locapigra.tumblr.com/", target: "_blank"}
+        %i.icon-tumblr
     .col-xs-12.col-sm-6.col-md-6.index-posts
-      %h2.marginless-top
-        NEWS & UPDATES
       - if @posts != nil
         -@posts.each do |post|
           .post
@@ -22,11 +25,12 @@
               = post.caption.html_safe
             - if post.body
               = post.body.html_safe
-            %ul.list-inline
-              - post.tags.each do |tag|
-                %li.text-muted
-                  %a{href: "https://locapigra.tumblr.com/tagged/#{tag}", target: "_blank"}
-                    \##{tag}
+            - if post.tags
+              %ul.list-inline
+                - post.tags.each do |tag|
+                  %li.text-muted
+                    %a{href: "https://locapigra.tumblr.com/tagged/#{tag}", target: "_blank"}
+                      \##{tag}
 
         %a= link_to "click here for more cool stuff on our BLOG section", blogs_path
 

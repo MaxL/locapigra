@@ -5,39 +5,55 @@
   margin-top: -80px;
 }
 
+.text-card {
+  padding: 12px 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: rgba($light, .8);
+  border: 1px solid $night;
+}
+
 .card {
-  background-color: $light;
+  background-color: $lighter;
   margin-bottom: 30px;
-  overflow: hidden;
+  padding-bottom: 15px;
   position: relative;
   @include std-transition;
+
   .card-image {
     margin: 0;
     position: relative;
-    overflow: hidden;
-    height: 514px;
-    background-color: $text-color;
     img {
       position: relative;
       @include std-transition;
     }
 
     .card-body {
-      height: 180px;
       width: 100%;
-      position: absolute;
-      left: 0;
-      padding: 20px;
-      background-color: $text-color;
-      color: $light;
-      top: auto;
-      bottom: 12%;
-      transform: translateY(100%);
-      backface-visibility: hidden;
+      padding: 5px 20px 0;
+      color: $swamp;
+      text-align: center;
       transition: transform .4s;
+      position: relative;
+
+      a {
+        h3 {
+          color: $swamp;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
       h3 {
         margin-top: 0;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
+      }
+      .btn {
+        position: absolute;
+        bottom: -46px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
       }
     }
 
@@ -68,96 +84,71 @@
     }
 
     &:hover {
-      img {
-        transform: translateY(-120px);
-      }
-      .card-body {
-        transform: translateY(0);
-      }
-      .comic-unreleased {
-        img {
-          -webkit-filter: blur(0) grayscale(0);
-          filter: blur(0) grayscale(0);
-        }
-      }
+      //
     }
   }
   &.hero-card {
     padding-top: 42px;
+    background-color: $light;
   }
 
   &:hover {
-    @include card(1);
+    //@include card(1);
   }
 }
 
 .product-card {
   background-color: $light;
+  margin-top: 15px;
   margin-bottom: 30px;
   border: 1px solid $swamp;
 
-  .product-card-item {
-    height: 316px;
-  }
   .card-image {
-    float: left;
-    width: 40%;
+    height: 240px;
+    overflow: hidden;
+
+    .img-responsive {
+      margin-top: -60px;
+    }
   }
   .card-body {
-    width: 60%;
-    float: left;
+    height: 220px;
     padding: 20px;
     position: relative;
 
     h3 {
       margin-top: 0;
+      font-size: 22px;
+      margin-bottom: 18px;
+      line-height: 27px;
     }
 
     .product-card-form {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 50%;
+      .price-box {
+        position: absolute;
+        z-index: 2;
+        top: -30px;
+        right: 15px;
+        background-color: $blood;
+        color: $light;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+
+        .price {
+          color: $light;
+        }
+      }
+
+      .form-horizontal {
+        .control-label {
+          text-align: left;
+        }
+      }
     }
   }
-
-  @include respondto(xs) {
-    position: relative;
-    .product-card-item {
-      height: auto;
-    }
-    .card-image {
-      float: none;
-      width: 100%;
-    }
-    .card-body {
-      width: 100%;
-      height: 100%;
-      float: none;
-      padding: 20px;
-      position: absolute;
-      top: 0;
-      z-index: 2;
-
-      .card-copy {
-        background-color: rgba($light, .8);
-        margin: -20px;
-        padding: 10px 15px 5px;
-      }
-      h3 {
-        margin-top: 0;
-      }
-
-      .product-card-form {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        background-color: rgba($light, 1);
-        padding: 10px 20px 20px;
-      }
-    }
-  };
 
   &:hover {
     @include card(1);

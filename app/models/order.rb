@@ -16,7 +16,8 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   def subtotal
-    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0}.sum
+    puts order_items.last.quantity.to_d
+    order_items.collect { |oi| oi.valid? ? (oi.quantity.to_d * oi.unit_price.to_d) : 0}.sum
   end
 
   def set_shipping_price(country)

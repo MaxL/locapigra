@@ -19,6 +19,9 @@
 # Ignore local image uploads
 /public/uploads
 
+# AND downloads
+/downloads/*
+
 # Ignore application configuration
 /config/application.yml
 /config/database.yml

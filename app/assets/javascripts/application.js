@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require cocoon
 //= require jquery.matchHeight
 //= require magnific-popup
@@ -21,6 +22,8 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require braintree.min
+//= require waitForImages.min
+//= require masonry.pkgd.min
 //= require anime
 //= require index
 //= require global

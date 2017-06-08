@@ -2,11 +2,12 @@
 
 $night: #111; //rgba(1, 22, 39, 100)
 $light: #fff; //rgba(253, 255, 252, 100)
+$lighter: #ebefea;
 $damp: #ccc;
-$swamp: #008148; //rgba(0, 129, 72)
-$lagoon: #2864d3; //rgba(40, 100, 182, 211)
-$blood: #bb0a21; //rgba(187, 10, 33, 100)
-$sand: #f18f01; //rgba(241, 143, 28, 1)
+$swamp: #59c669; //rgba(0, 129, 72)
+$lagoon: #008dd4; //rgba(40, 100, 182, 211)
+$blood: #f95464; //rgba(187, 10, 33, 100)
+$sand: #fec72e; //rgba(241, 143, 28, 1)
 
 @mixin std-transition {
   transition: all .35s ease-out;

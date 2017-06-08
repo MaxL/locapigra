@@ -42,8 +42,11 @@ gem 'jquery-rails',            '>= 4.0.3'
 gem 'magnific-popup-rails'
 gem 'jquery-validation-rails'
 gem 'turbolinks',              '>= 2.3.0'
+gem 'jquery-turbolinks'
 gem 'jbuilder',                '>= 2.2.3'
 gem 'validates_email_format_of'
+gem 'inline_svg'
+gem 'shevy'
 
 # file uploads
 gem 'carrierwave',             '>= 0.10.0'
