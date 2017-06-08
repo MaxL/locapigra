@@ -1,16 +1,19 @@
-%footer.container
-  .row
-    .col-xs-12.col-sm-6.col-md-3
-      %small.text-muted copyright l'oca pigra 2016
-    .col-xs-12.col-sm-6.col-md-5.text-right
+%footer.container-fluid
+  .footer-bg
+    =inline_svg "treeline.svg", class: "footer-treeline"
+  .container
+    .row
+      .col-xs-12.col-sm-6.col-md-3
+        %small.text-muted copyright l'oca pigra 2016
+      .col-xs-12.col-sm-6.col-md-5.text-right
 
-    .col-xs-12.col-sm-12.col-md-4.text-right
-      %ul.list-inline
-        %li
-          %a.blood{:href => "https://locapigra.tumblr.com/"}
-            %i.icon-tumblr
-        %li
-          %a.blood{:href => "https://www.facebook.com/locapigra/"}
-            %i.icon-facebook
-        %li= link_to "terms & conditions", toc_path
-        %li= link_to "imprint", imprint_path
+      .col-xs-12.col-sm-12.col-md-4.text-right
+        %ul.list-inline
+          %li
+            %a.blood{:href => "https://locapigra.tumblr.com/"}
+              %i.icon-tumblr
+          %li
+            %a.blood{:href => "https://www.facebook.com/locapigra/"}
+              %i.icon-facebook
+          %li= link_to "terms & conditions", toc_path
+          %li= link_to "imprint", imprint_path

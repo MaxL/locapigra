@@ -5,6 +5,8 @@ class ComicsController < ApplicationController
 
   def index
     @comics = Comic.paginate(page: params[:page]).order('id ASC')
+    @featured = Comic.where(featured: true).take
+    @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
   end
 
   def show
@@ -55,7 +57,7 @@ class ComicsController < ApplicationController
 
   private
     def comic_params
-      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id, :is_virtual, :pp_button)
+      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id, :is_virtual, :pp_button, :featured)
     end
 
     def token_params

@@ -1,23 +1,65 @@
 - set_meta_tags title: "SHOP - Buy our self made Comic Books, Clothing and Accessories", description: "These are the comic books and clothing you can currently buy."
 - breadcrumb :products
 
-.container-fluid
-  .row
-    .category-heading.comic-heading
-      .container
-        %h1.title L'OCA PIGRA SHOP
 .container
-  = will_paginate
-  .row.card-row
-    - if @products.any?
-      = render @products, order_item: @order_item
-    - else
-      .col-xs-12
+  .row
+    .col-md-3.col-sm-12.col-xs-12
+      .products-sidebar
+        %h1.title SHOP
         %p
-          Sorry, no products available for purchase just yet. Site will be ready soon!
+          So these are our products, just comic books for now. But hey we have print and download versions!
+        %hr/
+        %p
+          Also expect to see clothing here in the near future.
+        %hr/
+        = link_to "Also check out our Blog", blogs_path, class: "btn btn-info btn-lg"
+
+    .col-md-9.col-sm-12.col-xs-12
+      .row
+        - if @featured
+          .col-xs-12
+            .featured-product
+              .featured-label.label.label-danger
+                FEATURED
+              .row
+                .col-xs-12.col-sm-4
+                  = link_to @featured do
+                    = image_tag @featured.cover_image, alt: @featured.name, class: "img-responsive"
+                .col-xs-12.col-sm-8
+                  .row
+                    .col-xs-12
+                      %h2= @featured.name
+                    .col-xs-12.col-sm-7
+                      %p= @featured.description.html_safe
+                    .col-xs-12.col-sm-5
+
+                    .col-xs-12.col-sm-7.text-center
+                      = link_to "More details", @featured, class: "btn btn-success btn-lg"
+                    .col-xs-12.col-sm-5
+                      - if @featured.is_virtual
+                        %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
+                          %input{type: "hidden", name: "rm", value: "2"}
+                          %input{type: "hidden", name: "custom", value: "#{@token.token}"}
+                          %input{type: "hidden", name: "hosted_button_id", value: "#{@featured.pp_button}"}
+                          %input{type: "hidden", name: "cmd", value: "_s-xclick"}
+                          %button{type: "submit", class: "btn btn-warning btn-block btn-lg", name: "submit"}
+                            %i.icon-paypal
+                            Buy now as eBook
+                          %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
+      - if @featured
+        %hr/
+        .divide
+      .row
+        = will_paginate
+        - if @products.any?
+          = render @products, order_item: @order_item
+        - else
+          .col-xs-12
+            %p
+              Sorry, no products available for purchase just yet. Site will be ready soon!
+        = will_paginate
     - if user_signed_in?
       - if current_user.admin?
         .col-xs-12
           %hr/
           = link_to "Add product", new_product_path, class: "btn btn-success btn-lg"
-  = will_paginate

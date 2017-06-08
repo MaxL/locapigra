@@ -1,16 +1,16 @@
 .col-xs-12.col-sm-6.col-md-4
   .card
     %figure.card-image
-      - if comic.released?
-        = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
-      - else
-        .comic-unreleased
+      = link_to comic do
+        - if comic.released?
           = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
+        - else
+          .comic-unreleased
+            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
       %figcaption.card-body
-        %h3.card-title= comic.name
-        %p
-          = comic.description.html_safe
-        = link_to "more infos", comic, class: "btn btn-block btn-success"
+        = link_to comic do
+          %h3.card-title= comic.name
+        = link_to "more infos", comic, class: "btn btn-success"
         - if user_signed_in?
           - if current_user.admin?
             %ul.list-inline

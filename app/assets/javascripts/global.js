@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.magnific-image').magnificPopup({type: 'image'});
-  $('.card-image').matchHeight();
+  //$('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
 
@@ -24,7 +24,7 @@ $(document).on("turbolinks:load", function() {
   });
 
   $('.magnific-image').magnificPopup({type: 'image'});
-  $('.card-image').matchHeight();
+  //$('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
 
@@ -36,6 +36,22 @@ $(document).on("turbolinks:load", function() {
   if ( $('.homepage').length ) {
     fireworks();
   }
+
+  $('.posts').waitForImages(function() {
+    // All descendant images have loaded, now slide up.
+    $(this).masonry({
+      // options...
+      itemSelector: '.post',
+      columnWidth: '.post'
+    });
+  });
+
+});
+
+$('.posts').masonry({
+  // options...
+  itemSelector: '.post',
+  columnWidth: '.post'
 });
 
 // override jquery validate plugin defaults

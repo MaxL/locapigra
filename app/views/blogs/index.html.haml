@@ -10,11 +10,11 @@
           These are the last couple of posts from
           %a.underline{:href => "https://locapigra.tumblr.com"} our tumblr
 .container
-  .row.card-row
-    .col-xs-12.col-sm-offset-2.col-sm-8.col-md-offset-3.col-md-6.text-center
-      - if @posts != nil
+  .row.card-row.blog-row
+    - if @posts != nil
+      .posts
         - @posts.each do |post|
-          .post.text-left
+          .post.col-xs-12.col-sm-6.col-md-4
             - if post.photoset_layout
               .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
                 - @postphotos = post.photos
@@ -35,7 +35,7 @@
                 %li.text-muted
                   %a{:href => "https://locapigra.tumblr.com/tagged/#{tag}"}
                     \##{tag}
-        = will_paginate @posts, page_links: false, previous_label: "NEWER", next_label: "OLDER"
+      = will_paginate @posts, page_links: false, previous_label: "NEWER", next_label: "OLDER"
 
-      - else
-        %p Sorry, something ssems to be wrong with our connection to tumblr - blog posts couldn't be loaded
+    - else
+      %p Sorry, something ssems to be wrong with our connection to tumblr - blog posts couldn't be loaded

@@ -9,8 +9,7 @@
           = product.description.html_safe
       %div.product-card-form
         %div.price-box.clearfix
-          Price:
-          %span.price.pull-right= humanized_money_with_symbol product.price
+          %span.price= humanized_money_with_symbol product.price
         - if product.is_virtual?
           %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
             %input{type: "hidden", name: "rm", value: "2"}
@@ -22,32 +21,39 @@
               Buy Now
             %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
         - else
-          = form_for order_item, remote: true do |f|
+          = form_for order_item, remote: true, html: {class: "form-horizontal new_order_item"} do |f|
             - if product.limited?
               .form-group
-                = f.label :edition_number do
+                = f.label :edition_number, class: "col-sm-6 control-label" do
                   .tooltip-item{title: "This is a limited edition item. If you want a specific number, pick one in the field below. Some numbers might not be available anymore. Also you will have to add comics one at a time, don't worry though it's just one click!"}
                     Limited edition #
                     %i.icon-info.highlight-link
-                = f.number_field :edition_number, class: "form-control", placeholder: "optional 1-1000"
+                .col-sm-6
+                  = f.number_field :edition_number, class: "form-control", placeholder: "optional 1-1000"
               .form-group
                 = f.hidden_field :product_id, value: product.id
                 = f.hidden_field :quantity, value: 1
-                = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
-                  %i.icon-basket-alt
-                  %i.icon-check-1.success-icon
+                .col-sm-4
+                  = link_to product, class: "btn btn-block btn-warning btn-lg" do
+                    %i.icon-info
+                .col-sm-8
+                  = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
+                    %i.icon-basket-alt
+                    %i.icon-check-1.success-icon
             - else
               .form-group
-                = f.label :quantity
-                .input-group
-                  = f.number_field :quantity, value: 1, class: "form-control input-lg", min: 1
-                  .input-group-btn
-                    = f.hidden_field :product_id, value: product.id
-                    = f.button(class: "btn btn-danger btn-lg add-to-cart-btn cart-btn-#{product.id}" ) do
-                      %i.icon-basket-alt
-                      %i.icon-check-1.success-icon
-
-        = link_to "details", product, class: "btn btn-block btn-warning btn-xs"
+                = f.label :quantity, class: "control-label col-sm-4"
+                .col-sm-8
+                  = f.number_field :quantity, value: 1, class: "form-control", min: 1
+              .form-group
+                = f.hidden_field :product_id, value: product.id
+                .col-sm-4
+                  = link_to product, class: "btn btn-block btn-warning btn-lg" do
+                    %i.icon-info
+                .col-sm-8
+                  = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
+                    %i.icon-basket-alt
+                    %i.icon-check-1.success-icon
 
       - if user_signed_in?
         - if current_user.admin?

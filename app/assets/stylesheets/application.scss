@@ -7,10 +7,29 @@
 @import "magnific-popup";
 @import "fontello";
 
+@import "core/shevy";
+
+$shevy: (
+  base-font-size: 15px,
+  base-line-height: 1.45,
+  base-font-scale: (2.5, 2.1, 1.8, 1.5, 1.25, 1),
+  margin-bottom: true,
+  proximity: false,
+  proximity-factor: .85
+);
+
+@include headings;
+@include body;
+@include content;
+
 @import "card";
 @import "forms";
 @import "tables";
 
+body {
+  background-image: image-url('bg_lighter.svg');
+  background-repeat: round;
+}
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -69,6 +88,7 @@ hr {
 }
 .title {
   font-weight: 300;
+  color: $swamp;
 }
 .category-heading {
   padding-bottom: 100px;
@@ -77,7 +97,7 @@ hr {
   margin-bottom: 36px;
   &.index {
     padding-bottom: 20px;
-    border-bottom: 1px solid $text-color;
+    background-image: url('');
   }
 }
 .sub-heading {
@@ -90,6 +110,11 @@ hr {
       text-decoration: none;
     }
   }
+}
+
+.divide {
+  margin-top: 25px;
+  margin-bottom: 85px;
 }
 
 .marginless-top {
@@ -128,8 +153,23 @@ hr {
   }
 }
 
+.breadcrumb-container {
+  background-color: $swamp;
+}
 .breadcrumb {
   margin-bottom: 8px;
+  padding: 8px 15px 0;
+  list-style: none;
+  background-color: transparent;
+  color: $light;
+
+  a {
+    color: $light;
+  }
+
+  > .active {
+    color: darken($light, 10);
+  }
 }
 
 /* #HEADER  */
@@ -145,15 +185,15 @@ hr {
   };
 }
 .loca-logo {
-  background-image: image-url('logo-lg.jpg');
+  background-image: image-url('logo_sm.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   width: 50px;
   text-align: center;
-  min-height: 45px;
+  min-height: 50px;
   display: block;
-  margin-top: 5px;
+  margin-top: 8px;
   float: left;
   @include respondto(xs) {
     position: absolute;
@@ -169,11 +209,40 @@ hr {
     width: auto;
     text-align: center;
     float: left;
+    position: relative;
 
     a {
       display: block;
       width: 100%;
       padding: 12px 18px;
+
+      &.main-nav-hilite {
+        @include respondto(md) {
+          background-color: $light;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background-color: lighten($night, 15);
+          }
+        };
+
+        @include respondto(lg) {
+          background-color: $light;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background-color: lighten($night, 15);
+          }
+        };
+      }
 
       @include respondto(xs) {
         padding: 12px 10px;
@@ -300,16 +369,16 @@ hr {
 .header-index {
   position: relative;
   .loca-logo {
-    background-image: image-url('logo-lg.jpg');
+    background-image: image-url('logo_colored.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     width: 100%;
     text-align: center;
-    min-height: 320px;
+    min-height: 340px;
     display: block;
     float: none;
-    margin: 80px 0 200px 0;
+    margin: 80px 0 180px 0;
     @include respondto(xs) {
       min-height: 240px;
       margin-top: 60px;
@@ -398,13 +467,38 @@ hr {
 
 .index-copy {
   p {
-    font-size: 18px;
-    line-height: 1.55em;
+    //font-size: 18px;
+    //line-height: 1.55em;
     color: lighten($night, 5);
   }
 
   a {
     color: $swamp;
+  }
+}
+
+.index-social {
+  text-align: center;
+  a {
+    display: block;
+    font-size: 26px;
+    margin: 0 auto 20px;
+    height: 40px;
+    width: 40px;
+    background-color: $blood;
+    border: 2px solid $blood;
+    line-height: 40px;
+    @include std-transition;
+    i {
+      color: $light;
+    }
+
+    &:hover {
+      background-color: $light;
+      i {
+        color: $blood;
+      }
+    }
   }
 }
 
@@ -414,11 +508,35 @@ hr {
   }
 }
 
+/* #COMICS & #PRODUCTS */
+.products-sidebar {
+  background-color: $swamp;
+  padding: 20px 12px 40px;
+  color: $light;
+  min-height: 250px;
+  position: relative;
+
+  .title {
+    color: $light;
+  }
+}
+
+.featured-product {
+  background-color: $light;
+  padding: 30px 0;
+  position: relative;
+}
+.featured-label {
+  position: absolute;
+  z-index: 2;
+  top: 25px;
+  left: 20px;
+}
+
 /* #COMICS */
 
 .comic-heading {
-  background-color: $swamp;
-  color: $light;
+
 }
 
 .comic-main-img {
@@ -426,10 +544,9 @@ hr {
 }
 
 .comic-attributes {
-  background-color: $gray-darker;
-  color: $light;
+  border: 1px solid $gray-darker;
+  color: $gray-darker;
   padding: 12px 16px;
-  @include card(1);
 }
 
 .thumbnails {
@@ -460,6 +577,8 @@ hr {
 }
 
 /* #BLOG */
+.blog-row {
+}
 .post {
   padding-bottom: 32px;
   border-bottom: 1px solid $swamp;
@@ -525,7 +644,16 @@ hr {
 /* #FOOTER */
 
 footer {
-  margin-top: 70px;
+  margin-top: 130px;
+  min-height: 170px;
+  position: relative;
+  padding-top: 45px;
+  color: $light;
+  background-color: $night;
+
+  a {
+    color: $light;
+  }
 
   @include respondto(xs) {
     margin-bottom: 80px;
@@ -534,6 +662,15 @@ footer {
       margin-bottom: 8px;
     }
   };
+
+  .footer-bg {
+    margin-left: -15px;
+    margin-right: -15px;
+    position: absolute;
+    width: 100%;
+    top: -100px;
+    z-index: 0;
+  }
 }
 
 // #MISC

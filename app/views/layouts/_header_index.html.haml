@@ -9,7 +9,7 @@
           .navbar-collapse
             #navbar-main.nav.navbar-nav.navbar-main
               %div
-                = link_to root_path do
+                = link_to root_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     HOME
                   %span.visible-xs
@@ -18,7 +18,7 @@
                     %span.small
                       HOME
               %div
-                = link_to comics_path do
+                = link_to comics_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     COMICS
                   %span.visible-xs
@@ -27,7 +27,7 @@
                     %span.small
                       COMICS
               %div
-                = link_to shop_path do
+                = link_to shop_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     SHOP
                   %span.visible-xs
@@ -36,7 +36,7 @@
                     %span.small
                       SHOP
               %div
-                = link_to blogs_path do
+                = link_to blogs_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     BLOG
                   %span.visible-xs
@@ -45,7 +45,7 @@
                     %span.small
                       BLOG
               %div
-                = link_to about_path do
+                = link_to about_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     ABOUT
                   %span.visible-xs

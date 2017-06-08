@@ -33,14 +33,14 @@ var fireworks = function() {
     y = e.clientY || e.touches[0].clientY;
   }
 
-  var colors = ['#008148', '#2f925f', '#00351d'];//['#111111', '#555555', '#aaaaaa'];
+  var colors = ['#59c669', '#BFFFC8', '#607F64'];//['#111111', '#555555', '#aaaaaa'];
 
   var createCircle = function(x,y) {
     var p = {};
     p.x = x;
     p.y = y;
     p.color = colors[anime.random(0, colors.length - 1)];
-    p.color = '#bb0a21';
+    p.color = '#f95464';
     p.radius = 0;
     p.alpha = 1;
     p.lineWidth = 6;
@@ -112,7 +112,7 @@ var fireworks = function() {
       complete: removeAnimation
     });
     animations.push(particulesAnimation);
-    //animations.push(circleAnimation);
+    animations.push(circleAnimation);
   }
 
   var mainLoop = anime({

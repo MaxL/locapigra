@@ -32,9 +32,10 @@
       = render 'layouts/header' unless @index_header
       = render 'layouts/header_index' if @index_header
 
-    .container
+    .container-fluid.breadcrumb-container
       .row
-        = breadcrumbs pretext: "", separator: " <i class='icon-angle-right'></i> ", style: :bootstrap
+        .container
+          = breadcrumbs pretext: "", separator: " <i class='icon-angle-right'></i> ", style: :bootstrap
 
     = yield
     = render 'layouts/footer'
