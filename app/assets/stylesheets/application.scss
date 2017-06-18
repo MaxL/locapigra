@@ -27,8 +27,8 @@ $shevy: (
 @import "tables";
 
 body {
-  background-image: image-url('bg_lighter.svg');
-  background-repeat: round;
+  background-image: image-url('background.svg');
+  background-repeat: space;
 }
 
 .browserupgrade {
