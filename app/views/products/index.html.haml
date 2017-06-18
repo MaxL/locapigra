@@ -47,7 +47,6 @@
                             Buy now as eBook
                           %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
       - if @featured
-        %hr/
         .divide
       .row
         = will_paginate
@@ -61,5 +60,4 @@
     - if user_signed_in?
       - if current_user.admin?
         .col-xs-12
-          %hr/
           = link_to "Add product", new_product_path, class: "btn btn-success btn-lg"
