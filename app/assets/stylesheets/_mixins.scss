@@ -34,3 +34,16 @@
         @include respond-to($mediatype) {@content;}
     }
 }
+
+@mixin gradient-border($primary-color, $light-color, $width) {
+  box-sizing: border-box;
+  position: relative;
+  border-left: $width solid $primary-color;
+  border-right: $width solid $light-color;
+  background-position: 0 0, 0 100% ;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% $width;
+  -moz-background-size: 100% $width;
+  background-size: 100% $width;
+  background-image: linear-gradient(to right, $primary-color 0%, $light-color 100%), linear-gradient(to right, $primary-color 0%, $light-color 100%);
+}

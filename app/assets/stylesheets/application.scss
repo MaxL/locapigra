@@ -26,9 +26,15 @@ $shevy: (
 @import "forms";
 @import "tables";
 
+html,
 body {
-  background-image: image-url('background.svg');
-  background-repeat: round;
+  height: 100%;
+}
+
+body {
+  background-image: image-url('bg_full.svg');
+  position: relative;
+  //background-repeat: round;
 }
 
 .browserupgrade {
@@ -155,6 +161,7 @@ hr {
 
 .breadcrumb-container {
   background-color: $swamp;
+  background: linear-gradient(to right, $swamp 0%, $swamp-light 100%);
 }
 .breadcrumb {
   margin-bottom: 8px;
@@ -215,6 +222,7 @@ hr {
       display: block;
       width: 100%;
       padding: 12px 18px;
+      background-color: $light;
 
       &.main-nav-hilite {
         @include respondto(md) {
@@ -580,13 +588,24 @@ hr {
 .blog-row {
 }
 .post {
-  padding-bottom: 32px;
-  border-bottom: 1px solid $swamp;
-  margin-bottom: 56px;
+  padding-bottom: 0;
+  //border-bottom: 1px solid $swamp;
+  margin-bottom: 0;
 
   img {
     margin-bottom: 22px;
   }
+
+  .list-inline {
+    margin-bottom: 0;
+  }
+}
+
+.post-content {
+  padding: 8px 12px;
+  background-color: rgba($light, $alpha-main);
+  margin-bottom: 15px;
+  @include gradient-border($swamp, $swamp-light, 3px);
 }
 
 .photoset {
@@ -645,15 +664,11 @@ hr {
 
 footer {
   margin-top: 130px;
+  padding-bottom: 40px;
   min-height: 170px;
-  position: relative;
-  padding-top: 45px;
-  color: $light;
-  background-color: $night;
-
-  a {
-    color: $light;
-  }
+  width: 100%;
+  color: $night;
+  background-color: $light;
 
   @include respondto(xs) {
     margin-bottom: 80px;
@@ -663,13 +678,12 @@ footer {
     }
   };
 
-  .footer-bg {
-    margin-left: -15px;
-    margin-right: -15px;
-    position: absolute;
+  .footer-top {
+    background-image: image-url('footer_bg.svg');
+    background-repeat: repeat-x;
     width: 100%;
-    top: -100px;
-    z-index: 0;
+    height: 160px;
+    margin-bottom: 60px;
   }
 }
 
