@@ -79,6 +79,9 @@ input {
 }
 
 /* HIGHLIGHTS & CO */
+.backgrounded {
+  background-color: rgba($light, .8);
+}
 .alert-notice {
   background-color: #d9edf7;
   border-color: #bce8f1;
@@ -222,7 +225,10 @@ hr {
       display: block;
       width: 100%;
       padding: 12px 18px;
-      background-color: $light;
+
+      &.header-link {
+        background-color: $light;
+      }
 
       &.main-nav-hilite {
         @include respondto(md) {
@@ -519,6 +525,7 @@ hr {
 /* #COMICS & #PRODUCTS */
 .products-sidebar {
   background-color: $swamp;
+  margin-top: 15px;
   padding: 20px 12px 40px;
   color: $light;
   min-height: 250px;
