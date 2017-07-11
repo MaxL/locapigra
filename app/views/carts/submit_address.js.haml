@@ -10,9 +10,9 @@
   $('.order-address-form').hide().empty().remove();
   $('.order_item_qty').prop('readonly', true).addClass('readonly');
   $('.order_item_update, .order_item_delete').hide();
-  - if @payment.name == "CC"
+  - if @payment.name == "Braintree"
     $('#checkout-div').append("#{escape_javascript(render 'carts/paypal_checkout')}");
-  - if @payment.name == "Stripe"
+  - elsif @payment.name == "Stripe"
     $('#checkout-div').append("#{escape_javascript(render 'carts/stripe_checkout')}");
   - else
     $('#checkout-div').append("#{escape_javascript(render 'carts/checkout')}");
