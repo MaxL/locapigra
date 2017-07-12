@@ -14,19 +14,22 @@ class FilesController < ApplicationController
   end
 
   def clawspdf
-    send_file "/home/ec2-user/locapigra/shared/downloads/clawsoffury.pdf", type: "application/pdf", stream: true, x_sendfile: true#, disposition: 'inline'
+    send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.pdf',
+              filename: "clawsoffury.pdf",
+              type: "application/pdf"
+    )
   end
 
   def clawsepub
-    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.epub'
+    send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.epub',
+              filename: "clawsoffury.epub"
+    )
   end
 
   def clawscbr
-    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.cbr'
-  end
-
-  def clawsbundle
-    send_file '/home/ec2-user/locapigra/current/downloads/clawsoffury.zip'
+    send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.cbr',
+              filename: "clawsoffury.cbr"
+    )
   end
 
   private
