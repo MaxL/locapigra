@@ -15,6 +15,7 @@ class FilesController < ApplicationController
 
   def clawspdf
     send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.pdf',
+>>>>>>> 615febd7e2c6def6dc75ec7bbc01c75491023da1
               filename: "clawsoffury.pdf",
               type: "application/pdf"
     )
@@ -22,6 +23,7 @@ class FilesController < ApplicationController
 
   def clawsepub
     send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.epub',
+>>>>>>> 615febd7e2c6def6dc75ec7bbc01c75491023da1
               filename: "clawsoffury.epub"
     )
   end
@@ -30,6 +32,7 @@ class FilesController < ApplicationController
     send_file('#{ENV["RAILS_SHARED_ROOT"]}/downloads/clawsoffury.cbr',
               filename: "clawsoffury.cbr"
     )
+>>>>>>> 615febd7e2c6def6dc75ec7bbc01c75491023da1
   end
 
   private
