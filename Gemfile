@@ -79,6 +79,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
+  gem 'capistrano3-delayed-job', '~> 1.0'
 end
 
 group :development do
