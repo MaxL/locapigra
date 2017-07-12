@@ -9,7 +9,9 @@
           = product.description.html_safe
       %div.product-card-form
         %div.price-box.clearfix
-          %span.price= humanized_money_with_symbol product.price
+          %span.price
+            = humanized_money product.price
+            = currency_symbol
         - if product.is_virtual?
           %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
             %input{type: "hidden", name: "rm", value: "2"}
@@ -33,9 +35,10 @@
               .form-group
                 = f.hidden_field :product_id, value: product.id
                 = f.hidden_field :quantity, value: 1
-                .col-sm-4
+                .col-sm-3
                   = link_to product, class: "btn btn-block btn-warning btn-lg" do
                     %i.icon-info
+                .col-sm-1
                 .col-sm-8
                   = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
                     %i.icon-basket-alt
@@ -47,9 +50,10 @@
                   = f.number_field :quantity, value: 1, class: "form-control", min: 1
               .form-group
                 = f.hidden_field :product_id, value: product.id
-                .col-sm-4
+                .col-sm-3
                   = link_to product, class: "btn btn-block btn-warning btn-lg" do
                     %i.icon-info
+                .col-sm-1
                 .col-sm-8
                   = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
                     %i.icon-basket-alt
