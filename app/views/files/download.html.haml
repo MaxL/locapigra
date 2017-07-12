@@ -13,9 +13,9 @@
       .col-xs-4
         =link_to "Download PDF", "/files/clawspdf?token=#{@token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
       .col-xs-4
-        -# =link_to "Download ePub", "/files/clawsepub?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
+        =link_to "Download ePub", "/files/clawsepub?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
       .col-xs-4
-        -# =link_to "Download CBR", "/files/clawscbr?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
+        =link_to "Download CBR", "/files/clawscbr?token=#{@token.token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
 - else
   .container
     %h1 Error

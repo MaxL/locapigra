@@ -104,15 +104,15 @@
   border: 1px solid $swamp;
 
   .card-image {
-    height: 240px;
+    height: 265px;
     overflow: hidden;
 
     .img-responsive {
-      margin-top: -60px;
+      margin-top: -20px;
     }
   }
   .card-body {
-    height: 220px;
+    height: 240;
     padding: 20px;
     position: relative;
 
@@ -127,14 +127,16 @@
       .price-box {
         position: absolute;
         z-index: 2;
-        top: -30px;
+        top: -45px;
         right: 15px;
         background-color: $blood;
         color: $light;
         border-radius: 50%;
+        border: 2px solid $light;
+        box-shadow: 0 0 1px $night;
         width: 60px;
         height: 60px;
-        line-height: 60px;
+        line-height: 55px;
         text-align: center;
 
         .price {

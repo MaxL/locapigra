@@ -5,7 +5,8 @@ class OrderMailer < ApplicationMailer
 
   def confirmation_mail(order)
     @order = order
-    if @order.payment_choice_id != 2
+    @payment_choice = PaymentChoice.find(@order.payment_choice_id)
+    if payment_choice != "bankwire"
       @post_order_msg = ""
     else
       @bank_owner = ENV["BANK_OWNER"]
@@ -17,6 +18,7 @@ class OrderMailer < ApplicationMailer
     mail(to: @order.address.email, cc: [ "info@locapigra.biz" ], bcc: [ ENV["PRIVATE_EMAIL"] ], subject: 'Thank you for your order from l’oca pigra')
 
   end
+
 
   private
     def set_delivery_options
