@@ -26,9 +26,11 @@
   %div
     %span.text-muted.small
       #{number_to_currency @order.tax, locale: :de} VAT is included in the price above
-
-  %section
+  %br
+  %div
     .bt-drop-in-wrapper
+      %p
+        Click the "Paypal" button below to login with paypal or use your credit card
       #bt-dropin
 
   .checkbox

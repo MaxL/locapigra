@@ -4,8 +4,10 @@ class StaticPagesController < ApplicationController
 
   def home
     client = Tumblr::Client.new
-    response = client.posts 'locapigra.tumblr.com', limit: 1, reblog_info: true, notes_info: true
-    @posts = response.to_ostruct.posts
+    if client
+      response = client.posts 'locapigra.tumblr.com', limit: 1, reblog_info: true, notes_info: true
+      @posts = response.to_ostruct.posts
+    end
   end
 
   def comics

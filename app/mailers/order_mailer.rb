@@ -6,7 +6,7 @@ class OrderMailer < ApplicationMailer
   def confirmation_mail(order)
     @order = order
     @payment_choice = PaymentChoice.find(@order.payment_choice_id)
-    if payment_choice != "bankwire"
+    if @payment_choice != "bankwire"
       @post_order_msg = ""
     else
       @bank_owner = ENV["BANK_OWNER"]

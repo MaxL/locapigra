@@ -24,6 +24,7 @@
 //= require braintree.min
 //= require waitForImages.min
 //= require masonry.pkgd.min
+//= require select2
 //= require anime
 //= require index
 //= require global

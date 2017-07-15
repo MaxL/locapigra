@@ -26,11 +26,13 @@ gem 'dynamic_sitemaps'
 
 
 # JS + UI
+# gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 gem 'cocoon'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'countries'
 gem 'country_select'
+gem 'select2-rails'
 gem 'will_paginate',           '>= 3.0.7'
 gem 'bootstrap-will_paginate', '>= 0.0.10'
 gem 'bootstrap-datepicker-rails'

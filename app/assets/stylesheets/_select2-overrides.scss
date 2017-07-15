@@ -1,0 +1,21 @@
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection {
+  box-shadow: inset 0 1px 1px rgba($night, 0.075), 0 0 8px rgba($swamp, 0.6);
+  border-color: $swamp;
+}
+
+.select2-container--bootstrap .select2-dropdown {
+  border-color: $swamp;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+  background-color: $swamp;
+}
+
+.select2-container--bootstrap .select2-selection {
+  border-radius: 0;
+}
+
+.loca-label ~ .select2-container--bootstrap .select2-selection--single {
+  height: 42px;
+  padding-top: 16px;
+}
