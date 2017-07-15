@@ -449,6 +449,8 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    select2-rails (4.0.3)
+      thor (~> 0.14)
     sexp_processor (4.9.0)
     shenanigans (1.0.11)
     shevy (2.1.0)
@@ -568,6 +570,7 @@ DEPENDENCIES
   rolify
   sass-rails (>= 5.0.2)
   sdoc (>= 0.4.0)
+  select2-rails
   shenanigans
   shevy
   spring (>= 1.1.3)
