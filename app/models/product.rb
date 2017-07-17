@@ -25,6 +25,7 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true, numericality: true
   validates :package, presence: true, length: { maximum: 255 }
   validates :slug, uniqueness: true
+  validates :position, uniqueness: true, numericality: true, presence: true
   #validates :release_date, presence: true
   validates :language, presence: true
   validates_inclusion_of :active, :in => [ true, false ]

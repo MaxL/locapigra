@@ -27,6 +27,9 @@
   .form-group
     = f.label :product
     = f.select :product_id, Product.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class: "form-control"
+  .form-group
+    = f.label "Position"
+    = f.number_field :position, step: 1, class: "form-control"
   .checkbox
     = f.label :released
     = f.check_box :released

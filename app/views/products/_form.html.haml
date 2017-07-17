@@ -39,6 +39,9 @@
   .form-group
     = f.label :pp_button
     = f.text_field :pp_button, class: "form-control"
+  .form-group
+    = f.label "Position"
+    = f.number_field :position, step: 1, class: "form-control"
   .checkbox
     = f.label :limited do
       = f.check_box :limited
