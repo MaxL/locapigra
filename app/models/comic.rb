@@ -16,6 +16,7 @@ class Comic < ActiveRecord::Base
   validates :color, presence: true, length: { maximum: 255 }
   validates :dimensions, presence: true, length: { maximum: 255 }
   validates :slug, uniqueness: true
+  validates :position, uniqueness: true, numericality: true, presence: true
   validate  :cover_image_size
 
   private
