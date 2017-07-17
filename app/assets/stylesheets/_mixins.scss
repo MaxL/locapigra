@@ -35,6 +35,14 @@
     }
 }
 
+@mixin background-gradient($orientation) {
+  background: linear-gradient(to $orientation, $swamp 0%, $swamp-light 100%);
+}
+
+@mixin background-gradient-light($orientation) {
+  background: linear-gradient(to $orientation, $swamp 40%, lighten($swamp-light, 5) 100%);
+}
+
 @mixin gradient-border($primary-color, $light-color, $width) {
   box-sizing: border-box;
   position: relative;

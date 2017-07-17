@@ -3,8 +3,11 @@ class OrdersController < ApplicationController
   load_and_authorize_resource except: [:my_orders, :my_order]
   before_filter :no_header, except: [:confirm, :show]
 
+  helper_method :sort_column, :sort_direction
+
   def index
-    @orders = Order.all.sort_by(&:updated_at).reverse
+    @orders = Order.where.not(order_status_id: 1).order("#{sort_column} #{sort_direction}")
+    @carts = Order.where(order_status_id: 1).order("#{sort_column} #{sort_direction}")
     @status = OrderStatus.all
     @payments = PaymentChoice.all
   end
@@ -54,6 +57,19 @@ class OrdersController < ApplicationController
   end
 
   private
+
+    def sortable_columns
+      ["id", "total", "order_status_id", "placed_on", "updated_at", "payment_choice_id"]
+    end
+
+    def sort_column
+      sortable_columns.include?(params[:column]) ? params[:column] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     def order_params
       params.require(:order).permit(:total, :tax, :shipping, :order_status_id, :address_id, address_attributes: [ :id, :recipient, :street, :city, :zip, :state, :country, :email ])
     end

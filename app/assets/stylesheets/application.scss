@@ -29,6 +29,7 @@ $shevy: (
 @import "card";
 @import "forms";
 @import "tables";
+@import "components/typography";
 
 html,
 body {
@@ -154,6 +155,9 @@ hr {
 }
 
 /* BOOTSTRAP OVERRIDES */
+.table {
+  background-color: $light;
+}
 .tooltip {
   .tooltip-inner {
     padding: 15px;
@@ -168,7 +172,7 @@ hr {
 
 .breadcrumb-container {
   background-color: $swamp;
-  background: linear-gradient(to right, $swamp 0%, $swamp-light 100%);
+  @include background-gradient(right);
 }
 .breadcrumb {
   margin-bottom: 8px;
@@ -529,6 +533,7 @@ hr {
 /* #COMICS & #PRODUCTS */
 .products-sidebar {
   background-color: $swamp;
+  @include background-gradient-light(bottom);
   margin-top: 15px;
   padding: 20px 12px 40px;
   color: $light;
