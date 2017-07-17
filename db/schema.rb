@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531083551) do
+ActiveRecord::Schema.define(version: 20170717152856) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170531083551) do
     t.boolean  "is_virtual"
     t.text     "pp_button"
     t.boolean  "featured"
+    t.integer  "position"
   end
 
   add_index "comics", ["name"], name: "index_comics_on_name", unique: true
@@ -180,6 +181,7 @@ ActiveRecord::Schema.define(version: 20170531083551) do
     t.boolean  "is_virtual"
     t.text     "pp_button"
     t.boolean  "featured"
+    t.integer  "position"
   end
 
   create_table "roles", force: :cascade do |t|

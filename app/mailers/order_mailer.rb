@@ -9,9 +9,6 @@ class OrderMailer < ApplicationMailer
     if @payment_choice != "bankwire"
       @post_order_msg = ""
     else
-      if @order.payment_fee > 0
-        @payment_fee = @order.payment_fee / 100.0
-      end
       @bank_owner = ENV["BANK_OWNER"]
       @bank_iban = ENV["BANK_IBAN"]
       @bank_bic = ENV["BANK_BIC"]

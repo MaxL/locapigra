@@ -8,22 +8,49 @@
         %thead
           %tr
             %td
-              Order ID
+              = sort_link "id"
             %td
               Order Reference
             %td
-              Placed on
+              = sort_link "placed_on"
             %td
               Customer
             %td
               User
             %td
-              Status
+              = sort_link "order_status_id"
             %td
-              Payment
+              = sort_link "payment_choice_id"
             %td
-              Total $
+              = sort_link "total"
             %td
               action
         %tbody
           = render partial: "order", collection: @orders
+
+      %h4
+        Carts [#{@carts.count}]
+
+      %table.table.table-condensend
+        %thead
+          %tr
+            %td
+              = sort_link "id"
+            %td
+              Order Reference
+            %td
+              = sort_link "placed_on"
+            %td
+              Customer
+            %td
+              User
+            %td
+              = sort_link "order_status_id"
+            %td
+              = sort_link "payment_choice_id"
+            %td
+              = sort_link "total"
+            %td
+              action
+        %tbody
+          = render partial: "order", collection: @carts
