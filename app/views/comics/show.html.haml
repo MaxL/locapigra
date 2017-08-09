@@ -4,7 +4,7 @@
   .row
     .category-heading.comic-heading
       .container
-        %h1.title= @comic.name.upcase
+        %h1= @comic.name.upcase
 .container
   .row.card-row
     .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
@@ -14,10 +14,10 @@
       .mini-card
         %p
           = @comic.description.html_safe
-      .thumbnails.row
+      .thumbnails.magnific-gallery.row.magnific-gallery
         - @comic.images.each do |image|
           .col-xs-6.col-sm-4.comic-thumb-box
-            %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+            %img.comic-thumb{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
     .col-xs-12.col-sm-6.col-md-3
       %ul.list-unstyled.comic-attributes
         %li
@@ -43,7 +43,7 @@
           %input{type: "hidden", name: "cmd", value: "_s-xclick"}
           %button{type: "submit", class: "btn btn-warning btn-block", name: "submit"}
             %i.icon-paypal
-            Buy Now with Paypal
+            Buy eBook with Paypal
           %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
 
         %p.lead
