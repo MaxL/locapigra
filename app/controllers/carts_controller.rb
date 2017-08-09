@@ -88,11 +88,12 @@ class CartsController < ApplicationController
           @order.save
           session.delete :order_id
           OrderMailer.confirmation_mail(@order).deliver_later
+          @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
           flash[:success] = "Order placed successfully"
           if current_user
-            redirect_to confirm_order_path @order
+            redirect_to confirm_order_path(@order, :token => @token.token)
           else
-            redirect_to thanks_path
+            redirect_to thanks_path :token => @token.token
           end
         end
       else
@@ -166,11 +167,12 @@ class CartsController < ApplicationController
         @order.save
         session.delete :order_id
         OrderMailer.confirmation_mail(@order).deliver_later
+        @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
         flash[:success] = "Order placed successfully"
         if current_user
-          redirect_to confirm_order_path @order
+          redirect_to confirm_order_path(@order, :token => @token.token)
         else
-          redirect_to thanks_path
+          redirect_to thanks_path :token => @token.token
         end
       else
         result_hash = {
@@ -190,11 +192,12 @@ class CartsController < ApplicationController
       @order.save
       session.delete :order_id
       OrderMailer.confirmation_mail(@order).deliver_later
+      @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
       flash[:success] = "Order placed successfully"
       if current_user
-        redirect_to confirm_order_path @order
+        redirect_to confirm_order_path(@order, :token => @token.token)
       else
-        redirect_to thanks_path
+        redirect_to thanks_path :token => @token.token
       end
     end
 

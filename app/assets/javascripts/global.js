@@ -1,5 +1,16 @@
 $(document).ready(function() {
-  $('.magnific-image').magnificPopup({type: 'image'});
+  $('.magnific-image').magnificPopup({
+    type: 'image'
+  });
+  $('.magnific-gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'img', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+  });
   //$('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();
@@ -23,7 +34,18 @@ $(document).on("turbolinks:load", function() {
     'virtualUrl': gaUrl
   });
 
-  $('.magnific-image').magnificPopup({type: 'image'});
+  $('.magnific-image').magnificPopup({
+    type: 'image'
+  });
+  $('.magnific-gallery').each(function() { // the containers for all your galleries
+    $(this).magnificPopup({
+        delegate: 'img', // the selector for gallery item
+        type: 'image',
+        gallery: {
+          enabled:true
+        }
+    });
+  });
   //$('.card-image').matchHeight();
 
   $('.cart-btn').tooltip();

@@ -12,6 +12,10 @@ $sand: #fec72e; //rgba(241, 143, 28, 1)
 
 $alpha-main: .7;
 
+$normal-font: 'Lato';
+$headings-font: 'Montserrat';
+$icon-font: 'fontello';
+
 @mixin std-transition {
   transition: all .35s ease-out;
 }

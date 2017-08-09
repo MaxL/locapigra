@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
     @bank_owner = ENV["BANK_OWNER"]
     @bank_iban = ENV["BANK_IBAN"]
     @bank_bic = ENV["BANK_BIC"]
+    @token = params[:token]
   end
 
   def edit

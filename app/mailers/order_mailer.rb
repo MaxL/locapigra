@@ -19,6 +19,11 @@ class OrderMailer < ApplicationMailer
 
   end
 
+  def ebook_mailer(order, attachment)
+    @order = order
+    attachments['free_book.pdf'] = File.read(attachment)
+    mail(to: @order.address.email, cc: [ "info@locapigra.biz" ], bcc: [ ENV["PRIVATE_EMAIL"] ], subject: 'Here\'s the eBook copy of the comic you ordered')
+  end
 
   private
     def set_delivery_options

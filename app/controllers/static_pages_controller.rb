@@ -34,6 +34,7 @@ class StaticPagesController < ApplicationController
   end
 
   def thanks
-
+    @token = params[:token]
   end
+
 end
