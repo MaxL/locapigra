@@ -48,7 +48,7 @@ set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 #    auth_methods: %w(password)
 #  }
 set :ssh_options, {
-  keys: %w(/Users/omar/Documents/keys/max_server.pem)
+  keys: %w(/Users/omar/keys/max_server.pem)
 }
 #
 # The server-based syntax can be used to override options:

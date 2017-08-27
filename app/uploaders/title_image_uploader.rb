@@ -1,11 +1,8 @@
-# encoding: utf-8
-
-class ProductImageUploader < CarrierWave::Uploader::Base
+class TitleImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  #include CarrierWave::MiniMagick
-  #process resize_to_limit: [800, 800]
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # Choose what kind of storage to use for this uploader:
@@ -45,7 +42,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(svg)
   end
 
   # Override the filename of the uploaded files:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717152856) do
+ActiveRecord::Schema.define(version: 20170827134440) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170717152856) do
     t.text     "pp_button"
     t.boolean  "featured"
     t.integer  "position"
+    t.text     "teaser"
+    t.string   "title_image"
   end
 
   add_index "comics", ["name"], name: "index_comics_on_name", unique: true
@@ -219,5 +221,24 @@ ActiveRecord::Schema.define(version: 20170717152856) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "webcomic_pages", force: :cascade do |t|
+    t.integer  "webcomic_id"
+    t.string   "path"
+    t.integer  "page_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "webcomic_pages", ["webcomic_id"], name: "index_webcomic_pages_on_webcomic_id"
+
+  create_table "webcomics", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title_image"
+    t.string   "slug"
+  end
 
 end

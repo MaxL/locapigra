@@ -1,0 +1,2 @@
+class WebcomicPagesController < ApplicationController
+end

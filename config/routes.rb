@@ -15,10 +15,14 @@ Rails.application.routes.draw do
 
   resources :comics
 
+  resources :webcomics
+
   resources :products
   get 'product-list', to: 'products#admin_index', as: :productlist
 
   resources :images
+
+  resources :webcomic_pages
 
   resource :cart, only: [:show, :update] do
     member do

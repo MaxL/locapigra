@@ -1,0 +1,2 @@
+$('#webcomic-page').html("#{escape_javascript(render @webcomic_pages)}");
+$('#webcomic-pagination').html("#{escape_javascript(js_will_paginate @webcomic_pages, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>')}");

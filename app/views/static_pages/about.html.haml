@@ -10,22 +10,18 @@
           %span{ title: "ABOUT" }
 .container
   .card-row
-    .hidden-xs.hidden-sm.col-md-2
-    .col-xs-12.col-sm-6.col-md-4
-      .card.hero-card
-        .hero-img-box
-          = image_tag 'aik.jpg', alt: 'aik of l\'oca pigra', class: 'hero-img'
+    .col-xs-12.col-sm-6
+      .hero-card.aik
+        = inline_svg 'arik01.svg', alt: 'aik of l\'oca pigra', class: 'hero-img'
         .hero-caption
           %h3.card-title AIK
           %p
             30+ and determined....and i love pasta!
             %br/
-            %br/
             Living and working in Berlin, Germany.
-    .col-xs-12.col-sm-6.col-md-4
-      .card.hero-card
-        .hero-img-box
-          = image_tag 'lee.jpg', alt: 'lee of l\'oca pigra', class: 'hero-img'
+    .col-xs-12.col-sm-6.col-md-6
+      .hero-card.lee
+        = inline_svg 'lee01.svg', alt: 'lee of l\'oca pigra', class: 'hero-img'
         .hero-caption
           %h3.card-title LEE
           %p
@@ -33,22 +29,28 @@
             %br/
             Living and working in Shenzen, China.
 
-    .col-xs-12.col-sm-offset-2.col-sm-8.contact-box
-      %h2 CONTACT US
-      .well
-        %p
-          %strong info@locapigra.biz
-          %br/
-          %a.blood{:href => "https://locapigra.tumblr.com/"}
-            L'oca pigra on tumblr
-          %br/
-          %a.blood{:href => "https://www.facebook.com/locapigra/"}
-            L'oca pigra on facebook
+      .contact-box
+        %h2 CONTACT US
+        .well
+          %p
+            %strong info@locapigra.biz
+            %br/
+            %a.blood{:href => "https://locapigra.tumblr.com/"}
+              L'oca pigra on tumblr
+            %br/
+            %a.blood{:href => "https://www.facebook.com/locapigra/"}
+              L'oca pigra on facebook
 
-    .col-xs-12.col-sm-offset-2.col-sm-8
+
+
+    .col-xs-12
       %h3 Code on Github
-      %p
-        We could have just used Shopify or any of the other great eCommerce platforms. But MaxL wanted to learn ruby and ruby on rails. You can check out the source code on
-        %a.blood{href: "https://github.com/MaxL/locapigra"}
-          %i.icon-github-circled
-          github
+      .row
+        .col-xs-12.col-sm-6
+          %p
+            We could have just used Shopify or any of the other great eCommerce platforms. But MaxL wanted to learn ruby and ruby on rails. You can check out the source code on
+            %a.blood{href: "https://github.com/MaxL/locapigra"}
+              %i.icon-github-circled
+              github
+        .col-xs-12.col-sm-6
+          = inline_svg 'max01.svg', alt: 'max of l\'oca pigra', class: 'hero-img'

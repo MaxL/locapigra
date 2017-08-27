@@ -1,18 +1,49 @@
-.col-xs-12.col-sm-6.col-md-4
-  .card
-    %figure.card-image
-      = link_to comic do
-        - if comic.released?
-          = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
-        - else
-          .comic-unreleased
-            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
-      %figcaption.card-body
+.col-xs-12
+  .featured-product
+    - if not comic.released?
+      .featured-label.label.label-warning
+        coming soon
+    .row
+      .col-xs-12.col-sm-4
         = link_to comic do
-          %h3.card-title= comic.name
-        = link_to "more infos", comic, class: "btn btn-success"
-        - if user_signed_in?
-          - if current_user.admin?
-            %ul.list-inline
-              %li= link_to "edit", edit_comic_path(comic)
-              %li= link_to "delete", comic, method: :delete, data: {confirm: "Really delete comic #{comic.name}"}
+          - if comic.released?
+            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
+          - else
+            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive comic-unreleased"
+      .col-xs-12.col-sm-8
+        .row
+          .col-xs-12.col-sm-7
+            - if comic.title_image?
+              = image_tag comic.title_image, class: "title-image", alt: comic.name
+            - else
+              %h2= comic.name
+            -if comic.teaser?
+              %p= comic.teaser.html_safe
+          .col-xs-12.col-sm-5
+            %ul.list-unstyled.comic-attributes
+              %li
+                %small
+                  Pages: #{comic.pages}
+              %li
+                %small
+                  Cover: #{comic.cover}
+              %li
+                %small
+                  Color: #{comic.color}
+              %li
+                %small
+                  Size: #{comic.dimensions}
+            = link_to "More details", comic, class: "btn btn-success btn-lg btn-block"
+
+          -#.col-xs-12.col-sm-7
+          -#.col-xs-12.col-sm-5
+            - if comic.is_virtual
+              %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
+                %input{type: "hidden", name: "rm", value: "2"}
+                %input{type: "hidden", name: "custom", value: "#{@token.token}"}
+                %input{type: "hidden", name: "hosted_button_id", value: "#{comic.pp_button}"}
+                %input{type: "hidden", name: "cmd", value: "_s-xclick"}
+                %button{type: "submit", class: "btn btn-warning btn-block btn-lg", name: "submit"}
+                  %i.icon-paypal
+                  Buy now as eBook
+                %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}

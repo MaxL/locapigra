@@ -4,13 +4,18 @@
   .row
     .category-heading.comic-heading
       .container
-        %h1= @comic.name.upcase
+        - if not @comic.title_image?
+          %h1= @comic.name.upcase
+        - else
+          %h4.small-title= @comic.name.upcase
 .container
   .row.card-row
     .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
       = image_tag @comic.cover_image, alt: @comic.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@comic.cover_image}" }
     .hidden-xs.hidden-sm.col-md-1
     .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
+      - if @comic.title_image?
+        = image_tag @comic.title_image, class: "main-title-image"
       .mini-card
         %p
           = @comic.description.html_safe
