@@ -7,6 +7,7 @@ class Comic < ActiveRecord::Base
   accepts_nested_attributes_for :images, allow_destroy: true
 
   mount_uploader :cover_image, ComicImageUploader
+  mount_uploader :title_image, TitleImageUploader
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :description, presence: true#, length: { minimum: 150 }

@@ -11,6 +11,11 @@ crumb :comic do |comic|
   parent :comics
 end
 
+crumb :webcomic do |webcomic|
+  link webcomic.title, comic_path(webcomic)
+  parent :comics
+end
+
 crumb :products do
   link "Shop", shop_path
 end

@@ -5,8 +5,13 @@ class ImagesController < ApplicationController
     @image.save
   end
 
+  def destroy
+    Image.find(params[:id]).destroy
+    flash[:success] = "Image deleted"
+  end
+
   private
     def image_params
-      params.require(:image).permit(:path)
+      params.require(:image).permit(:path, :remove_path)
     end
 end

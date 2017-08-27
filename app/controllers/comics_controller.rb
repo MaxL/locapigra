@@ -4,8 +4,10 @@ class ComicsController < ApplicationController
   #skip_authorize_resource :only => :index
 
   def index
-    @comics = Comic.paginate(page: params[:page]).order('position ASC')
+    @released = Comic.where(released: true).paginate(page: params[:page]).order('position ASC')
+    @unreleased = Comic.where(released: false).paginate(page: params[:page]).order('position ASC')
     @featured = Comic.where(featured: true).take
+    @webcomic = Webcomic.first
     @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
   end
 
@@ -57,7 +59,7 @@ class ComicsController < ApplicationController
 
   private
     def comic_params
-      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id, :is_virtual, :pp_button, :featured, :position)
+      params.require(:comic).permit(:name, :description, :pages, :cover, :cover_image, :color, :dimensions, :images, :released, :product_id, :is_virtual, :pp_button, :featured, :position, :teaser, :title_image)
     end
 
     def token_params

@@ -1,0 +1,26 @@
+- set_meta_tags title: @webcomic.title.upcase, description: @webcomic.description
+- breadcrumb :webcomic, @webcomic
+.container-fluid
+  .row
+    .comic-heading
+      .container
+        .row
+          .col-xs-12.col-sm-offset-2.col-sm-10.col-md-offset-4.col-md-6
+            .pull-left
+              = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+            .pull-left.webcomic-subtitle
+              %p= @webcomic.description.html_safe
+          -#%h1= @webcomic.title
+.container
+  .row
+    .col-xs-12.text-center.webcomic-container
+      -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
+      #webcomic-page
+        = render @webcomic_pages
+      #webcomic-pagination.webcomic-pagination
+        = js_will_paginate @webcomic_pages, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
+        .col-xs-12
+          = page_entries_info @webcomic_pages
+        -# @webcomic.webcomic_pages.each do |page|
+          .col-xs-4
+            %img.img-responsive{ src: "#{page.path}"}/

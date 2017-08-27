@@ -14,59 +14,39 @@
         %p
           The other comics are still being finished. Stay tuned via Facebook / Instagram or right here on the site for updates!
 
-        = link_to "Check out our Shop!", shop_path, class: "btn btn-default blood btn-lg"
+        = link_to "Check out our Shop!", shop_path, class: "btn btn-danger btn-lg"
 
     .col-md-9.col-sm-12.col-xs-12
-      .row
+      .row.list-row
         .col-xs-12
-          - if @featured
+          - if @webcomic
             .featured-product
               .featured-label.label.label-danger
                 FEATURED
               .row
                 .col-xs-12.col-sm-4
-                  = link_to @featured do
-                    = image_tag @featured.cover_image, alt: @featured.name, class: "img-responsive"
+                  = link_to @webcomic do
+                    = image_tag @webcomic.webcomic_pages.first.path, alt: @webcomic.title, class: "img-responsive"
                 .col-xs-12.col-sm-8
                   .row
-                    .col-xs-12
-                      %h2= @featured.name
                     .col-xs-12.col-sm-7
-                      %p= @featured.description.html_safe
-                    .col-xs-12.col-sm-5
-                      %ul.list-unstyled.comic-attributes
-                        %li
-                          %small
-                            Pages: #{@featured.pages}
-                        %li
-                          %small
-                            Cover: #{@featured.cover}
-                        %li
-                          %small
-                            Color: #{@featured.color}
-                        %li
-                          %small
-                            Size: #{@featured.dimensions}
+                      - if @webcomic.title_image?
+                        = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+                      - else
+                        %h2= @webcomic.title
+                      %p= @webcomic.description.html_safe
 
-                    .col-xs-12.col-sm-7.text-center
-                      = link_to "More details", @featured, class: "btn btn-success btn-lg"
-                    .col-xs-12.col-sm-5
-                      - if @featured.is_virtual
-                        %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
-                          %input{type: "hidden", name: "rm", value: "2"}
-                          %input{type: "hidden", name: "custom", value: "#{@token.token}"}
-                          %input{type: "hidden", name: "hosted_button_id", value: "#{@featured.pp_button}"}
-                          %input{type: "hidden", name: "cmd", value: "_s-xclick"}
-                          %button{type: "submit", class: "btn btn-warning btn-block btn-lg", name: "submit"}
-                            %i.icon-paypal
-                            Buy now as eBook
-                          %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
-      - if @featured
-        .divide
+                    .col-xs-12.col-sm-5.button-column
+                      = link_to "Read the Webcomic", @webcomic, class: "btn btn-block btn-success btn-lg"
+
       .row
-        = will_paginate
-        = render @comics
-        = will_paginate
+
+        = render @released, comic: @released
+
+      .row
+
+        = render @unreleased, comic: @unreleased
+
     - if user_signed_in?
       - if current_user.admin?
         .col-xs-12

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  webcomic_id: 
+  path: MyString
+  page_number: 1
+
+two:
+  webcomic_id: 
+  path: MyString
+  page_number: 1

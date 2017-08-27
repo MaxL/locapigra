@@ -4,6 +4,12 @@
     = f.label :name
     = f.text_field :name, class: "form-control"
   .form-group
+    = f.label :title_image
+    = f.file_field :title_image, accept: 'image/svg+xml'
+  .form-group
+    = f.label :teaser
+    = f.text_area :teaser, class: "form-control"
+  .form-group
     = f.label :description
     = f.text_area :description, class: "form-control"
   .form-group
@@ -18,6 +24,13 @@
   .form-group
     %label Moar Images
     = file_field_tag "images[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png'
+    %ul.images.list-inline
+      - @comic.images.each do |image|
+        %li
+          %img.img-responsive{ :src => "#{image.path}", width: "150" }/
+          -#.checkbox
+            -#= f.label :remove_image
+            -#= f.check_box :remove_image
   .form-group
     = f.label :color
     = f.text_field :color, class: "form-control"

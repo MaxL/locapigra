@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  keybindings();
   $('.magnific-image').magnificPopup({
     type: 'image'
   });
@@ -27,6 +28,7 @@ $(document).ready(function() {
 });
 
 $(document).on("turbolinks:load", function() {
+  keybindings();
   var gaUrl = window.location.href;
 
   dataLayer.push({
@@ -119,3 +121,26 @@ var formLabel = function formLabelF() {
     });
   });
 };
+
+var keybindings = function() {
+  $(document).keydown(function(e) {
+      switch(e.which) {
+          case 37: // left
+            $('.previous_page').click();
+          break;
+
+          //case 38: // up
+          //break;
+
+          case 39: // right
+            $('.next_page').click();
+          break;
+
+          //case 40: // down
+          //break;
+
+          default: return; // exit this handler for other keys
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+}

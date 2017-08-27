@@ -1,0 +1,24 @@
+= form_for(@webcomic, html: { multipart: true }) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :title_image
+    = f.file_field :title_image, accept: 'image/svg+xml'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: "form-control"
+
+  .form-group
+    %label Pages
+    = file_field_tag "webcomic_pages[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png'
+    %ul.images.list-inline
+      - @webcomic.webcomic_pages.each do |page|
+        %li
+          %img.img-responsive{ :src => "#{page.path}", width: "150" }/
+          -#.checkbox
+            -#= f.label :remove_image
+            -#= f.check_box :remove_image
+
+  = f.submit "Save Webcomic", class: "btn btn-primary"
