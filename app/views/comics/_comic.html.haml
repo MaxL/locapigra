@@ -12,7 +12,7 @@
             = image_tag comic.cover_image, alt: comic.name, class: "img-responsive comic-unreleased"
       .col-xs-12.col-sm-8
         .row
-          .col-xs-12.col-sm-7
+          .col-xs-12.col-sm-7.comic-content
             - if comic.title_image?
               = image_tag comic.title_image, class: "title-image", alt: comic.name
             - else

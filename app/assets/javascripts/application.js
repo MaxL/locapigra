@@ -25,6 +25,7 @@
 //= require waitForImages.min
 //= require masonry.pkgd.min
 //= require select2
+//= require jquery.touchSwipe.min
 //= require anime
 //= require index
 //= require global

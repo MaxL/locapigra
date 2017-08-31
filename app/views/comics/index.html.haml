@@ -29,7 +29,7 @@
                     = image_tag @webcomic.webcomic_pages.first.path, alt: @webcomic.title, class: "img-responsive"
                 .col-xs-12.col-sm-8
                   .row
-                    .col-xs-12.col-sm-7
+                    .col-xs-12.col-sm-7.comic-content
                       - if @webcomic.title_image?
                         = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
                       - else

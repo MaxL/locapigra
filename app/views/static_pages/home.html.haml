@@ -2,7 +2,7 @@
 
 .container
   .row
-    .col-xs-12
+    .col-xs-12.hidden-xs
       .divide
     .col-xs-12.col-sm-12.col-md-4.index-copy
       .text-card
@@ -11,12 +11,16 @@
         %p
           We will also be designing, producing and selling fashion items on our shop very soon. Make sure to follow us on social media for updates! Here are the links to our #{link_to "tumblr", "http://locapigra.tumblr.com/", target: "_blank"}, #{link_to "facebook", "https://www.facebook.com/locapigra/", target: "_blank"} and #{link_to "instagram", "https://www.instagram.com/locapigra/", target: "_blank"} pages.
     .col-xs-12.col-sm-12.col-md-2.index-social
-      %a.blood{:href => "https://www.facebook.com/locapigra/", target: "_blank"}
-        %i.icon-facebook
-      %a.blood{:href => "https://www.instagram.com/locapigra/", target: "_blank"}
-        %i.icon-instagram
-      %a.blood{:href => "https://locapigra.tumblr.com/", target: "_blank"}
-        %i.icon-tumblr
+      .row
+        .col-xs-4.col-sm-12
+          %a.blood{:href => "https://www.facebook.com/locapigra/", target: "_blank"}
+            %i.icon-facebook
+        .col-xs-4.col-sm-12
+          %a.blood{:href => "https://www.instagram.com/locapigra/", target: "_blank"}
+            %i.icon-instagram
+        .col-xs-4.col-sm-12
+          %a.blood{:href => "https://locapigra.tumblr.com/", target: "_blank"}
+            %i.icon-tumblr
     .col-xs-12.col-sm-6.col-md-6.index-posts
       - if @posts != nil
         -@posts.each do |post|
