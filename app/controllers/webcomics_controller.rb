@@ -4,7 +4,7 @@ class WebcomicsController < ApplicationController
 
   def show
     @webcomic = Webcomic.find(params[:id])
-    @webcomic_pages = @webcomic.webcomic_pages.paginate(:page => params[:page], :per_page => 1)
+    @webcomic_pages = @webcomic.webcomic_pages.paginate(:page => params[:page], :per_page => 1).order('created_at ASC')
     respond_to do |format|
       format.html
       format.js

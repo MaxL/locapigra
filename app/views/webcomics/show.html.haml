@@ -18,7 +18,7 @@
       #webcomic-page
         = render @webcomic_pages
       #webcomic-pagination.webcomic-pagination
-        = js_will_paginate @webcomic_pages, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
+        = js_will_paginate @webcomic_pages, remote: true, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
         .col-xs-12
           = page_entries_info @webcomic_pages
         -# @webcomic.webcomic_pages.each do |page|

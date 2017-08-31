@@ -25,6 +25,18 @@ $(document).ready(function() {
     fireworks();
   }
 
+  $('.webcomic-img').swipe({
+    //Generic swipe handler for all directions
+    swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+      console.log("swipeLeft from callback");
+      $('.next_page').click();
+    },
+    swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+      console.log("swipeRight from callback");
+      $('.previous_page').click();
+    }
+  });
+
 });
 
 $(document).on("turbolinks:load", function() {
@@ -72,6 +84,18 @@ $(document).on("turbolinks:load", function() {
 
   $( "select" ).select2({
     theme: "bootstrap"
+  });
+
+  $('.webcomic-img').swipe({
+    //Generic swipe handler for all directions
+    swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+      console.log("swipeLeft from callback");
+      $('.next_page').click();
+    },
+    swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+      console.log("swipeRight from callback");
+      $('.previous_page').click();
+    }
   });
 
 });

@@ -27,6 +27,9 @@
   @else if $media == lg {
       @media (min-width: 1200px) { @content; }
   }
+  @else if $media == larger_than_sm {
+      @media (min-width: 768px) {@content; }
+  }
 }
 
 @mixin respondto($media...) {

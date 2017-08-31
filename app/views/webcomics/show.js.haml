@@ -1,2 +1,13 @@
 $('#webcomic-page').html("#{escape_javascript(render @webcomic_pages)}");
 $('#webcomic-pagination').html("#{escape_javascript(js_will_paginate @webcomic_pages, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>')}");
+
+$('.webcomic-img').swipe({
+swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+console.log("swipeLeft from callback");
+$('.next_page').click();
+},
+swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+console.log("swipeRight from callback");
+$('.previous_page').click();
+}
+});

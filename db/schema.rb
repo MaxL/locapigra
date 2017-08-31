@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827134440) do
+ActiveRecord::Schema.define(version: 20170827200153) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 20170827134440) do
     t.datetime "updated_at",  null: false
     t.string   "title_image"
     t.string   "slug"
+    t.integer  "position"
   end
 
 end
