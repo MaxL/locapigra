@@ -1,0 +1,7 @@
+-#$('.posts').append('#{escape_javascript("blogs_page_header")}');
+$('.posts').append('#{escape_javascript(render partial: "post", collection: @posts)}');
+- if @posts.next_page
+  $('.pagination').replaceWith('#{escape_javascript(will_paginate @posts)}');
+- else
+  $(window).off('scroll');
+  $('.pagination').remove();
