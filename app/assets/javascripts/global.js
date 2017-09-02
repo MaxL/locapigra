@@ -39,6 +39,17 @@ $(document).ready(function() {
 
 });
 
+if ( $('#infinite-scrolling').length && $('.posts').length ) {
+  $(window).scroll(function(e) {
+    url = $('.pagination .next_page a').attr('href');
+    if ( url && $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
+      $('.pagination').text("Loading more products...");
+      $.getScript(url);
+    }
+  });
+  //$(window).scroll();
+}
+
 $(document).on("turbolinks:load", function() {
   keybindings();
   var gaUrl = window.location.href;
@@ -73,14 +84,14 @@ $(document).on("turbolinks:load", function() {
     fireworks();
   }
 
-  $('.posts').waitForImages(function() {
+  /*$('.posts').waitForImages(function() {
     // All descendant images have loaded, now slide up.
     $(this).masonry({
       // options...
       itemSelector: '.post',
       columnWidth: '.post'
     });
-  });
+  });*/
 
   $( "select" ).select2({
     theme: "bootstrap"
@@ -100,11 +111,11 @@ $(document).on("turbolinks:load", function() {
 
 });
 
-$('.posts').masonry({
+/*$('.posts').masonry({
   // options...
   itemSelector: '.post',
   columnWidth: '.post'
-});
+});*/
 
 // override jquery validate plugin defaults
 $.validator.setDefaults({
