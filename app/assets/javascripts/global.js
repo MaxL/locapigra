@@ -39,17 +39,6 @@ $(document).ready(function() {
 
 });
 
-if ( $('#infinite-scrolling').length && $('.posts').length ) {
-  $(window).scroll(function(e) {
-    url = $('.pagination .next_page a').attr('href');
-    if ( url && $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
-      $('.pagination').text("Loading more products...");
-      $.getScript(url);
-    }
-  });
-  //$(window).scroll();
-}
-
 $(document).on("turbolinks:load", function() {
   keybindings();
   var gaUrl = window.location.href;
@@ -109,7 +98,38 @@ $(document).on("turbolinks:load", function() {
     }
   });
 
+  scroller.reset();
+  scroller.init();
+
 });
+
+let scroller = (function() {
+  let counter = 0;
+
+  let myScroller = {
+    init: function() {
+      if ( $('#infinite-scrolling').length && $('.posts').length ) {
+        $(window).scroll(function(e) {
+          //$('.pagination .next_page a').attr('href');
+          if ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
+            $('.pagination').text("Loading more posts...");
+            counter++;
+            let offset = counter * 10;
+            let url = window.location.href  + '?offset=' + offset;
+            $.getScript(url);
+          }
+        });
+        $(window).scroll();
+      }
+    },
+
+    reset: function() {
+      counter = 0;
+    }
+  }
+
+  return myScroller;
+})();
 
 /*$('.posts').masonry({
   // options...

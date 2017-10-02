@@ -10,13 +10,14 @@
           %span{ title: "BLOG"}
         %p
           These are the last couple of posts from
-          %a.underline{:href => "https://locapigra.tumblr.com"} our tumblr
+          %a.underline{ href: "https://locapigra.tumblr.com", target: "blank" } our tumblr
 .container
   .row.card-row.blog-row
     - if @posts != nil
       .posts
         = render partial: "post", collection: @posts
       #infinite-scrolling.col-xs-12.text-center
-        = will_paginate @posts
+        .pagination
+          more posts
     - else
       %p Sorry, something seems to be wrong with our connection to tumblr - blog posts couldn't be loaded
