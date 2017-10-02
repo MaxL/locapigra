@@ -103,10 +103,10 @@ $(document).on("turbolinks:load", function() {
 
 });
 
-let scroller = (function() {
-  let counter = 0;
+var scroller = (function() {
+  var counter = 0;
 
-  let myScroller = {
+  var myScroller = {
     init: function() {
       if ( $('#infinite-scrolling').length && $('.posts').length ) {
         $(window).scroll(function(e) {
@@ -114,8 +114,8 @@ let scroller = (function() {
           if ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
             $('.pagination').text("Loading more posts...");
             counter++;
-            let offset = counter * 10;
-            let url = window.location.href  + '?offset=' + offset;
+            var offset = counter * 10;
+            var url = window.location.href  + '?offset=' + offset;
             $.getScript(url);
           }
         });
