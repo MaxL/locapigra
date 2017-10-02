@@ -12,9 +12,7 @@ class CartsController < ApplicationController
   ]
 
   def show
-    #user
     @user = current_or_guest_user
-    #products
     @order_items = current_order.order_items
     sum = 0
     j = @order_items.map { |e| (sum += e[:total_price]) }
@@ -22,7 +20,6 @@ class CartsController < ApplicationController
     if @subtotal
       @subtotal_tax = @subtotal * 0.07
     end
-    #order
     @order = current_order
     if !@order.address
       @order.create_address
@@ -36,17 +33,14 @@ class CartsController < ApplicationController
     @payment = PaymentChoice.find(order_params[:payment_choice_id])
     respond_to do |format|
       if @order.update_attributes(order_params)
-        #if is_guest_user?
-        #  @user.email = order_params[:address_attributes][:email]
-        #  @user.save
-        #end
         @order.set_shipping_price(order_params[:address_attributes][:country])
         @order.shipping = @order.shipping * order_items_quantity
 
         total = @order.subtotal + @order.shipping
 
+        # FIXME get fee from payment option
         if @payment.name == "Braintree"
-          fee = ((total*100.0) * 0.019) + 35.0
+          fee = ( (total * 100.0) * 0.019 ) + 35.0
           @order.payment_fee = fee.round
         else
           @order.payment_fee = 0
@@ -68,20 +62,25 @@ class CartsController < ApplicationController
 
   end
 
+  #FIXME modularize checkout method per option? in any case: clean this up!
   def checkout
     @order = current_order
     @order.order_status_id = 2
     if @order.update_attributes(order_params)
+
       if @order.agreement
         @payment = PaymentChoice.find(@order.payment_choice_id)
+
         if @payment.name == "Braintree"
           @order.order_status_id = 6
           @order.save
           create_braintree_payment @order.total, @order, params["payment_method_nonce"]
+
         elsif @payment.name == "Stripe"
           @order.order_status_id = 6
           @order.save
           create_stripe_payment params[:stripeEmail], params[:stripeToken], @order.total, @order
+
         else
           @order.decrease_inventory
           @order.placed_on = DateTime.now
@@ -96,12 +95,14 @@ class CartsController < ApplicationController
             redirect_to thanks_path :token => @token.token
           end
         end
+
       else
-        flash[:danger] = "Your order could not be completed"
+        flash[:danger] = "Sorry, your order could not be completed"
         redirect_to cart_path
       end
+
     else
-      flash[:danger] = "Your order could not be completed"
+      flash[:danger] = "Sorry, your order could not be completed"
       redirect_to cart_path
     end
   end

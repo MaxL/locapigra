@@ -6,8 +6,11 @@ class BlogsController < ApplicationController
   def index
     client = Tumblr::Client.new
     if client
-      response = client.posts 'locapigra.tumblr.com', limit: 80, reblog_info: true, notes_info: true
-      @posts = response.to_ostruct.posts.paginate(:page => params[:page], :per_page => 10)
+      @offset = params[:offset]
+      if @offset
+        @page = (@offset.to_i / 10) + 1
+      end
+      @posts = client.posts('locapigra.tumblr.com', limit: 10, offset: @offset).to_ostruct.posts
     end
 
     respond_to do |format|
