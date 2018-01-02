@@ -123,7 +123,7 @@ var scroller = (function() {
           }
         });
         $('body').on('touchmove', function(e) {
-          f ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
+          if ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
             $('.pagination').text("Loading more posts...");
             self.counter++;
             var offset = self.counter * 10;
@@ -138,7 +138,7 @@ var scroller = (function() {
     reset: function() {
       this.counter = 0;
     }
-  }
+  };
 
   return myScroller;
 })();
