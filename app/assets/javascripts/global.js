@@ -98,23 +98,26 @@ $(document).on("turbolinks:load", function() {
     }
   });
 
-  scroller.reset();
-  scroller.init();
+  if ( $('#infinite-scrolling').length && $('.posts').length ) {
+    scroller.reset();
+    scroller.init();
+  }
 
 });
 
 var scroller = (function() {
-  var counter = 0;
 
   var myScroller = {
+    counter: 0,
     init: function() {
+      var self = this;
       if ( $('#infinite-scrolling').length && $('.posts').length ) {
         $(window).scroll(function(e) {
           //$('.pagination .next_page a').attr('href');
           if ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
             $('.pagination').text("Loading more posts...");
-            counter++;
-            var offset = counter * 10;
+            self.counter++;
+            var offset = self.counter * 10;
             var url = window.location.href  + '?offset=' + offset;
             $.getScript(url);
           }
@@ -124,7 +127,7 @@ var scroller = (function() {
     },
 
     reset: function() {
-      counter = 0;
+      self.counter = 0;
     }
   }
 
