@@ -122,7 +122,7 @@ var scroller = (function() {
             $.getScript(url);
           }
         });
-        $(document.body).on('touchmove', function(e) {
+        $('body').on('touchmove', function(e) {
           f ( $(window).scrollTop() > $(document).height() - $(window).height() - 50 ) {
             $('.pagination').text("Loading more posts...");
             self.counter++;
