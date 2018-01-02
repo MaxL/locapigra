@@ -137,7 +137,7 @@ var scroller = (function() {
 
     reset: function() {
       this.counter = 0;
-    },
+    }
   }
 
   return myScroller;
