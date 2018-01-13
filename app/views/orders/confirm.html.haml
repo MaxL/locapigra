@@ -29,7 +29,7 @@
               %table.table
                 %tr
                   %td.text-left
-                    Shipping price
+                    Payment fee
                   %td.text-right= number_to_currency @order.payment_fee / 100.0, locale: :de
 
           %table.table
@@ -52,7 +52,7 @@
       - if @token
         .col-xs-12
           %p.lead
-            Thank you for your purchase. You can find the download links below. Keep in mind that this link will only be active for 24 hours after your purchase!
+            Thank you for your purchase. You can find the download links below. Keep in mind that these links will only be active for 24 hours after your purchase!
         .row
           .col-xs-4
             =link_to "Download PDF", "/files/clawspdf?token=#{@token}", target: :_blank, class: "btn btn-warning btn-lg btn-block"
