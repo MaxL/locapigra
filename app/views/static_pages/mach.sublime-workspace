@@ -1,0 +1,259 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cur",
+				"current-menu-item\t _header.scss"
+			],
+			[
+				"list",
+				"list-style-type"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 320.0,
+		"last_filter": "ins",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"monka",
+				"Monokai Pro: select theme"
+			],
+			[
+				"inst ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 320.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/parts/shared/header.php",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/abstracts/_variables.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/styles.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/twentysixteen/header.php",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/functions.php",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/config.rb",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/onchange.sh",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/abstracts/_functions.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/pages/_page.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/base/_base.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/pages/_single.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/pages/_home.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/components/_button.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/layout/_footer.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/layout/_header.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/base/_helpers.scss",
+		"/Users/omar/sites/wp-haussmann/httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/sass/base/_fonts.scss",
+		"/Users/omar/.zshrc",
+		"/Users/omar/sites/wp-haussmann/sftp-config.json",
+		"/Users/omar/sites/weltbild/index.html",
+		"/Users/omar/sites/weltbild/sponsors/index.html",
+		"/Users/omar/sites/weltbild/imprint/index.html",
+		"/Users/omar/sites/weltbild/imprint.html",
+		"/Users/omar/sites/weltbild/contact/index.html",
+		"/Users/omar/sites/weltbild/about/index.html",
+		"/Users/omar/sites/weltbild/_sass/layout/_header.scss",
+		"/Users/omar/sites/weltbild/_sass/layout/_footer.scss",
+		"/Users/omar/sites/weltbild/_sass/components/_button.scss",
+		"/Users/omar/sites/weltbild/_sass/base/_typography.scss",
+		"/Users/omar/sites/weltbild/_sass/base/_helpers.scss",
+		"/Users/omar/sites/weltbild/_sass/base/_fonts.scss",
+		"/Users/omar/sites/weltbild/_sass/base/_base.scss",
+		"/Users/omar/sites/weltbild/_sass/abstracts/_functions.scss",
+		"/Users/omar/sites/weltbild/_sass/abstracts/_mixins.scss",
+		"/Users/omar/sites/weltbild/_sass/_variables.scss",
+		"/Users/omar/sites/weltbild/sponsors.html",
+		"/Users/omar/sites/weltbild/about.html",
+		"/Users/omar/sites/weltbild/contact.html",
+		"/Users/omar/sites/weltbild/_site/about.html",
+		"/Users/omar/sites/weltbild/_site/assets/main.scss",
+		"/Users/omar/foopubkey.asc",
+		"/Users/omar/Documents/gpg/wallst.txt",
+		"/Users/omar/Pictures/treeline.svg"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 50.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 124.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pagephp",
+				"httpdocs/wp-content/themes/bootstrap-3.3.7-on-wordpress/page.php"
+			],
+			[
+				"basscs",
+				"app/assets/stylesheets/_base.scss"
+			],
+			[
+				"appscss",
+				"app/assets/stylesheets/application.scss"
+			],
+			[
+				"globjs",
+				"app/assets/javascripts/global.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 355.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
