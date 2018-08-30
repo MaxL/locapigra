@@ -1,0 +1,13 @@
+= form_for(@chapter) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :chapter_number
+    = f.number_field :chapter_number
+  .form-group
+    = f.label :webcomic
+    = f.select :webcomic_id, Webcomic.all.collect {|w| [ w.title, w.id ] }, {include_blank: 'None'}, class: "form-control"
+
+  = f.submit "Save Chapter", class: "btn btn-primary"

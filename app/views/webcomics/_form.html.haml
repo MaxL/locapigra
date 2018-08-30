@@ -14,11 +14,8 @@
     %label Pages
     = file_field_tag "webcomic_pages[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png'
     %ul.images.list-inline
-      - @webcomic.webcomic_pages.each do |page|
+      - @webcomic_pages.each do |page|
         %li
-          %img.img-responsive{ :src => "#{page.path}", width: "150" }/
-          -#.checkbox
-            -#= f.label :remove_image
-            -#= f.check_box :remove_image
+          = link_to image_tag( "#{page.path}", class: "img-responsive", width: "150"), edit_webcomic_page_path(page)
 
   = f.submit "Save Webcomic", class: "btn btn-primary"

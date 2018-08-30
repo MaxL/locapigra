@@ -2,9 +2,14 @@ class WebcomicsController < ApplicationController
   skip_authorization_check only: [:show]
   load_and_authorize_resource :except => [:show]
 
+  def index
+    @webcomics = Webcomic.all
+  end
+
   def show
     @webcomic = Webcomic.find(params[:id])
-    @webcomic_pages = @webcomic.webcomic_pages.paginate(:page => params[:page], :per_page => 1).order('created_at ASC')
+    @webcomic_pages = @webcomic.webcomic_pages.paginate(:page => params[:page], :per_page => 1).order('page_number')#.order('created_at ASC')
+    @chapters = @webcomic.webcomic_chapters
     respond_to do |format|
       format.html
       format.js
@@ -30,6 +35,7 @@ class WebcomicsController < ApplicationController
 
   def edit
     @webcomic = Webcomic.find(params[:id])
+    @webcomic_pages = @webcomic.webcomic_pages.order('page_number')
   end
 
   def update

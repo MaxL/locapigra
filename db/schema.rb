@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827200153) do
+ActiveRecord::Schema.define(version: 20180610152624) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "recipient"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170827200153) do
   end
 
   add_index "addresses", ["order_id"], name: "index_addresses_on_order_id"
+
+  create_table "chapters", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comics", force: :cascade do |t|
     t.string   "name"
@@ -222,14 +229,28 @@ ActiveRecord::Schema.define(version: 20170827200153) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
+  create_table "webcomic_chapters", force: :cascade do |t|
+    t.integer  "webcomic_id"
+    t.text     "title"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "webcomic_page_id"
+    t.integer  "chapter_number"
+  end
+
+  add_index "webcomic_chapters", ["webcomic_id"], name: "index_webcomic_chapters_on_webcomic_id"
+  add_index "webcomic_chapters", ["webcomic_page_id"], name: "index_webcomic_chapters_on_webcomic_page_id"
+
   create_table "webcomic_pages", force: :cascade do |t|
     t.integer  "webcomic_id"
     t.string   "path"
     t.integer  "page_number"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "webcomic_chapter_id"
   end
 
+  add_index "webcomic_pages", ["webcomic_chapter_id"], name: "index_webcomic_pages_on_webcomic_chapter_id"
   add_index "webcomic_pages", ["webcomic_id"], name: "index_webcomic_pages_on_webcomic_id"
 
   create_table "webcomics", force: :cascade do |t|

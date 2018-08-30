@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-xs-12
+      %h4
+        Webcomics
+      %table.table.table-condensend
+        %thead
+          %tr
+            %td
+              Name
+            %td
+              Chapters
+            %td
+        %tbody
+          = render partial: "webcomic", collection: @webcomics

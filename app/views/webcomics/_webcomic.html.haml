@@ -1,0 +1,10 @@
+%tr
+  %td
+    = webcomic.title
+  %td
+    - webcomic.webcomic_chapters.each do |chapter|
+      %li
+        #{chapter.title}
+        = link_to "edit", edit_webcomic_chapter_path(chapter.id)
+  %td
+    = link_to "edit", edit_webcomic_path(webcomic.id)

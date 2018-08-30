@@ -1,0 +1,15 @@
+= form_for(@webcomic_page) do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    = f.label :page_number
+    = f.number_field :page_number
+  .form-group
+    = f.label :webcomic_chapter_id
+    = f.select :webcomic_chapter_id, WebcomicChapter.all.collect {|w| [ w.title, w.id ] }, {include_blank: 'None'}, class: "form-control"
+  .form-group
+    = f.label :webcomic
+    = f.select :webcomic_id, Webcomic.all.collect {|w| [ w.title, w.id ] }, {include_blank: 'None'}, class: "form-control"
+
+  = f.submit "Save Page", class: "btn btn-primary"
+
+= link_to "delete", @webcomic_page, method: :delete, data: {confirm: "Really delete page #{@webcomic_page.path}"}

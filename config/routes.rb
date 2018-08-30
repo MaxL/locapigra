@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :images
 
   resources :webcomic_pages
+  resources :webcomic_chapters
+  get 'chapters', to: 'webcomic_chapters#index', as: :chapters
 
   resource :cart, only: [:show, :update] do
     member do

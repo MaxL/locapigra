@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  webcomic_id: 
+  title: MyText
+
+two:
+  webcomic_id: 
+  title: MyText

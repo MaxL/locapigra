@@ -5,11 +5,19 @@
     .comic-heading
       .container
         .row
-          .col-xs-12.col-sm-offset-2.col-sm-10.col-md-offset-4.col-md-6
-            .pull-left
+          .col-xs-12.col-sm-offset-2.col-sm-5.col-md-offset-3.col-md-3
+            .pull-right
               = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
-            .pull-left.webcomic-subtitle
+          .col-xs-12.col-sm-5.col-md-3
+            .webcomic-subtitle.pull-left
               %p= @webcomic.description.html_safe
+          .col-xs-12.col-sm-offset-2.col-sm-5.col-md-offset-3.col-md-3
+            %h3.pull-right
+              Chapter
+          .col-xs-12.col-sm-5.col-md-3
+            %ul#chapters
+              - @chapters.each do |chapter|
+                %li= chapter.title
           -#%h1= @webcomic.title
 .container
   .row
@@ -24,3 +32,11 @@
         -# @webcomic.webcomic_pages.each do |page|
           .col-xs-4
             %img.img-responsive{ src: "#{page.path}"}/
+
+  - if user_signed_in?
+    - if current_user.admin?
+      .row
+        .col-xs-12
+          %ul.list-inline
+            %li= link_to "edit", edit_webcomic_path(@webcomic)
+            %li= link_to "delete", @webcomic, method: :delete, data: {confirm: "Really delete comic #{@webcomic.title}"}
