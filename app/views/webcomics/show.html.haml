@@ -4,18 +4,21 @@
 .container
   .row
     .col-xs-12.col-push-12.col-sm-3.col-md-3
-      - if @webcomic.title_image
+      - if @webcomic.title_image.blank?
+        %h1= @webcomic.title
+      - else
         = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
       %br
       %p= @webcomic.description.html_safe
-      -if @chapters
+      -if @chapters != nil
         %h3
           Chapters
       %ul#chapters.list-unstyled
-        -if @chapters
+        -if @chapters != nil
           - @chapters.each do |chapter|
             %li
-              = link_to chapter.title, webcomic_path(page: chapter.webcomic_pages.first.page_number)
+              -if chapter.webcomic_pages.first
+                = link_to chapter.title, webcomic_path(page: chapter.webcomic_pages.first.page_number)
         %li.hidden-xs
           %button.btn.btn-link{data: {toggle: "modal", target: "#pages-modal"}}
             See all pages
