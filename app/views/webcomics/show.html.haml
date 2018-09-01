@@ -4,7 +4,8 @@
 .container
   .row
     .col-xs-12.col-push-12.col-sm-3.col-md-3
-      = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+      - if @webcomic.title_image
+        = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
       %br
       %p= @webcomic.description.html_safe
       -if @chapters
