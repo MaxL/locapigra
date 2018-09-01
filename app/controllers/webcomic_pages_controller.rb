@@ -36,6 +36,14 @@ class WebcomicPagesController < ApplicationController
     end
   end
 
+  def sort
+    params[:webcomic_page].each_with_index do |id, index|
+      WebcomicPage.where(id: id).update_all(page_number: index + 1)
+    end
+
+    head :ok
+  end
+
   def destroy
     WebcomicPage.find(params[:id]).destroy
     flash[:success] = "Page deleted"

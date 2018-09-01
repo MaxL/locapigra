@@ -1,32 +1,68 @@
 - set_meta_tags title: @webcomic.title.upcase, description: @webcomic.description
 - breadcrumb :webcomic, @webcomic
-.container-fluid
-  .row
-    .comic-heading
-      .container
-        .row
-          .col-xs-12.col-sm-offset-2.col-sm-5.col-md-offset-3.col-md-3
-            .pull-right
-              = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
-          .col-xs-12.col-sm-5.col-md-3
-            .webcomic-subtitle.pull-left
-              %p= @webcomic.description.html_safe
-          .col-xs-12.col-sm-offset-2.col-sm-5.col-md-offset-3.col-md-3
-            %h3.pull-right
-              Chapter
-          .col-xs-12.col-sm-5.col-md-3
-            %ul#chapters
-              - @chapters.each do |chapter|
-                %li= chapter.title
-          -#%h1= @webcomic.title
+
 .container
   .row
-    .col-xs-12.text-center.webcomic-container
+    .col-xs-12.col-push-12.col-sm-3.col-md-3
+      = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+      %br
+      %p= @webcomic.description.html_safe
+      %h3
+        Chapters
+      %ul#chapters.list-unstyled
+        -if @chapters
+          - @chapters.each do |chapter|
+            %li
+              = link_to chapter.title, webcomic_path(page: chapter.webcomic_pages.first.page_number)
+        %li.hidden-xs
+          %button.btn.btn-link{data: {toggle: "modal", target: "#pages-modal"}}
+            See all pages
+
+    .col-xs-12.col-pull-12.col-sm-9.col-md-9.text-center.webcomic-container
       -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
       #webcomic-page
         = render @webcomic_pages
       #webcomic-pagination.webcomic-pagination
-        = js_will_paginate @webcomic_pages, remote: true, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
+        = js_will_paginate @webcomic_pages, remote: true, inner_window: 0, outer_window: 0, page_links: true, previous_label: '<i class="icon-play-1 rotated"></i>', next_label: '<i class="icon-play-1"></i>'
+        -#.col-xs-12
+          = page_entries_info @webcomic_pages
+        -# @webcomic.webcomic_pages.each do |page|
+          .col-xs-4
+            %img.img-responsive{ src: "#{page.path}"}/
+
+    .col-xs-12
+      .modal.fade#pages-modal
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              %button.close{type: "button", data: {dismiss: "modal"}}
+                %span
+                  &times;
+              %h4.modal-title
+                All Pages
+            .modal-body
+              .row
+                - @pages.each do |p|
+                  .col-xs-12.col-sm-6.col-md-4
+                    = link_to image_tag( "#{p.path}", class: "img-responsive"), webcomic_path(page: p.page_number)
+
+  -#.flex-row
+    .flex-first
+      = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+      %br
+      %p= @webcomic.description.html_safe
+      %h3
+        Chapter
+      %ul#chapters
+        - @chapters.each do |chapter|
+          %li= chapter.title
+
+    .col-xs-12.col-pull-12.col-sm-9.col-md-9.text-center.webcomic-container
+      -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
+      #webcomic-page
+        = render @webcomic_pages
+      #webcomic-pagination.webcomic-pagination
+        = js_will_paginate @webcomic_pages, remote: true, page_links: true, inner_window: 1, outer_window: 1, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
         .col-xs-12
           = page_entries_info @webcomic_pages
         -# @webcomic.webcomic_pages.each do |page|

@@ -5,6 +5,9 @@
 .icon-camera:before { content: '\e803'; } /* '' */
 .icon-camera-alt:before { content: '\e804'; } /* '' */
 .icon-yacht:before { content: '\e805'; } /* '' */
+.icon-play-1:before { content: '\e806'; } /* '' */
+.icon-to-start-1:before { content: '\e807'; } /* '' */
+.icon-to-end-1:before { content: '\e808'; } /* '' */
 .icon-link:before { content: '\e80c'; } /* '' */
 .icon-attach:before { content: '\e80d'; } /* '' */
 .icon-lock:before { content: '\e80e'; } /* '' */

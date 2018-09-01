@@ -543,6 +543,16 @@ hr {
     margin: 0 auto;
   }
 }
+.ui-sortable-handle {
+  border: 1px solid $night;
+}
+i {
+  &.rotated {
+    &::before {
+      transform: rotate(180deg);
+    }
+  }
+}
 
 /* #COMICS & #PRODUCTS */
 .products-sidebar {
@@ -563,15 +573,20 @@ hr {
 .list-row {
   margin-top: 50px;
 }
-.featured-product {
-  background-color: $lighter;
-  padding: 0 30px 0 0;
+.flex-row {
+  display: flex;
+}
+.flex-first {
+  margin-left: 15%;
+}
+.spacer {
+  width: 100%;
   margin-bottom: 50px;
-  border-bottom: 4px solid $swamp;
+}
+.featured-product {
+  margin-top: 10px;
   position: relative;
-  @include respond-to(xs) {
-    padding: 0;
-  };
+  height: 560px;
 }
 .featured-label {
   position: absolute;
@@ -650,13 +665,15 @@ hr {
   .disabled {
     display: inline-block;
     padding: 4px 7px;
-    border: 1px solid $night;
+    //border: 1px solid $night;
   }
   em {
     color: $light;
     background-color: $night;
   }
 }
+
+/*
 .webcomic-container {
   position: relative;
   .previous_page,
@@ -682,6 +699,11 @@ hr {
     };
   }
 }
+*/
+
+.loca-list {
+  list-style-image: url('logo_sm.svg')
+}
 
 .webcomic-subtitle {
   margin-top: 25px;
@@ -689,7 +711,7 @@ hr {
 }
 
 .webcomic-page {
-  margin: 0 auto;
+  margin: 40px auto 0;
   @include respond-to(larger_than_sm) {
     max-height: 1000px;
   };

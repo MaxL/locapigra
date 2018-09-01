@@ -22,7 +22,11 @@ Rails.application.routes.draw do
 
   resources :images
 
-  resources :webcomic_pages
+  resources :webcomic_pages do
+    collection do
+      patch :sort
+    end
+  end
   resources :webcomic_chapters
   get 'chapters', to: 'webcomic_chapters#index', as: :chapters
 

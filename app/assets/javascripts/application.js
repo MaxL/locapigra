@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery-ui/widget
+//= require jquery-ui/widgets/sortable
 //= require cocoon
 //= require jquery.matchHeight
 //= require magnific-popup
@@ -29,3 +31,4 @@
 //= require anime
 //= require index
 //= require global
+//= require webcomics

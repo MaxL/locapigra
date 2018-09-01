@@ -1,0 +1,13 @@
+.col-xs-12.col-sm-6.col-md-4.text-center
+  .featured-product
+    .featured-label.label.label-success
+      Webcomic
+    .row
+      .col-xs-12
+        = link_to webcomic do
+          = image_tag webcomic.webcomic_pages.order('page_number').first.path, alt: webcomic.title, class: "img-responsive"
+        -# if webcomic.title_image?
+          = image_tag webcomic.title_image, class: "title-image", alt: webcomic.title
+        - else
+          %h2= webcomic.title
+

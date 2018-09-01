@@ -13,9 +13,10 @@
   .form-group
     %label Pages
     = file_field_tag "webcomic_pages[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png'
-    %ul.images.list-inline
+    %ul.images.list-inline#pages{data: {url: sort_webcomic_pages_path}}
       - @webcomic_pages.each do |page|
-        %li
+        %li{id: dom_id(page)}
           = link_to image_tag( "#{page.path}", class: "img-responsive", width: "150"), edit_webcomic_page_path(page)
+          = page.page_number
 
   = f.submit "Save Webcomic", class: "btn btn-primary"

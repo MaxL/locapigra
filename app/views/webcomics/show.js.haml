@@ -1,5 +1,5 @@
 $('#webcomic-page').html("#{escape_javascript(render @webcomic_pages)}");
-$('#webcomic-pagination').html("#{escape_javascript(js_will_paginate @webcomic_pages, page_links: true, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>')}");
+$('#webcomic-pagination').html("#{escape_javascript(js_will_paginate @webcomic_pages, inner_window: 0, outer_window: 0, page_links: true, previous_label: '<i class="icon-play-1 rotated"></i>', next_label: '<i class="icon-play-1"></i>')}");
 
 $('.webcomic-img').swipe({
 swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {

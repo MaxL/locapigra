@@ -1,39 +1,23 @@
-.col-xs-12
+.col-xs-12.col-sm-6.col-md-4.text-center
   .featured-product
     - if not comic.released?
       .featured-label.label.label-warning
         coming soon
+    - else
+      .featured-label.label.label-danger
+        Comic
     .row
-      .col-xs-12.col-sm-4
+      .col-xs-12
         = link_to comic do
           - if comic.released?
             = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
           - else
             = image_tag comic.cover_image, alt: comic.name, class: "img-responsive comic-unreleased"
-      .col-xs-12.col-sm-8
-        .row
-          .col-xs-12.col-sm-7.comic-content
-            - if comic.title_image?
-              = image_tag comic.title_image, class: "title-image", alt: comic.name
-            - else
-              %h2= comic.name
-            -if comic.teaser?
-              %p= comic.teaser.html_safe
-          .col-xs-12.col-sm-5
-            %ul.list-unstyled.comic-attributes
-              %li
-                %small
-                  Pages: #{comic.pages}
-              %li
-                %small
-                  Cover: #{comic.cover}
-              %li
-                %small
-                  Color: #{comic.color}
-              %li
-                %small
-                  Size: #{comic.dimensions}
-            = link_to "More details", comic, class: "btn btn-success btn-lg btn-block"
+      -#.col-xs-12
+        - if comic.title_image?
+          = image_tag comic.title_image, class: "title-image", alt: comic.name
+        - else
+          %h2= comic.name
 
           -#.col-xs-12.col-sm-7
           -#.col-xs-12.col-sm-5

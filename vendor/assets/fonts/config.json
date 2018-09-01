@@ -749,6 +749,24 @@
       ]
     },
     {
+      "uid": "929ff290f0be577d2a2d587d5a53eec1",
+      "css": "play-1",
+      "code": 59398,
+      "src": "iconic"
+    },
+    {
+      "uid": "6afd0c334e4d1dd182d44e9e63257174",
+      "css": "to-start-1",
+      "code": 59399,
+      "src": "iconic"
+    },
+    {
+      "uid": "f0d8d7ccb0adb92a41c058d7fd9f11b2",
+      "css": "to-end-1",
+      "code": 59400,
+      "src": "iconic"
+    },
+    {
       "uid": "06aa7ac6214363c9da3cb8a895397649",
       "css": "loca",
       "code": 59393,

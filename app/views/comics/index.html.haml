@@ -3,6 +3,25 @@
 
 .container
   .row
+
+    .col-md-12.col-sm-12.col-xs-12
+
+      .row
+        .spacer
+
+        = render partial: "webcomic", collection: @webcomics
+
+        = render @released, comic: @released
+
+        = render @unreleased, comic: @unreleased
+
+    - if user_signed_in?
+      - if current_user.admin?
+        .col-xs-12
+          %hr/
+          = link_to "Add comic", new_comic_path, class: "btn btn-success btn-lg"
+
+
     .col-md-3.col-sm-12.col-xs-12
       .products-sidebar
         %h1
@@ -15,40 +34,3 @@
           The other comics are still being finished. Stay tuned via Facebook / Instagram or right here on the site for updates!
 
         = link_to "Check out our Shop!", shop_path, class: "btn btn-danger btn-lg"
-
-    .col-md-9.col-sm-12.col-xs-12
-      .row.list-row
-        .col-xs-12
-          - if @webcomic
-            .featured-product
-              .featured-label.label.label-danger
-                FEATURED
-              .row
-                .col-xs-12.col-sm-4
-                  = link_to @webcomic do
-                    = image_tag @webcomic.webcomic_pages.first.path, alt: @webcomic.title, class: "img-responsive"
-                .col-xs-12.col-sm-8
-                  .row
-                    .col-xs-12.col-sm-7.comic-content
-                      - if @webcomic.title_image?
-                        = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
-                      - else
-                        %h2= @webcomic.title
-                      %p= @webcomic.description.html_safe
-
-                    .col-xs-12.col-sm-5.button-column
-                      = link_to "Read the Webcomic", @webcomic, class: "btn btn-block btn-success btn-lg"
-
-      .row
-
-        = render @released, comic: @released
-
-      .row
-
-        = render @unreleased, comic: @unreleased
-
-    - if user_signed_in?
-      - if current_user.admin?
-        .col-xs-12
-          %hr/
-          = link_to "Add comic", new_comic_path, class: "btn btn-success btn-lg"
