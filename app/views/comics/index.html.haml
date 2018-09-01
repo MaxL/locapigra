@@ -7,6 +7,9 @@
     .col-md-12.col-sm-12.col-xs-12
 
       .row
+        %h1
+          COMICS
+          %span{ title: "COMICS" }
         .spacer
 
         = render partial: "webcomic", collection: @webcomics
@@ -15,22 +18,17 @@
 
         = render @unreleased, comic: @unreleased
 
+        .col-xs-12
+          .row
+            .col-md-8.col-sm-10.col-xs-12
+              %p
+                Check out our awesome comics! Claws of Fury has been released in a limited edition, grab it in our shop while there are copies left. You can also get it as a downloadable eBook (in many handy formats).
+              %p
+                The other comics are still being finished. Stay tuned via Facebook / Instagram or right here on the site for updates!
+              = link_to "Check out our Shop!", shop_path, class: "btn btn-danger btn-lg"
+
     - if user_signed_in?
       - if current_user.admin?
         .col-xs-12
           %hr/
           = link_to "Add comic", new_comic_path, class: "btn btn-success btn-lg"
-
-
-    .col-md-3.col-sm-12.col-xs-12
-      .products-sidebar
-        %h1
-          COMICS
-          %span{ title: "COMICS" }
-        %p
-          Check out our awesome comics! Claws of Fury has been released in a limited edition, grab it in our shop while there are copies left. You can also get it as a downloadable eBook (in many handy formats).
-        %hr/
-        %p
-          The other comics are still being finished. Stay tuned via Facebook / Instagram or right here on the site for updates!
-
-        = link_to "Check out our Shop!", shop_path, class: "btn btn-danger btn-lg"

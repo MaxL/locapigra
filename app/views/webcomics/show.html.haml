@@ -7,8 +7,9 @@
       = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
       %br
       %p= @webcomic.description.html_safe
-      %h3
-        Chapters
+      -if @chapters
+        %h3
+          Chapters
       %ul#chapters.list-unstyled
         -if @chapters
           - @chapters.each do |chapter|

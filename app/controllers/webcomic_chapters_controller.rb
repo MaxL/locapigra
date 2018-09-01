@@ -5,6 +5,10 @@ class WebcomicChaptersController < ApplicationController
     @chapters = WebcomicChapter.all
   end
 
+  def show
+    @chapter = WebcomicChapter.find(params[:id])
+  end
+
   def new
     @chapter = WebcomicChapter.new
   end

@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-xs-12
+      %table
+        %tbody
+          %tr
+            %td
+              = @chapter.webcomic.title
+          %tr
+            %td
+              = @chapter.title
+          %tr
+            %td
+              = link_to "edit", edit_webcomic_chapter_path(@chapter.id)
