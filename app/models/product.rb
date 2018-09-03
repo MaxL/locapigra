@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   has_many :comics
   has_many :order_items
   has_many :product_images
-  belongs_to :order
+  #belongs_to :order
 
   monetize :price_cents
   register_currency = :eur

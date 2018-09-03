@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   extend FriendlyId
   friendly_id :order_number, use: [:slugged, :finders]
 
-  belongs_to :order_status
+  has_one :order_status
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
