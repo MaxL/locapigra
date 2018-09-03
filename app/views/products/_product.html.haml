@@ -1,7 +1,7 @@
 .col-xs-12.col-sm-6.col-md-6
   .product-card.clearfix
     .card-image.product-card-item
-      = image_tag( product.cover_image, alt: product.name, class: 'img-responsive')
+      = image_tag( product.cover_image.url, alt: product.name, class: 'img-responsive')
     .card-body.product-card-item
       .card-copy
         %h3.card-title= product.name

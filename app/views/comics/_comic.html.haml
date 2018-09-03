@@ -10,12 +10,12 @@
       .col-xs-12
         = link_to comic do
           - if comic.released?
-            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive"
+            = image_tag comic.cover_image.url, alt: comic.name, class: "img-responsive"
           - else
-            = image_tag comic.cover_image, alt: comic.name, class: "img-responsive comic-unreleased"
+            = image_tag comic.cover_image.url, alt: comic.name, class: "img-responsive comic-unreleased"
       -#.col-xs-12
         - if comic.title_image?
-          = image_tag comic.title_image, class: "title-image", alt: comic.name
+          = image_tag comic.title_image.url, class: "title-image", alt: comic.name
         - else
           %h2= comic.name
 

@@ -7,7 +7,7 @@
       - if @webcomic.title_image.blank?
         %h1= @webcomic.title
       - else
-        = image_tag @webcomic.title_image, class: "title-image", alt: @webcomic.title
+        = image_tag @webcomic.title_image.url, class: "title-image", alt: @webcomic.title
       %br
       %p= @webcomic.description.html_safe
       -if @chapters != nil

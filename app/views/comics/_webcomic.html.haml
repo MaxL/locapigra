@@ -5,7 +5,8 @@
     .row
       .col-xs-12
         = link_to webcomic do
-          = image_tag webcomic.webcomic_pages.order('page_number').first.path, alt: webcomic.title, class: "img-responsive"
+          - puts webcomic.webcomic_pages.first
+          = image_tag webcomic.webcomic_pages.order('page_number').first.path.url, alt: webcomic.title, class: "img-responsive"
         -# if webcomic.title_image?
           = image_tag webcomic.title_image, class: "title-image", alt: webcomic.title
         - else

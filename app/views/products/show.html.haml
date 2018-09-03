@@ -10,7 +10,7 @@
 .container
   .row.card-row
     .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
-      = image_tag @product.cover_image, alt: @product.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@product.cover_image}" }
+      = image_tag @product.cover_image.url, alt: @product.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@product.cover_image}" }
     .hidden-xs.hidden-sm.col-md-1
     .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
       .mini-card
@@ -23,7 +23,7 @@
         .thumbnails.row
           - @product.comics.first.images.each do |image|
             .col-xs-6.col-sm-4.comic-thumb-box
-              %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+              %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path.url}", :src => "#{image.path.url}"}/
     .col-xs-12.col-sm-6.col-md-3
       - if @product.comics.first
         %ul.list-unstyled.comic-attributes

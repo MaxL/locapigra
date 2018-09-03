@@ -26,7 +26,7 @@
               .row
                 .col-xs-12.col-sm-4
                   = link_to @featured do
-                    = image_tag @featured.cover_image, alt: @featured.name, class: "img-responsive"
+                    = image_tag @featured.cover_image.url, alt: @featured.name, class: "img-responsive"
                 .col-xs-12.col-sm-8
                   .row
                     .col-xs-12

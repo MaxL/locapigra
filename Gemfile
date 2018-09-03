@@ -25,7 +25,7 @@ gem 'rolify'
 
 # SEO
 gem 'meta-tags'
-gem 'friendly_id',              '~> 5.1.0'
+gem 'friendly_id', github: 'norman/friendly_id'
 gem 'gretel'
 gem 'dynamic_sitemaps'
 
