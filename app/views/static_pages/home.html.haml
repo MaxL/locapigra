@@ -23,20 +23,21 @@
             %i.icon-tumblr
     .col-xs-12.col-sm-6.col-md-6.index-posts
       - if @posts != nil
-        -@posts.each do |post|
-          .post
-            - if post.photos
-              - post.photos.each do |photo|
-                = link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive text-center"), post.post_url, target: "_blank"
-              = post.caption.html_safe
-            - if post.body
-              = post.body.html_safe
-            - if post.tags
-              %ul.list-inline
-                - post.tags.each do |tag|
-                  %li.text-muted
-                    %a{href: "https://locapigra.tumblr.com/tagged/#{tag}", target: "_blank"}
-                      \##{tag}
+        -#@posts.each do |post|
+        .post
+          - if @post.photos
+            - @post.photos.each do |photo|
+              - puts photo["alt_sizes"].first
+              = link_to (image_tag photo["alt_sizes"].first["url"], class: "img-responsive text-center"), @post.post_url, target: "_blank"
+            = @post.caption.html_safe
+          - if @post.body
+            = @post.body.html_safe
+          - if @post.tags
+            %ul.list-inline
+              - @post.tags.each do |tag|
+                %li.text-muted
+                  %a{href: "https://locapigra.tumblr.com/tagged/#{tag}", target: "_blank"}
+                    \##{tag}
 
         %a= link_to "click here for more cool stuff on our BLOG section", blogs_path
 

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   #skip_authorization_check only: :confirm
   load_and_authorize_resource except: [:my_orders, :my_order]
-  before_filter :no_header, except: [:confirm, :show]
+  before_action :no_header, except: [:confirm, :show]
 
   helper_method :sort_column, :sort_direction
 

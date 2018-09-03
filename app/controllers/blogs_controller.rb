@@ -1,3 +1,4 @@
+require 'facets/ostruct/to_ostruct'
 class BlogsController < ApplicationController
   skip_authorization_check
 

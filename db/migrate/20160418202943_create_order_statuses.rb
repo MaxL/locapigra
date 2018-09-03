@@ -1,4 +1,4 @@
-class CreateOrderStatuses < ActiveRecord::Migration
+class CreateOrderStatuses < ActiveRecord::Migration[4.2]
   def change
     create_table :order_statuses do |t|
       t.string :name

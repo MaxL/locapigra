@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails',                   '4.2.6'
+gem 'rails',                   '~> 5.2.1'
 gem 'bcrypt',                  '>= 3.1.7'
 gem 'faker',                   '>= 1.4.2'
+
+gem "facets", require: false
+
+gem 'bootsnap', require: false
+gem 'listen', '~> 3.0'
 
 gem 'braintree'
 gem 'stripe'
@@ -62,13 +67,14 @@ gem 'fog-aws'
 gem 'mailgun_rails'
 
 # config + QOL
-gem 'haml-rails',               "~> 0.9"
+gem 'haml'
+gem 'haml-rails'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'figaro'
 gem 'httparty'
 gem 'tumblr_client'
-gem 'shenanigans'
+#gem 'shenanigans'
 
 gem 'sdoc',                    '>= 0.4.0', group: :doc
 
@@ -83,7 +89,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
-  gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano3-delayed-job'
 end
 
 group :development do

@@ -1,4 +1,4 @@
-class CreateWebcomicPages < ActiveRecord::Migration
+class CreateWebcomicPages < ActiveRecord::Migration[4.2]
   def change
     create_table :webcomic_pages do |t|
       t.references :webcomic, index: true, foreign_key: true

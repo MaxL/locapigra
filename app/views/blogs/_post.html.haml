@@ -1,7 +1,7 @@
 -# @posts.each do |post|
 .post.col-xs-12.col-sm-offset-2.col-sm-8.col-md-offset-3.col-md-6
-  - if post.photoset_layout
-    .photoset.clearfix{ class: "photoset-layout-#{post.photoset_layout}"}
+  - if post["photoset_layout"]
+    .photoset.clearfix{ class: "photoset-layout-#{post["photoset_layout"]}"}
       - @postphotos = post.photos
       - @first_photo = @postphotos.shift
       -#= link_to (image_tag @first_photo.alt_sizes.first.url, class: "img-responsive img-main"), post.post_url
@@ -9,18 +9,18 @@
       - @postphotos.each do |postphoto|
         -#= link_to (image_tag postphoto.alt_sizes.first.url, class: "img-responsive img-sub"), post.post_url
         = image_tag postphoto.alt_sizes.first.url, class: "img-responsive img-sub"
-  - elsif post.photos
-    - @postphotos = post.photos
+  - elsif post["photos"]
+    - @postphotos = post["photos"]
     - @postphotos.each do |photo|
       -#= link_to (image_tag photo.alt_sizes.first.url, class: "img-responsive"), post.post_url
-      = image_tag photo.alt_sizes.first.url, class: "img-responsive"
+      = image_tag photo["alt_sizes"].first["url"], class: "img-responsive"
   .post-content
-    - if post.caption
-      = post.caption.html_safe
-    - if post.body
-      = post.body.html_safe
+    - if post["caption"]
+      = post["caption"].html_safe
+    - if post["body"]
+      = post["body"].html_safe
     %ul.list-inline
-      - post.tags.each do |tag|
+      - post["tags"].each do |tag|
         %li.text-muted
           -#%a{:href => "https://locapigra.tumblr.com/tagged/#{tag}"}
             \##{tag}

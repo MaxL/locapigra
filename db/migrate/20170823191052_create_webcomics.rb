@@ -1,4 +1,4 @@
-class CreateWebcomics < ActiveRecord::Migration
+class CreateWebcomics < ActiveRecord::Migration[4.2]
   def change
     create_table :webcomics do |t|
       t.text :title
