@@ -711,7 +711,7 @@ i {
 }
 
 .webcomic-page {
-  margin: 40px auto 0;
+  margin: 0 auto;
   @include respond-to(larger_than_sm) {
     max-height: 1000px;
   };

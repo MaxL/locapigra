@@ -22,7 +22,7 @@
       .thumbnails.magnific-gallery.row.magnific-gallery
         - @comic.images.each do |image|
           .col-xs-6.col-sm-4.comic-thumb-box
-            %img.comic-thumb{"data-mfp-src" => "#{image.path}.url", :src => "#{image.path.url}"}/
+            %img.comic-thumb{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
     .col-xs-12.col-sm-6.col-md-3
       %ul.list-unstyled.comic-attributes
         %li

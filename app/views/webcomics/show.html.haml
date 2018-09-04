@@ -25,10 +25,10 @@
 
     .col-xs-12.col-pull-12.col-sm-9.col-md-9.text-center.webcomic-container
       -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
-      #webcomic-page
-        = render @webcomic_pages
       #webcomic-pagination.webcomic-pagination
         = js_will_paginate @webcomic_pages, remote: true, inner_window: 0, outer_window: 0, page_links: true, previous_label: '<i class="icon-play-1 rotated"></i>', next_label: '<i class="icon-play-1"></i>'
+      #webcomic-page
+        = render @webcomic_pages
         -#.col-xs-12
           = page_entries_info @webcomic_pages
         -# @webcomic.webcomic_pages.each do |page|
@@ -48,7 +48,7 @@
             .modal-body
               .row
                 - @pages.each do |p|
-                  .col-xs-12.col-sm-6.col-md-4
+                  .col-xs-8.col-sm-6.col-md-3
                     = link_to image_tag( "#{p.path}", class: "img-responsive"), webcomic_path(page: p.page_number)
 
   -#.flex-row
@@ -64,10 +64,10 @@
 
     .col-xs-12.col-pull-12.col-sm-9.col-md-9.text-center.webcomic-container
       -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
-      #webcomic-page
-        = render @webcomic_pages
       #webcomic-pagination.webcomic-pagination
         = js_will_paginate @webcomic_pages, remote: true, page_links: true, inner_window: 1, outer_window: 1, previous_label: '<i class="icon-left-open"></i>', next_label: '<i class="icon-right-open"></i>'
+      #webcomic-page
+        = render @webcomic_pages
         .col-xs-12
           = page_entries_info @webcomic_pages
         -# @webcomic.webcomic_pages.each do |page|
