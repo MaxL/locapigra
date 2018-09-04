@@ -15,14 +15,14 @@
     .hidden-xs.hidden-sm.col-md-1
     .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
       - if @comic.title_image?
-        = image_tag @comic.title_image, class: "main-title-image"
+        = image_tag @comic.title_image.url, class: "main-title-image"
       .mini-card
         %p
           = @comic.description.html_safe
       .thumbnails.magnific-gallery.row.magnific-gallery
         - @comic.images.each do |image|
           .col-xs-6.col-sm-4.comic-thumb-box
-            %img.comic-thumb{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+            %img.comic-thumb{"data-mfp-src" => "#{image.path}.url", :src => "#{image.path.url}"}/
     .col-xs-12.col-sm-6.col-md-3
       %ul.list-unstyled.comic-attributes
         %li
