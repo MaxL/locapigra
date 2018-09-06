@@ -1,6 +1,3 @@
-@import "base";
-@import "mixins";
-
 .card-row {
   margin-top: -80px;
 }
@@ -12,7 +9,7 @@
 }
 
 .card {
-  background-color: $lighter;
+  background-color: $whiteer;
   margin-bottom: 30px;
   padding-bottom: 15px;
   position: relative;
@@ -62,7 +59,7 @@
         content: 'COMING SOON';
         font-size: 36px;
         font-weight: 900;
-        color: rgba($light, .35);
+        color: rgba($white, .35);
         position: absolute;
         top: 200px;
         right: 0;
@@ -92,7 +89,7 @@
 }
 
 .product-card {
-  background-color: $light;
+  background-color: $white;
   margin-top: 15px;
   margin-bottom: 30px;
   border: 1px solid $swamp;
@@ -124,17 +121,17 @@
         top: -45px;
         right: 15px;
         background-color: $blood;
-        color: $light;
+        color: $white;
         border-radius: 50%;
-        border: 2px solid $light;
-        box-shadow: 0 0 1px $night;
+        border: 2px solid $white;
+        box-shadow: 0 0 1px $black;
         width: 60px;
         height: 60px;
         line-height: 55px;
         text-align: center;
 
         .price {
-          color: $light;
+          color: $white;
         }
       }
 
@@ -152,7 +149,7 @@
 }
 
 .mini-card {
-  background-color: $light;
+  background-color: $white;
   padding: 12px 16px;
   margin-bottom: 36px;
   padding-bottom: 24px;
@@ -164,7 +161,7 @@
 
 .card-interaction {
   background-color: $swamp;
-  color: $light;
+  color: $white;
   font-weight: 600;
   padding: 15px;
 }

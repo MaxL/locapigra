@@ -1,17 +1,15 @@
 @import "bootstrap-sprockets";
-@import "base";
-@import "mixins";
-@import "bootstrap-variables";
-@import "bootstrap-custom";
-@import "bootstrap-datepicker";
-@import "magnific-popup";
-@import "fontello";
-@import "select2";
-@import "select2-bootstrap";
 
-@import "select2-overrides";
+@import 'base/module';
 
-@import "core/shevy";
+@import 'helpers/module';
+
+@import 'vendors/module';
+
+@import 'components/module';
+
+@import 'layout/module';
+@import 'pages/module';
 
 $shevy: (
   base-font-size: 15px,
@@ -25,11 +23,6 @@ $shevy: (
 @include headings;
 @include body;
 @include content;
-
-@import "card";
-@import "forms";
-@import "tables";
-@import "components/typography";
 
 html,
 body {
@@ -85,7 +78,7 @@ input {
 
 /* HIGHLIGHTS & CO */
 .backgrounded {
-  background-color: rgba($light, .8);
+  background-color: rgba($white, .8);
 }
 .alert-notice {
   background-color: #d9edf7;
@@ -161,7 +154,7 @@ hr {
 
 /* BOOTSTRAP OVERRIDES */
 .table {
-  background-color: $light;
+  background-color: $white;
 }
 .tooltip {
   .tooltip-inner {
@@ -184,14 +177,14 @@ hr {
   padding: 8px 15px 0;
   list-style: none;
   background-color: transparent;
-  color: $light;
+  color: $white;
 
   a {
-    color: $light;
+    color: $white;
   }
 
   > .active {
-    color: darken($light, 10);
+    color: darken($white, 10);
   }
 }
 
@@ -244,12 +237,12 @@ hr {
       padding: 12px 18px;
 
       &.header-link {
-        background-color: $light;
+        background-color: $white;
       }
 
       &.main-nav-hilite {
         @include respondto(md) {
-          background-color: $light;
+          background-color: $white;
           &::after {
             content: '';
             position: absolute;
@@ -257,12 +250,12 @@ hr {
             left: 10%;
             width: 80%;
             height: 1px;
-            background-color: lighten($night, 15);
+            background-color: lighten($black, 15);
           }
         };
 
         @include respondto(lg) {
-          background-color: $light;
+          background-color: $white;
           &::after {
             content: '';
             position: absolute;
@@ -270,7 +263,7 @@ hr {
             left: 10%;
             width: 80%;
             height: 1px;
-            background-color: lighten($night, 15);
+            background-color: lighten($black, 15);
           }
         };
       }
@@ -297,7 +290,7 @@ hr {
   }
   @include respondto(xs) {
     position: fixed;
-    background-color: $light;
+    background-color: $white;
     width: 100%;
     height: auto;
     bottom: 0;
@@ -335,7 +328,7 @@ hr {
   }
 
   &.empty {
-    background-color: $light;
+    background-color: $white;
     color: $blood;
   }
 }
@@ -349,7 +342,7 @@ hr {
   10% { transform: scale(.9); }
   15% { transform: scale(1); }
   20% { transform: scale(1.15); }
-  50% { transform: scale(1.2); color: $night;}
+  50% { transform: scale(1.2); color: $black;}
   60% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
@@ -388,7 +381,7 @@ hr {
   opacity: 0;
   top: 0;
   left: 0;
-  background-color: rgba($light, .9);
+  background-color: rgba($white, .9);
   z-index: 995;
   &.shown {
     opacity: 1;
@@ -505,7 +498,7 @@ hr {
   p {
     //font-size: 18px;
     //line-height: 1.55em;
-    color: lighten($night, 5);
+    color: lighten($black, 5);
   }
 
   a {
@@ -526,11 +519,11 @@ hr {
     line-height: 40px;
     @include std-transition;
     i {
-      color: $light;
+      color: $white;
     }
 
     &:hover {
-      background-color: $light;
+      background-color: $white;
       i {
         color: $blood;
       }
@@ -544,7 +537,7 @@ hr {
   }
 }
 .ui-sortable-handle {
-  border: 1px solid $night;
+  border: 1px solid $black;
 }
 i {
   &.rotated {
@@ -560,12 +553,12 @@ i {
   @include background-gradient-light(bottom);
   margin-top: 15px;
   padding: 20px 12px 40px;
-  color: $light;
+  color: $white;
   min-height: 250px;
   position: relative;
 
   .title {
-    color: $light;
+    color: $white;
   }
   */
   padding: 20px 12px 40px;
@@ -652,7 +645,7 @@ i {
 
 .comic-thumb {
   padding: 2px;
-  //border: 1px solid $night;
+  //border: 1px solid $black;
   width: 100%;
   cursor: pointer;
 }
@@ -665,11 +658,11 @@ i {
   .disabled {
     display: inline-block;
     padding: 4px 7px;
-    //border: 1px solid $night;
+    //border: 1px solid $black;
   }
   em {
-    color: $light;
-    background-color: $night;
+    color: $white;
+    background-color: $black;
   }
 }
 
@@ -742,10 +735,10 @@ i {
 
 .post-content {
   padding: 8px 12px;
-  //background-color: rgba($light, $alpha-main);
+  //background-color: rgba($white, $alpha-main);
   margin-bottom: 15px;
   //@include gradient-border($swamp, $swamp-light, 3px);
-  border-bottom: 1px solid $night;
+  border-bottom: 1px solid $black;
 }
 
 .photoset {
@@ -770,7 +763,7 @@ i {
     position: absolute;
     right: 0;
     top: 47.2%;
-    background-color: rgba($light, .75);
+    background-color: rgba($white, .75);
   }
 }
 .lee {
@@ -781,7 +774,7 @@ i {
     position: absolute;
     right: 0;
     bottom: -60px;
-    background-color: rgba($light, .75);
+    background-color: rgba($white, .75);
   }
 }
 
@@ -797,7 +790,7 @@ i {
 
 /* #CART */
 .static-card {
-  background-color: $light;
+  background-color: $white;
   margin-bottom: 30px;
   overflow: hidden;
   padding: 15px;
@@ -821,8 +814,8 @@ footer {
   padding-bottom: 40px;
   min-height: 170px;
   width: 100%;
-  color: $night;
-  background-color: $light;
+  color: $black;
+  background-color: $white;
 
   @include respondto(xs) {
     margin-bottom: 80px;
@@ -859,12 +852,12 @@ footer {
 
 .status-paid {
   background-color: $swamp;
-  color: $light;
+  color: $white;
 }
 
 .status-shipped {
   background-color: $lagoon;
-  color: $light;
+  color: $white;
 }
 
 .large-icon {

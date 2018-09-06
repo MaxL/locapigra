@@ -1,7 +1,7 @@
 class WebcomicPage < ActiveRecord::Base
   resourcify
   belongs_to :webcomic
-  belongs_to :webcomic_chapter
+  belongs_to :webcomic_chapter, optional: true
 
   validates :webcomic, presence: true
 

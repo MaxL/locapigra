@@ -1,3 +1,7 @@
+$normal-font: 'Lato';
+$headings-font: 'Montserrat';
+$icon-font: 'fontello';
+
 /* montserrat-500 - latin */
 @font-face {
   font-family: 'Montserrat';
@@ -124,9 +128,9 @@ h1, h2, h3, h4, h5 , h6,
 
 .bonkers {
   position: relative;
-  color: $light;
+  color: $white;
   font-weight: 500;
-  //text-shadow: 0 0 1px $night;
+  //text-shadow: 0 0 1px $black;
   span {
     &::before,
     &::after {
