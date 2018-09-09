@@ -13,15 +13,22 @@
       -if @chapters != nil
         %h3
           Chapters
-      %ul#chapters.list-unstyled
+      %ul#chapters.list-unstyled.list-loca
         -if @chapters != nil
           - @chapters.each do |chapter|
             %li
               -if chapter.webcomic_pages.first
-                = link_to chapter.title, webcomic_path(page: chapter.webcomic_pages.first.page_number)
-        %li.hidden-xs
-          %button.btn.btn-link{data: {toggle: "modal", target: "#pages-modal"}}
-            See all pages
+                = link_to webcomic_path(page: chapter.webcomic_pages.first.page_number) do
+                  %i.icon-loca
+                  = chapter.title
+        %li
+          %a{href: '#', data: {toggle: "modal", target: "#pages-modal"}}
+            %i.icon-loca
+            %span.text-muted
+              See all pages
+
+      %p
+        Last updated #{distance_of_time_in_words(Time.now, @webcomic.webcomic_pages.last.updated_at)} ago
 
     .col-xs-12.col-pull-12.col-sm-9.col-md-9.text-center.webcomic-container
       -#= will_paginate @webcomic_pages, page_links: true, previous_label: "NEWER", next_label: "OLDER"
@@ -37,7 +44,7 @@
 
     .col-xs-12
       .modal.fade#pages-modal
-        .modal-dialog.modal-lg
+        .modal-dialog
           .modal-content
             .modal-header
               %button.close{type: "button", data: {dismiss: "modal"}}

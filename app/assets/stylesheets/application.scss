@@ -581,13 +581,6 @@ i {
   position: relative;
   height: 560px;
 }
-.featured-label {
-  position: absolute;
-  z-index: 2;
-  top: -10px;
-  left: 5px;
-  font-size: 14px;
-}
 .button-column {
   margin-top: 40%;
   @include respond-to(xs) {

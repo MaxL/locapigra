@@ -15,7 +15,7 @@ class WebcomicPagesController < ApplicationController
 
   def create
     @page = WebcomicPage.new(webcomic_page_params)
-    if @webcomic.save
+    if @page.save
       flash[:success] = "Webcomic Page Created"
       redirect_to @page
     else
@@ -25,6 +25,10 @@ class WebcomicPagesController < ApplicationController
 
   def edit
     @webcomic_page = WebcomicPage.find(params[:id])
+    puts 'webcomic:'
+    puts @webcomic_page.webcomic
+    puts '============'
+    @available_chapters = WebcomicChapter.where(webcomic_id: @webcomic_page.webcomic.id).collect {|w| [ w.title, w.id ] }
   end
 
   def update

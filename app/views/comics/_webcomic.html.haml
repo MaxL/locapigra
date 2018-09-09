@@ -2,6 +2,9 @@
   .featured-product
     .featured-label.label.label-success
       Webcomic
+    - if webcomic_iteration.first?
+      .newest-label.label.label-primary
+        Just updated!
     .row
       .col-xs-12
         = link_to webcomic do
