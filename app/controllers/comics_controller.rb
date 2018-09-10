@@ -7,7 +7,7 @@ class ComicsController < ApplicationController
     @released = Comic.where(released: true).paginate(page: params[:page]).order('position ASC')
     @unreleased = Comic.where(released: false).paginate(page: params[:page]).order('position ASC')
     @featured = Comic.where(featured: true).take
-    @webcomics = Webcomic.all.order('updated_at DESC')
+    @webcomics = Webcomic.all.includes(:webcomic_pages).order('webcomic_pages.updated_at DESC')
     @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
   end
 

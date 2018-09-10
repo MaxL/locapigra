@@ -25,10 +25,6 @@ class WebcomicPagesController < ApplicationController
 
   def edit
     @webcomic_page = WebcomicPage.find(params[:id])
-    puts 'webcomic:'
-    puts @webcomic_page.webcomic
-    puts '============'
-    @available_chapters = WebcomicChapter.where(webcomic_id: @webcomic_page.webcomic.id).collect {|w| [ w.title, w.id ] }
   end
 
   def update
