@@ -1,0 +1,38 @@
+.table {
+  background-color: $white;
+}
+.tooltip {
+  .tooltip-inner {
+    padding: 15px;
+    font-size: 15px;
+    width: 480px;
+    max-width: 480px;
+    @include respond-to(xs) {
+      max-width: 280px;
+    };
+  }
+}
+
+.breadcrumb-container {
+  background-color: $swamp;
+  @include background-gradient(right);
+}
+.breadcrumb {
+  margin-bottom: 8px;
+  padding: 8px 15px 0;
+  list-style: none;
+  background-color: transparent;
+  color: $white;
+
+  a {
+    color: $white;
+  }
+
+  > .active {
+    color: darken($white, 10);
+  }
+}
+
+.pagination {
+  //margin: 0;
+}

@@ -1,3 +1,9 @@
+input {
+  @include respondto(xs) {
+    font-size: 16px !important;
+  }
+}
+
 .loca-form {
 
   .form-group {

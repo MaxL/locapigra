@@ -1,0 +1,93 @@
+.blood {
+  color: $blood;
+}
+.lagoon {
+  color: $lagoon;
+}
+.sand {
+  color: $sand;
+}
+
+.block-link {
+  display: block;
+  width: 100%;
+}
+
+.magnific-image {
+  cursor: pointer;
+}
+
+.status-alerts {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include respondto(xs) {
+    bottom: 60px;
+    width: 100%;
+    z-index: 9999;
+  };
+}
+
+.turbolinks-progress-bar {
+  background-color: $swamp;
+}
+
+/* HIGHLIGHTS & CO */
+.backgrounded {
+  background-color: rgba($white, .8);
+}
+.alert-notice {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}
+.highlight-link {
+  color: $swamp;
+}
+hr {
+  &.dark-hr {
+    border-color: $gray;
+  }
+}
+.title {
+  font-weight: 300;
+  color: $swamp;
+}
+.category-heading {
+  padding-bottom: 100px;
+}
+.page-heading {
+  margin-bottom: 36px;
+  &.index {
+    padding-bottom: 20px;
+    background-image: url('');
+  }
+}
+.sub-heading {
+  padding-bottom: 4px;
+  border-bottom: 1px solid $text-color;
+  margin-bottom: 9px;
+  &a {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.small-title {
+  font-size: 14px;
+  color: $damp;
+}
+
+.divide {
+  margin-top: 25px;
+  margin-bottom: 85px;
+}
+
+.marginless-top {
+  margin-top: 0;
+}
