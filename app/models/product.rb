@@ -28,7 +28,6 @@ class Product < ActiveRecord::Base
   validates :position, uniqueness: true, numericality: true, presence: true
   #validates :release_date, presence: true
   validates :language, presence: true
-  validates_inclusion_of :active, :in => [ true, false ]
 
   default_scope { where(active: true) }
 
