@@ -63,7 +63,9 @@ Rails.application.routes.draw do
 
   get 'imprint' => 'static_pages#imprint'
 
-  get 'toc' => 'static_pages#toc'
+  get 'terms' => 'static_pages#toc'
+
+  get 'data-protection' => 'static_pages#dataprotection', as: 'dataprotection'
 
   get 'thanks' => 'static_pages#thanks'
 

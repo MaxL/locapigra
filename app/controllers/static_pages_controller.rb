@@ -24,6 +24,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def dataprotection
+
+  end
+
   def thanks
     @token = params[:token]
   end

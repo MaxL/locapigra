@@ -28,4 +28,9 @@ elsif Rails.env.staging?
 
     config.fog_directory          = ENV["S3_BUCKET"]
   end
+else
+  CarrierWave.configure do |config|
+    config.storage = :file
+    config.enable_processing = Rails.env.development?
+  end
 end
