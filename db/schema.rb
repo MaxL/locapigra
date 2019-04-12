@@ -26,13 +26,6 @@ ActiveRecord::Schema.define(version: 2019_04_11_183526) do
     t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
-  create_table "chapters", force: :cascade do |t|
-    t.text "title"
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comics", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -204,8 +197,8 @@ ActiveRecord::Schema.define(version: 2019_04_11_183526) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.integer "resource_id"
     t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"

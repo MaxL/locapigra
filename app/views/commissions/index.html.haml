@@ -14,7 +14,7 @@
           .pull-left
             We are currently accepting commissions. See some of our previous work below. Interested? Send us your ideas!
           .pull-right
-            %a.btn.btn-success.btn-lg#contact-commission{ href: "#"}
+            %span.btn.btn-success.btn-lg#contact-commission{'data-toggle': 'modal', 'data-target': '#commissions-modal'}
               Contact us
 
         .col-xs-12.spacer.x2
@@ -26,3 +26,35 @@
             .col-xs-12
               %hr/
               = link_to 'New', new_commission_path
+
+    .modal.fade#commissions-modal
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %button.close{'data-dismiss': 'modal'}
+              %span
+                &times;
+            %h4
+              Contact us
+          .modal-body
+            =form_for @message,url: {action: "create_message", controller: "commissions"}, html: {class: "commissions-enquiry-form loca-form"} do |f|
+              - if @message.errors.any?
+                #error_explanation
+                  %h2= "#{pluralize(@message.errors.count, "error")} prohibited this commission from being saved:"
+                  %ul
+                    - @message.errors.full_messages.each do |message|
+                      %li= message
+
+              .form-group
+                = f.label :name, "Name", { class: "loca-label" }
+                = f.text_field :name, { placeholder: "Name", class: "form-control" }
+              .form-group
+                = f.label :email, "E-Mail Address", { class: "loca-label" }
+                = f.text_field :email, { placeholder: "E-Mail Address", class: "form-control" }
+              .form-group
+                = f.text_area :body, { placeholder: "Send us your ideas", class: "form-control" }
+
+              .form-group
+                = f.button(type: "submit", class: "btn btn-primary btn-block") do
+                  %i.icon-angle-right
+                  Send

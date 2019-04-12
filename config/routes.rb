@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       patch :sort
     end
   end
+
+  post 'send_commission_enquiry' => 'commissions#create_message'
   get 'files/download'
 
   match 'files/clawsoffury', to: 'files#clawsoffury', via: :post
