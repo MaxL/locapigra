@@ -8,6 +8,14 @@
   color: $sand;
 }
 
+.spacer {
+  width: 100%;
+  margin-bottom: 50px;
+  &.x2 {
+    margin-bottom: 75px;
+  }
+}
+
 .block-link {
   display: block;
   width: 100%;

@@ -1,0 +1,15 @@
+.col-xs-12.col-sm-6
+  %h3= commission.title
+  %p= commission.description
+
+.col-xs-12.col-sm-6
+  = image_tag commission.commission_images.first.path.url, alt: commission.title, class: "img-responsive"
+
+- if user_signed_in?
+  - if current_user.admin?
+    .col-xs-12
+      %hr/
+      = link_to 'Edit', edit_commission_path(commission)
+      = link_to 'Destroy', commission, method: :delete, data: { confirm: 'Are you sure?' }
+
+.spacer.x2.col-xs-12

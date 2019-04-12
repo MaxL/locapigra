@@ -10,9 +10,9 @@ FactoryBot.define do
     name { Faker::Book.title }
     description { Faker::FamousLastWords.last_words }
     pages { FactoryBot.generate(:random_int) }
-    cover 'Softcover'
-    color 'full colors'
-    dimensions 'A4'
+    cover {'Softcover'}
+    color {'full colors'}
+    dimensions {'A4'}
     sequence(:position) { |n| n}
   end
 end

@@ -16,6 +16,15 @@ crumb :webcomic do |webcomic|
   parent :comics
 end
 
+crumb :commissions do
+  link "Commissions", commissions_path
+end
+
+crumb :commission do |commission|
+  link commission.name, commission_path(commission)
+  parent :commissions
+end
+
 crumb :products do
   link "Shop", shop_path
 end

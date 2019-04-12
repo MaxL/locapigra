@@ -9,15 +9,6 @@
           .navbar-collapse
             #navbar-main.nav.navbar-nav.navbar-main
               %div
-                = link_to root_path, class: "main-nav-hilite" do
-                  %span.hidden-xs
-                    HOME
-                  %span.visible-xs
-                    %i.icon-loca
-                    %br
-                    %span.small
-                      HOME
-              %div
                 = link_to comics_path, class: "main-nav-hilite" do
                   %span.hidden-xs
                     COMICS
@@ -26,6 +17,15 @@
                     %br
                     %span.small
                       COMICS
+              %div
+                = link_to commissions_path, class: "main-nav-hilite" do
+                  %span.hidden-xs
+                    COMMISSIONS
+                  %span.visible-xs
+                    %i.icon-pencil-alt
+                    %br
+                    %span.small
+                      COMMISSIONS
               %div
                 = link_to shop_path, class: "main-nav-hilite" do
                   %span.hidden-xs

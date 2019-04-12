@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :commissions
+  resources :commission_images do
+    collection do
+      patch :sort
+    end
+  end
   get 'files/download'
 
   match 'files/clawsoffury', to: 'files#clawsoffury', via: :post

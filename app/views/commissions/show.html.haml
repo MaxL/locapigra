@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @commission.title
+%p
+  %b Description:
+  = @commission.description
+
+= link_to 'Edit', edit_commission_path(@commission)
+\|
+= link_to 'Back', commissions_path

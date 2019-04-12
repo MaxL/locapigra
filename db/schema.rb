@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_152624) do
+ActiveRecord::Schema.define(version: 2019_04_11_183526) do
 
   create_table "addresses", force: :cascade do |t|
     t.text "recipient"
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(version: 2018_06_10_152624) do
     t.string "title_image"
     t.index ["name"], name: "index_comics_on_name", unique: true
     t.index ["product_id"], name: "index_comics_on_product_id"
+  end
+
+  create_table "commission_images", force: :cascade do |t|
+    t.string "path"
+    t.integer "position"
+    t.integer "commission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commission_id"], name: "index_commission_images_on_commission_id"
+  end
+
+  create_table "commissions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

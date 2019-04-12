@@ -1,0 +1,28 @@
+- set_meta_tags title: "Commissions", description: "We are available for commissions, contact us and we'get back to you with a quote"
+- breadcrumb :commissions
+
+.container
+  .row
+
+    .col-md-12.col-sm-12.col-xs-12
+
+      .row
+        .col-xs-12
+          %h1
+            COMMISSIONS
+            %span{ title: "COMMISSIONS" }
+          .pull-left
+            We are currently accepting commissions. See some of our previous work below. Interested? Send us your ideas!
+          .pull-right
+            %a.btn.btn-success.btn-lg#contact-commission{ href: "#"}
+              Contact us
+
+        .col-xs-12.spacer.x2
+
+        = render @commissions
+
+        - if user_signed_in?
+          - if current_user.admin?
+            .col-xs-12
+              %hr/
+              = link_to 'New', new_commission_path

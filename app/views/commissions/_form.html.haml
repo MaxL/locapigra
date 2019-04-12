@@ -1,0 +1,25 @@
+= form_for(@commission, html: { multipart: true }) do |f|
+  - if @commission.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@commission.errors.count, "error")} prohibited this commission from being saved:"
+      %ul
+        - @commission.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :title
+    = f.text_field :title
+  .form-group
+    = f.label :description
+    = f.text_area :description
+
+  .form-group
+    = file_field_tag "commission_images[]", type: :file, multiple: true, accept: 'image/jpeg,image/gif,image/png'
+    - if @commission_images
+      %ul.images.list-inline#pages{data: {url: sort_commission_images_path}}
+        - @commission_images.each do |image|
+          %li{id: dom_id(image)}
+            = link_to image_tag( "#{image.path}", class: "img-responsive", width: "150"), edit_commission_image_path(image)
+            = image.position
+
+  = f.submit 'Save'
