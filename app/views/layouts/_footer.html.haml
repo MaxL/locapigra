@@ -20,3 +20,12 @@
           %li= link_to "terms & conditions", terms_path
           %li= link_to "data protection / datenschutz", dataprotection_path
           %li= link_to "imprint", imprint_path
+          %li.visible-xs
+            - if user_signed_in?
+              = link_to edit_user_registration_path do
+                %i.icon-user
+                &nbsp; Profile
+            - else
+              = link_to new_user_session_path do
+                %i.icon-user
+                &nbsp; Login
