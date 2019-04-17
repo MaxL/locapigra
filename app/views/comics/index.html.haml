@@ -12,6 +12,8 @@
           %span{ title: "COMICS" }
         .spacer
 
+        = render partial: "shared/subscribe"
+
         = render partial: "webcomic", collection: @webcomics
 
         = render @released, comic: @released

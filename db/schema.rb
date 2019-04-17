@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_183526) do
+ActiveRecord::Schema.define(version: 2019_04_17_141636) do
 
   create_table "addresses", force: :cascade do |t|
     t.text "recipient"
@@ -203,6 +203,24 @@ ActiveRecord::Schema.define(version: 2019_04_11_183526) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.boolean "confirmed", default: false
+    t.string "confirmation_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "subscriber_id"
+    t.integer "webcomic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
+    t.index ["webcomic_id"], name: "index_subscriptions_on_webcomic_id"
   end
 
   create_table "users", force: :cascade do |t|

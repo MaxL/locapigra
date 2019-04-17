@@ -9,6 +9,7 @@ class ComicsController < ApplicationController
     @featured = Comic.where(featured: true).take
     @webcomics = Webcomic.all.includes(:webcomic_pages).order('webcomic_pages.updated_at DESC')
     @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
+    @subscriber = Subscriber.new
   end
 
   def show
