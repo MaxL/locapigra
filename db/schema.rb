@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2019_04_17_141636) do
     t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
+  create_table "chapters", force: :cascade do |t|
+    t.text "title"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comics", force: :cascade do |t|
     t.string "name"
     t.string "description"

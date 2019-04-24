@@ -1,1 +1,7 @@
+- if webcomic_page.page_number == 1
+  .subscription-ribbon{'data-toggle': 'modal', 'data-target': '#subscriber-modal'}
+    SUBSCRIBE
+- else
+  .subscription-button-webcomic.btn.btn-danger.btn-lg{'data-toggle': 'modal', 'data-target': '#subscriber-modal'}
+    Subscribe for updates!
 %img.img-responsive.webcomic-page{ src: "#{webcomic_page.path.url}", class: "webcomic-img"}/

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :subscribers
-  post 'confirm-email' => 'subscriber#confirm_email'
+  get 'confirm-email' => 'subscribers#confirm_email'
 
   post 'send_commission_enquiry' => 'commissions#create_message'
   get 'files/download'

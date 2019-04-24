@@ -1,0 +1,12 @@
+- if @subscriber.errors.any?
+  :plain
+    $('.subscription-form').prepend(
+      '#{escape_javascript(render 'shared/error_messages', object: @subscriber)}'
+    );
+- else
+  :plain
+    $('.subscription-form').html(
+      '<div class="alert alert-success">' +
+      'Thanks for subscribing. Please confirm your subscription by clicking the link in the email we just sent you.' +
+      '</div>'
+    );

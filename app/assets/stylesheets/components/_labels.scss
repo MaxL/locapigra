@@ -12,3 +12,41 @@
   right: 5px;
   font-size: 14px;
 }
+
+.subscription-ribbon {
+  background-image: image-url('ribbon.svg');
+  position: absolute;
+  left: 110px;
+  top: 65px;
+  background-size: cover;
+  height: 140px;
+  width: 140px;
+  line-height: 140px;
+  color: $white;
+  font-weight: 700;
+  font-size: 19px;
+  transform: rotate(-15deg);
+  transition: all .35s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.4);
+  }
+
+  @include respondto(xs) {
+    left: 0;
+    top: 55px;
+  }
+}
+
+.subscription-button-webcomic {
+  position: absolute;
+  right: 0;
+  top: 15px;
+
+  @include respondto(xs) {
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+}
