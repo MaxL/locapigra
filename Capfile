@@ -22,7 +22,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/console'
-require 'capistrano/delayed_job'
+#require 'capistrano/delayed_job'
 require 'capistrano/puma'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

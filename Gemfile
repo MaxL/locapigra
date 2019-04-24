@@ -85,7 +85,7 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
-  gem 'capistrano3-delayed-job'
+  #gem 'capistrano3-delayed-job'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
