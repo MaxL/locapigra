@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_141636) do
+ActiveRecord::Schema.define(version: 2019_05_08_175124) do
 
   create_table "addresses", force: :cascade do |t|
     t.text "recipient"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_141636) do
     t.string "confirmation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
   end
 
   create_table "subscriptions", force: :cascade do |t|

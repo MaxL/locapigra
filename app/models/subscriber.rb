@@ -12,6 +12,15 @@ class Subscriber < ActiveRecord::Base
     save!(validate: false)
   end
 
+  def set_status status
+    self.status = status
+    save!(validate: false)
+  end
+
+  def translate_status
+    status ? "subscribed" : "unsubscribed"
+  end
+
   private
     def set_confirmation_token
       if self.confirmation_token.blank?

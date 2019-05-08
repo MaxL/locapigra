@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-xs-12
+      %h4
+        Subscribers [#{@subscribers.count}]
+
+      %table.table.table-condensend
+        %thead
+          %tr
+            %td
+              ID
+            %td
+              Name
+            %td
+              Email
+            %td
+              Status
+            %td
+              Actions
+        %tbody
+          = render partial: "subscriber", collection: @subscribers

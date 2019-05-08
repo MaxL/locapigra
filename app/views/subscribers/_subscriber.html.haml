@@ -1,0 +1,18 @@
+%tr
+  %td
+    = subscriber.id.to_s
+  %td
+    = subscriber.name
+  %td
+    = subscriber.email
+  %td
+    = subscriber.translate_status
+  %td.text-right
+    - if subscriber.status
+      = link_to unsubscribe_subscriber_path(subscriber), method: :patch, class: "btn btn-warning btn-xs", data: { confirm: "Really unsubscribe Subscriber #{subscriber.id}?" } do
+        %i.icon-cancel-1 unsubscribe
+    - else
+      = link_to subscribe_subscriber_path(subscriber), method: :patch, class: "btn btn-success btn-xs", data: { confirm: "Really resubscribe Subscriber #{subscriber.id}?" } do
+        %i.icon-plus-1 subscribe
+    = link_to subscriber, method: :delete, class: "btn btn-default btn-xs", data: { confirm: "Really delete Subscriber #{subscriber.id} - this will enable him to subscribe again and you will lose the subscribers preferences" } do
+      %i.icon-block-1
