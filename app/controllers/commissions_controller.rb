@@ -6,7 +6,7 @@ class CommissionsController < ApplicationController
   # GET /commissions
   # GET /commissions.json
   def index
-    @commissions = Commission.all
+    @commissions = Commission.all.order(:date_added).reverse
     @message = Message.new
   end
 

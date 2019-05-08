@@ -7,7 +7,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :subscribers
+  resources :subscribers do
+    member do
+      match :subscribe, action: :subscribe, via: :patch
+      match :unsubscribe, action: :unsubscribe, via: :patch
+    end
+  end
+
   get 'confirm-email' => 'subscribers#confirm_email'
 
   post 'send_commission_enquiry' => 'commissions#create_message'
