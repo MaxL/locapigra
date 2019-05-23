@@ -74,7 +74,7 @@ GEM
       sassc (>= 2.0.0)
     bootstrap-will_paginate (1.0.0)
       will_paginate
-    braintree (2.95.0)
+    braintree (2.96.0)
       builder (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
