@@ -59,7 +59,7 @@ gem 'acts_as_list'
 # file uploads
 gem 'carrierwave',             '>= 0.10.0'
 gem 'mini_magick',             '>= 3.8.0'
-gem 'fog', require: 'fog/aws'
+gem 'fog-aws', require: 'fog/aws'
 
 # email
 gem 'mailgun-ruby'
