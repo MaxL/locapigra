@@ -79,7 +79,7 @@ gem 'sdoc',                    '>= 0.4.0', group: :doc
 group :development, :test do
   gem 'sqlite3',     '>= 1.3.9'
   gem 'byebug',      '>= 3.4.0'
-  gem 'capistrano', '3.6.0'
+  gem 'capistrano', '3.11.0'
   gem 'capistrano3-puma'
   gem 'capistrano-rails', '1.1.7'
   gem 'capistrano-bundler', require: false
