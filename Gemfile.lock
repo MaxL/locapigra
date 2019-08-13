@@ -426,7 +426,7 @@ GEM
     magnific-popup-rails (1.1.0)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mailgun-ruby (1.1.11)
+    mailgun-ruby (1.2.0)
       rest-client (~> 2.0.2)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
