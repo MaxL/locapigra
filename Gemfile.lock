@@ -86,7 +86,7 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
-    capistrano-rails (1.1.7)
+    capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rails-console (2.3.0)
@@ -591,7 +591,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
-    sshkit (1.19.1)
+    sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     sshkit-interactive (0.3.0)
@@ -655,7 +655,7 @@ DEPENDENCIES
   cancancan
   capistrano (= 3.11.0)
   capistrano-bundler
-  capistrano-rails (= 1.1.7)
+  capistrano-rails (= 1.4.0)
   capistrano-rails-console
   capistrano-rbenv
   capistrano3-delayed-job
