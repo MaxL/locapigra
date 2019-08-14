@@ -82,7 +82,7 @@ group :development, :test do
   gem 'byebug',      '>= 3.4.0'
   gem 'capistrano', '3.11.0'
   gem 'capistrano3-puma'
-  gem 'capistrano-rails', '1.1.7'
+  gem 'capistrano-rails', '1.4.0'
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv'
   gem 'capistrano-rails-console'
