@@ -22,7 +22,7 @@
                   %i.icon-loca
                   = chapter.title
         %li
-          %a{href: '#', data: {toggle: "modal", target: "#pages-modal"}}
+          %a{href: "#", id: "see-all-pages", data: {url: "/webcomics/#{@webcomic.slug}/all"}}
             %i.icon-loca
             %span.text-muted
               See all pages
@@ -52,11 +52,7 @@
                   &times;
               %h4.modal-title
                 All Pages
-            .modal-body
-              .row
-                - @pages.each do |p|
-                  .col-xs-6.col-sm-6.col-md-3
-                    = link_to image_tag( "#{p.path}", class: "img-responsive"), webcomic_path(page: p.page_number)
+            .modal-body{id: "pages-modal-body"}
 
   = render partial: "shared/subscribe"
 

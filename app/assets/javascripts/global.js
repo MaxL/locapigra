@@ -69,6 +69,13 @@ $(document).on("turbolinks:load", function() {
 
   $('.order-address-form').validate();
 
+  $('#see-all-pages').on('click', function(e) {
+    e.preventDefault();
+    $.get($(this).data("url"), function(data) {
+      console.log(data);
+    }, "script");
+  });
+
   formLabel();
   if ( $('.homepage').length ) {
     fireworks();
