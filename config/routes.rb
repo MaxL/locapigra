@@ -86,6 +86,8 @@ Rails.application.routes.draw do
 
   get 'thanks' => 'static_pages#thanks'
 
+  get 'webcomics/:id/all', to: 'webcomics#all'
+
   # user specific
   devise_scope :user do
     get 'my-orders' => 'users/sessions#my_orders'

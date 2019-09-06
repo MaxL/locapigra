@@ -1,0 +1,4 @@
+.row
+  - @pages.each do |p|
+    .col-xs-6.col-sm-6.col-md-3
+      = link_to image_tag( "#{p.path}", class: "img-responsive"), webcomic_path(page: p.page_number)

@@ -18,6 +18,13 @@ class WebcomicsController < ApplicationController
     end
   end
 
+  def all
+    @pages = @webcomic.webcomic_pages.order('page_number')
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @webcomic = Webcomic.new
   end
