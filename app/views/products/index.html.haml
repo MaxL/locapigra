@@ -8,6 +8,10 @@
         %h1
           SHOP
           %span{ title: "SHOP" }
+        .category-titles
+          - @categories.each do |category|
+            .category-title
+              %a{href: "##{category.title.downcase}"}= category.title.upcase
         %p
           These are the products you can buy on the l'oca pigra website. Your support makes it possible for us to make more awesome comics!
         %hr/
@@ -50,15 +54,14 @@
                           %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
       - if @featured
         .divide
+
       .row
-        = will_paginate
         - if @products.any?
-          = render @products, order_item: @order_item
+          = render partial: 'products/category', collection: @categories, order_item: @order_item
         - else
           .col-xs-12
             %p
               Sorry, no products available for purchase just yet. Site will be ready soon!
-        = will_paginate
     - if user_signed_in?
       - if current_user.admin?
         .col-xs-12

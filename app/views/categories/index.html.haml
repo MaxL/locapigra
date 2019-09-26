@@ -1,0 +1,4 @@
+- if user_signed_in?
+  - if current_user.admin?
+    .col-xs-12
+      = link_to "Add category", new_category_path, class: "btn btn-success btn-lg"

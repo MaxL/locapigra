@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   resources :products
   get 'product-list', to: 'products#admin_index', as: :productlist
 
+  resources :categories
+
   resources :images
 
   resources :webcomic_pages do

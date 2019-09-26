@@ -1,7 +1,10 @@
 $(document).ready(function() {
   keybindings();
   $('.magnific-image').magnificPopup({
-    type: 'image'
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
   });
   $('.magnific-gallery').each(function() { // the containers for all your galleries
     $(this).magnificPopup({
@@ -50,7 +53,10 @@ $(document).on("turbolinks:load", function() {
   });
 
   $('.magnific-image').magnificPopup({
-    type: 'image'
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
   });
   $('.magnific-gallery').each(function() { // the containers for all your galleries
     $(this).magnificPopup({

@@ -1,0 +1,4 @@
+.col-xs-12
+  %h3{id: "#{category.title.downcase}"}= category.title
+  %div.row
+    = render partial: 'product', collection: category.products, locals: {order_item: @order_item}

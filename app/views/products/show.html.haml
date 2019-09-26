@@ -1,18 +1,22 @@
 - set_meta_tags title: @product.name.upcase, description: @product.description
-
 - breadcrumb :product, @product
 .container-fluid
   .row
     .category-heading.comic-heading
       .container
-        %h1.title= @product.name.upcase
+        %h1= @product.name.upcase
 
 .container
   .row.card-row
-    .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
+    .col-xs-12.col-sm-6.col-md-4
       = image_tag @product.cover_image.url, alt: @product.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@product.cover_image}" }
-    .hidden-xs.hidden-sm.col-md-1
-    .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
+      - if @product.comics.first
+        .thumbnails
+          - @product.comics.first.images.each do |image|
+            .comic-thumb-box
+              %img.img-responsive.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path.url}", :src => "#{image.path.url}"}/
+
+    .col-xs-12.col-sm-6.col-md-4
       .mini-card
         %p
           - if @product.comics.first
@@ -20,13 +24,7 @@
           - else
             = @product.description
       - if @product.comics.first
-        .thumbnails.row
-          - @product.comics.first.images.each do |image|
-            .col-xs-6.col-sm-4.comic-thumb-box
-              %img.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path.url}", :src => "#{image.path.url}"}/
-    .col-xs-12.col-sm-6.col-md-3
-      - if @product.comics.first
-        %ul.list-unstyled.comic-attributes
+        %ul.list-unstyled
           %li
             %small
               Pages: #{@product.comics.first.pages}
@@ -40,7 +38,7 @@
             %small
               Size: #{@product.comics.first.dimensions}
       - else
-        %ul.list-unstyled.comic-attributes
+        %ul.list-unstyled
           %li
             %small
               Language: #{@product.language}
@@ -48,6 +46,9 @@
             %small
               #{@product.package}
 
+    .hidden-xs.hidden-sm.col-md-1
+
+    .col-xs-12.col-sm-6.col-md-3
       %div.price-box.clearfix
         Price:
         %span.price.pull-right= number_to_currency @product.price, { locale: :de, strip_insignificant_zeros: true }

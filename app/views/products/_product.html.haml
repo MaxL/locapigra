@@ -1,66 +1,19 @@
-.col-xs-12.col-sm-6.col-md-6
+.col-xs-12.col-sm-6
   .product-card.clearfix
-    .card-image.product-card-item
-      = image_tag( product.cover_image.url, alt: product.name, class: 'img-responsive')
+    %a{href: "#{product_url product}"}
+      .card-image.product-card-item
+        = image_tag( product.cover_image.url, alt: product.name, class: 'img-responsive')
     .card-body.product-card-item
       .card-copy
-        %h3.card-title= product.name
-        %p.hidden-xs
-          = product.description.html_safe
-      %div.product-card-form
-        %div.price-box.clearfix
-          %span.price
-            = humanized_money product.price
-            = currency_symbol
-        - if product.is_virtual?
-          %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top"}
-            %input{type: "hidden", name: "rm", value: "2"}
-            %input{type: "hidden", name: "custom", value: "#{@token.token}"}
-            %input{type: "hidden", name: "hosted_button_id", value: "#{product.pp_button}"}
-            %input{type: "hidden", name: "cmd", value: "_s-xclick"}
-            %button{type: "submit", class: "btn btn-danger btn-lg btn-block", name: "submit"}
-              %i.icon-paypal
-              Buy Now
-            %img{alt: "", border: "0", src: "https://www.paypal.com/de_DE/i/scr/pixel.gif", width: "1", height: "1"}
-        - else
-          = form_for order_item, remote: true, html: {class: "form-horizontal new_order_item"} do |f|
-            - if product.limited?
-              .form-group
-                = f.label :edition_number, class: "col-sm-6 control-label" do
-                  .tooltip-item{title: "This is a limited edition item. If you want a specific number, pick one in the field below. Some numbers might not be available anymore. Also you will have to add comics one at a time, don't worry though it's just one click!"}
-                    Limited edition #
-                    %i.icon-info.highlight-link
-                .col-sm-6
-                  = f.number_field :edition_number, class: "form-control", placeholder: "optional 1-1000"
-              .form-group
-                = f.hidden_field :product_id, value: product.id
-                = f.hidden_field :quantity, value: 1
-                .col-sm-3
-                  = link_to product, class: "btn btn-block btn-warning btn-lg" do
-                    %i.icon-info
-                .col-sm-1
-                .col-sm-8
-                  = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
-                    %i.icon-basket-alt
-                    %i.icon-check-1.success-icon
-            - else
-              .form-group
-                = f.label :quantity, class: "control-label col-sm-4"
-                .col-sm-8
-                  = f.number_field :quantity, value: 1, class: "form-control", min: 1
-              .form-group
-                = f.hidden_field :product_id, value: product.id
-                .col-sm-3
-                  = link_to product, class: "btn btn-block btn-warning btn-lg" do
-                    %i.icon-info
-                .col-sm-1
-                .col-sm-8
-                  = f.button(class: "btn btn-danger btn-lg btn-block add-to-cart-btn cart-btn-#{product.id}" ) do
-                    %i.icon-basket-alt
-                    %i.icon-check-1.success-icon
+        %a{href: "#{product_url product}"}
+          %h3.card-title
+            = product.name
+            %span.price.pull-right
+              = humanized_money product.price
+              %small= currency_symbol
 
-      - if user_signed_in?
-        - if current_user.admin?
-          %ul.list-inline
-            %li= link_to "edit", edit_product_path(product)
-            %li= link_to "delete", product, method: :delete, data: {confirm: "Really delete product #{product.name}"}
+  - if user_signed_in?
+    - if current_user.admin?
+      %ul.list-inline
+        %li= link_to "edit", edit_product_path(product)
+        %li= link_to "delete", product, method: :delete, data: {confirm: "Really delete product #{product.name}"}
