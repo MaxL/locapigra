@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_175124) do
+ActiveRecord::Schema.define(version: 2019_09_22_171224) do
 
   create_table "addresses", force: :cascade do |t|
     t.text "recipient"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_05_08_175124) do
     t.integer "order_id"
     t.string "email"
     t.index ["order_id"], name: "index_addresses_on_order_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "chapters", force: :cascade do |t|
@@ -200,6 +208,8 @@ ActiveRecord::Schema.define(version: 2019_05_08_175124) do
     t.text "pp_button"
     t.boolean "featured"
     t.integer "position"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "roles", force: :cascade do |t|

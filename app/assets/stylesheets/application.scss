@@ -148,37 +148,6 @@ i {
   //
 }
 
-.comic-attributes {
-  margin-top: 60px;
-  border: 1px solid $gray-darker;
-  color: $gray-darker;
-  padding: 12px 16px;
-  @include respond-to(xs) {
-    margin-top: 15px;
-  };
-}
-
-.thumbnails {
-  margin-top: 24px;
-}
-
-.comic-thumb-box {
-  text-align: center;
-
-  /*&:nth-child(odd) {
-    padding-right: 4px;
-  }
-  &:nth-child(even) {
-    padding-left: 4px;
-  }*/
-}
-
-.comic-thumb {
-  padding: 2px;
-  //border: 1px solid $black;
-  width: 100%;
-  cursor: pointer;
-}
 .comic-unreleased {
   //filter: grayscale(.75);
 }

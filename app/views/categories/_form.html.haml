@@ -1,0 +1,9 @@
+= form_for(@category, html: { multipart: true }) do |f|
+  = render "shared/error_messages", object: f.object
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: "form-control"
+  = f.submit "Create category", class: "btn btn-primary"

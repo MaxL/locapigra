@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
   has_many :product_images
   #belongs_to :order
 
+  belongs_to :category
+
   monetize :price_cents
   register_currency = :eur
 

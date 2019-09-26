@@ -92,10 +92,14 @@
   background-color: $white;
   margin-top: 15px;
   margin-bottom: 30px;
-  border: 1px solid $swamp;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
   .card-image {
-    height: 265px;
     overflow: hidden;
 
     .img-responsive {
@@ -103,15 +107,18 @@
     }
   }
   .card-body {
-    height: 240;
-    padding: 20px;
+    padding: 20px 0;
     position: relative;
 
     h3 {
       margin-top: 0;
       font-size: 22px;
-      margin-bottom: 18px;
+      margin-bottom: 0;
       line-height: 27px;
+
+      small {
+        color: $blood;
+      }
     }
 
     .product-card-form {
@@ -142,15 +149,11 @@
       }
     }
   }
-
-  &:hover {
-    @include card(1);
-  }
 }
 
 .mini-card {
   background-color: $white;
-  padding: 12px 16px;
+  padding: 12px 0;
   margin-bottom: 36px;
   padding-bottom: 24px;
   border-bottom: 1px solid $gray-darker;

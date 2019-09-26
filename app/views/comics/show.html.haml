@@ -10,19 +10,22 @@
           %h4.small-title= @comic.name.upcase
 .container
   .row.card-row
-    .col-xs-12.col-sm-6.col-sm-push-6.col-md-4.col-md-push-5
+    .col-xs-12.col-sm-6.col-md-4
       = image_tag @comic.cover_image.url, alt: @comic.name, class: "img-responsive magnific-image comic-main-img", data: { "mfp-src" => "#{@comic.cover_image.url}" }
-    .hidden-xs.hidden-sm.col-md-1
-    .col-xs-12.col-sm-6.col-sm-pull-6.col-md-4.col-md-pull-5
+      .thumbnails
+        - @comic.images.each do |image|
+          .comic-thumb-box
+            %img.img-responsive.comic-thumb.magnific-image{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+
+    .col-xs-12.col-sm-6.col-md-4
       - if @comic.title_image?
         = image_tag @comic.title_image.url, class: "main-title-image"
       .mini-card
         %p
           = @comic.description.html_safe
-      .thumbnails.magnific-gallery.row.magnific-gallery
-        - @comic.images.each do |image|
-          .col-xs-6.col-sm-4.comic-thumb-box
-            %img.comic-thumb{"data-mfp-src" => "#{image.path}", :src => "#{image.path}"}/
+
+    .hidden-xs.hidden-sm.col-md-1
+
     .col-xs-12.col-sm-6.col-md-3
       %ul.list-unstyled.comic-attributes
         %li

@@ -1,0 +1,20 @@
+
+.thumbnails {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.comic-thumb-box {
+  width: 33.3333%;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  &:nth-of-type(3n) {
+    padding-right: 0;
+  }
+}
+
+.comic-thumb {
+  cursor: pointer;
+}

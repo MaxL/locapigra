@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.paginate(page: params[:page]).order('position ASC')
+    @categories = Category.all
     @featured = Product.where(featured: true).take
     @order_item = current_order.order_items.new
     @token = DownloadToken.create(:expires_at => Time.now + 24.hours)
@@ -58,7 +59,7 @@ class ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:name, :description, :price, :price_cents, :taxrate, :weight, :meta_title, :meta_description, :quantity, :package, :cover_image, :release_date, :language, :pp_button, :active, :limited, :is_virtual, :featured, :position)
+      params.require(:product).permit(:name, :description, :price, :price_cents, :taxrate, :weight, :meta_title, :meta_description, :quantity, :package, :cover_image, :release_date, :language, :pp_button, :active, :limited, :is_virtual, :featured, :position, :category_id)
     end
 
 end

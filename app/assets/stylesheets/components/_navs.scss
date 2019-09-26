@@ -6,3 +6,14 @@
   background-color: $white;
   z-index: 2;
 }
+
+.category-titles {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 45px;
+
+  .category-title {
+    padding-right: 7px;
+    font-size: 16px;
+  }
+}
