@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails',                   '~> 5.2.1'
 gem 'bcrypt',                  '>= 3.1.7'
 
+gem 'sprockets', '~> 3.7.2'
+
 gem "facets", require: false
 
 gem 'bootsnap', require: false
@@ -55,6 +57,8 @@ gem 'validates_email_format_of'
 gem 'inline_svg'
 gem 'shevy'
 gem 'acts_as_list'
+
+gem 'honeypot-captcha'
 
 # file uploads
 gem 'carrierwave',             '>= 0.10.0'

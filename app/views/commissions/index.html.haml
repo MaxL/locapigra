@@ -37,7 +37,7 @@
             %h4
               Contact us
           .modal-body
-            =form_for @message,url: {action: "create_message", controller: "commissions"}, html: {class: "commissions-enquiry-form loca-form"} do |f|
+            =form_for @message,url: {action: "create_message", controller: "commissions"}, html: { honeypot: true, class: "commissions-enquiry-form loca-form" } do |f|
               - if @message.errors.any?
                 #error_explanation
                   %h2= "#{pluralize(@message.errors.count, "error")} prohibited this commission from being saved:"

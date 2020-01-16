@@ -1,6 +1,7 @@
 class CommissionsController < ApplicationController
   skip_authorization_check only: [:show, :index, :create_message]
   load_and_authorize_resource :except => [:show, :index, :create_message]
+  prepend_before_action :protect_from_spam, :only => [:create_message]
   before_action :set_commission, only: [:show, :edit, :update, :destroy]
 
   # GET /commissions
