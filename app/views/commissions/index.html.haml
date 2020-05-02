@@ -37,7 +37,10 @@
             %h4
               Contact us
           .modal-body
-            =form_for @message,url: {action: "create_message", controller: "commissions"}, html: { honeypot: true, class: "commissions-enquiry-form loca-form" } do |f|
+            =content_for :recaptcha_js do
+              =include_recaptcha_js
+
+            =form_for @message,url: {action: "create_message", controller: "commissions"}, html: { class: "commissions-enquiry-form loca-form" } do |f|
               - if @message.errors.any?
                 #error_explanation
                   %h2= "#{pluralize(@message.errors.count, "error")} prohibited this commission from being saved:"
@@ -53,6 +56,8 @@
                 = f.text_field :email, { placeholder: "E-Mail Address", class: "form-control" }
               .form-group
                 = f.text_area :body, { placeholder: "Send us your ideas", class: "form-control" }
+
+              = recaptcha_action('checkout')
 
               .form-group
                 = f.button(type: "submit", class: "btn btn-primary btn-block") do
