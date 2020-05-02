@@ -1,7 +1,6 @@
 class CommissionsController < ApplicationController
   skip_authorization_check only: [:show, :index, :create_message]
   load_and_authorize_resource :except => [:show, :index, :create_message]
-  prepend_before_action :protect_from_spam, :only => [:create_message]
   before_action :set_commission, only: [:show, :edit, :update, :destroy]
 
   # GET /commissions
@@ -70,7 +69,12 @@ class CommissionsController < ApplicationController
 
   def create_message
     @message = Message.new message_params
-    if @message.valid?
+    if NewGoogleRecaptcha.human?(
+        params[:new_google_recaptcha_token],
+        "checkout",
+        NewGoogleRecaptcha.minimum_score,
+        @message
+      ) && @message.valid?
       MessageMailer.contact(@message.to_json).deliver_later
       redirect_to commissions_path
       flash[:success] = "Your message was successfully sent, we'll be in touch soon!"

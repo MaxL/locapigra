@@ -58,7 +58,7 @@ gem 'inline_svg'
 gem 'shevy'
 gem 'acts_as_list'
 
-gem 'honeypot-captcha'
+gem 'new_google_recaptcha'
 
 # file uploads
 gem 'carrierwave',             '>= 0.10.0'
